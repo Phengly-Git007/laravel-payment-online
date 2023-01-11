@@ -1,9 +1,14 @@
 @extends('admin.master')
 
+@section('title')
+    Dashboard Menu
+@endsection
 @section('header')
     Admin Dashboard
 @endsection
-
+@section('action')
+    <a href="" class="btn btn-sm btn-primary">Dashboard List</a>
+@endsection
 @section('content')
     <section class="content">
         <div class="container-fluid">
