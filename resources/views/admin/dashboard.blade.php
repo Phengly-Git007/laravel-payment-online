@@ -3,6 +3,9 @@
 @section('title')
     Dashboard Menu
 @endsection
+@section('dashboard')
+    active
+@endsection
 @section('header')
     Admin Dashboard
 @endsection
