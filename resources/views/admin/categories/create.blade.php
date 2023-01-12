@@ -99,7 +99,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-danger float-right">Save Category</button>
+                    <button type="submit" class="btn btn-primary float-right">Save Category</button>
                 </form>
             </div>
         </div>

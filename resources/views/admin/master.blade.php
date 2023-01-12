@@ -64,6 +64,16 @@
     <script src="{{ asset('admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <script src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @if (session('status'))
+        <script>
+            swal({
+                text: "{{ session('status') }}",
+                icon: "success",
+                button: "OK",
+            });
+        </script>
+    @endif
 </body>
 
 </html>
