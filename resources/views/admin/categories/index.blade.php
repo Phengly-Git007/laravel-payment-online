@@ -17,7 +17,7 @@
     <div class="container-fluid">
         <div class="card table-responsive p-0">
             <div class="card-body">
-                <table class="table table-hover">
+                <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
                             <th>ID</th>
