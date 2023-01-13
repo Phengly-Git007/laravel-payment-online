@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/owl.theme.default.min.css') }}">
+    @yield('css')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -20,10 +23,11 @@
     <div class="content">
         @yield('content')
     </div>
-
+    <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
-
+    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     @if (session('status'))
         <script>
             swal({
@@ -33,6 +37,7 @@
             });
         </script>
     @endif
+    @yield('js')
 </body>
 
 </html>

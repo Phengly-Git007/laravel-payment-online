@@ -16,6 +16,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Product</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('register') }}">Register</a>
+                </li>
             </ul>
         </div>
     </div>
