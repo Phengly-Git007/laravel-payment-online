@@ -26,6 +26,7 @@
                             <th>Quantity</th>
                             <th>Original Price</th>
                             <th>Selling Price</th>
+                            <th>Tax</th>
                             <th>Status</th>
                             <th>Trending</th>
                             <th>Created</th>
@@ -44,6 +45,7 @@
                                 <td>{{ $product->quantity }}</td>
                                 <td>{{ $product->original_price }}</td>
                                 <td>{{ $product->selling_price }}</td>
+                                <td>{{ $product->tax }}</td>
                                 <td>{{ $product->status }}</td>
                                 <td>{{ $product->trending }}</td>
                                 <td>{{ date('d-M-Y', strtotime($product->created_at)) }}</td>
