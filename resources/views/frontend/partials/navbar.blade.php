@@ -11,17 +11,28 @@
                     <a class="nav-link" href="{{ url('/') }}">Home </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Collections</a>
+                    <a class="nav-link" href="{{ url('category') }}">Categories</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Product</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('login') }}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url('register') }}">Register</a>
-                </li>
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('login') }}">Login</a>
+                        </li>
+                    @endif
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('register') }}">Register</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a href="nav-link dropdown-toggle" id="navbarDropdown" role="button"></a>
+                    </li>
+                @endguest
+
             </ul>
         </div>
     </div>

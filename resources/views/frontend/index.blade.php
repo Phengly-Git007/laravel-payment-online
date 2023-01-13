@@ -5,10 +5,11 @@
 @endsection
 
 @section('content')
+    @include('frontend.partials.slider')
     <div class="container py-5">
         <div class="row">
             <h5>Trending Product</h5>
-            <div class="owl-carousel product-carousel owl-theme">
+            <div class="owl-carousel item-carousel owl-theme">
                 @foreach ($trending_products as $product)
                     <div class="item">
                         <div class="card">
@@ -28,7 +29,7 @@
     <div class="container">
         <div class="row">
             <h5>Popular Category</h5>
-            <div class="owl-carousel categories-carousel owl-theme">
+            <div class="owl-carousel item-carousel owl-theme">
                 @foreach ($feature_categories as $category)
                     <div class="item">
                         <div class="card">
@@ -47,39 +48,22 @@
 
 @section('js')
     <script>
-        $('.categories-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
-                nav: false,
-                dots: false,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 3
-                    },
-                    1000: {
-                        items: 5
-                    }
+        $('.item-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: false,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
                 }
-            }),
-            $('.product-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
-                nav: false,
-                dots: false,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 3
-                    },
-                    1000: {
-                        items: 5
-                    }
-                }
-            })
+            }
+        })
     </script>
 @endsection

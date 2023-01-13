@@ -22,6 +22,7 @@ Route::get('/', function () {
     return view('frontend.index');
 });
 Route::get('/',[FrontendController::class,'index']);
+Route::get('category',[FrontendController::class,'categories']);
 
 Auth::routes();
 

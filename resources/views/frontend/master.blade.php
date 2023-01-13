@@ -19,7 +19,6 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
     @include('frontend.partials.navbar')
-    @include('frontend.partials.slider')
     <div class="content">
         @yield('content')
     </div>
