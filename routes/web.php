@@ -24,6 +24,7 @@ Route::get('/', function () {
 Route::get('/',[FrontendController::class,'index']);
 Route::get('category',[FrontendController::class,'categories']);
 Route::get('product-by-categories/{slug}',[FrontendController::class,'showCategories']);
+Route::get('product-details/{cate_slug}/{pro_slug}',[FrontendController::class,'productDetails']);
 
 Auth::routes();
 

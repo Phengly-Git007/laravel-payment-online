@@ -31,4 +31,21 @@ class FrontendController extends Controller
             return redirect('/')->with('status','Something went wrong');
         }
     }
+
+    public function productDetails($cate_slug,$pro_slug)
+    {
+        if(Category::where('slug',$cate_slug)->exists()){
+            if(Product::where('slug',$pro_slug)->exists()){
+                $products = Product::where('slug',$pro_slug)->first();
+                return view('frontend.products.product-details',['products'=>$products]);
+            }
+            else{
+                return redirect('/')->with('status','Something went wrong');
+            }
+        }
+        else{
+            return redirect('/')->with('status','Category not found');
+        }
+
+    }
 }
