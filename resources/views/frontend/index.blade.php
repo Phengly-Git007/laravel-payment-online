@@ -26,17 +26,20 @@
 
         </div>
     </div>
-    <div class="container">
+    <div class="container pb-5 mb-5">
         <div class="row">
             <h5>Popular Category</h5>
             <div class="owl-carousel item-carousel owl-theme">
                 @foreach ($feature_categories as $category)
                     <div class="item">
                         <div class="card">
-                            <img src="{{ Storage::url($category->image) }}" alt="image" width="250px" height="250px">
-                            <div class="card-body text-center">
-                                {{ $category->name }}
-                            </div>
+                            <a href="{{ url('product-by-categories/' . $category->slug) }}">
+                                <img src="{{ Storage::url($category->image) }}" alt="image" width="250px"
+                                    height="250px">
+                                <div class="card-body text-center">
+                                    {{ $category->name }}
+                                </div>
+                            </a>
                         </div>
                     </div>
                 @endforeach

@@ -23,6 +23,7 @@ Route::get('/', function () {
 });
 Route::get('/',[FrontendController::class,'index']);
 Route::get('category',[FrontendController::class,'categories']);
+Route::get('product-by-categories/{slug}',[FrontendController::class,'showCategories']);
 
 Auth::routes();
 
