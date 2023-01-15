@@ -18,7 +18,7 @@
     <div class="container py-3">
         <div class="row">
             <div class="col-md-12">
-                <div class="card shadow product-data">
+                <div class="card shadow product_data">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4">
@@ -78,4 +78,34 @@
                                 <p class="mt-2">{{ $products->description }}</p>
                             </div>
                         </div>
-                    @endsection
+                    </div>
+                @endsection
+
+                @section('js')
+                    <script>
+                        $(document).ready(function() {
+                            // increment quantity
+                            $('.increment-quantity').click(function(e) {
+                                e.preventDefault();
+                                var increment = $('.quantity-input').val();
+                                var value = parseInt(increment, 10);
+                                value = isNaN(value) ? 0 : value;
+                                if (value < 10) {
+                                    value = value + 1;
+                                    $('.quantity-input').val(value);
+                                }
+                            });
+                            // decrement quantity
+                            $('.decrement-quantity').click(function(e) {
+                                e.preventDefault();
+                                var increment = $('.quantity-input').val();
+                                var value = parseInt(increment, 10);
+                                value = isNaN(value) ? 0 : value;
+                                if (value > 1) {
+                                    value = value - 1;
+                                    $('.quantity-input').val(value);
+                                }
+                            });
+                        });
+                    </script>
+                @endsection
