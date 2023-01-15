@@ -9,8 +9,7 @@
             <div class="container">
                 <a href="{{ url('/') }}">Home</a> /
                 <a href="{{ url('category') }}">All Categories</a> /
-                <a
-                    href="{{ url('product-by-categories/' . $products->category->slug) }}">{{ $products->categoryp->name }}</a>
+                <a href="{{ url('product-by-categories/' . $products->category->slug) }}">{{ $products->category->name }}</a>
                 /
                 {{ $products->name }}
             </div>
@@ -23,7 +22,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="{{ Storage::url($products->image) }}" alt="product_image" class="w-100" />
+                                <img src="{{ Storage::url($products->image) }}" alt="product_image" class="w-100"
+                                    width="300px" height="350px" />
                             </div>
                             <div class="col-md-8">
                                 <h5 class="mb-0">
@@ -70,12 +70,12 @@
                                             Add To Wishlist <i class="fa fa-heart"></i>
                                         </button>
                                     </div>
-                                    <div class="col-md-12">
-                                        <hr />
-                                        <h5>Description</h5>
-                                        <p class="mt-2">{{ $products->description }}</p>
-                                    </div>
                                 </div>
+                            </div>
+                            <div class="col-md-12">
+                                <hr />
+                                <h5>Description</h5>
+                                <p class="mt-2">{{ $products->description }}</p>
                             </div>
                         </div>
                     @endsection
