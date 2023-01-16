@@ -16,10 +16,10 @@
                 <div class="row">
                     @foreach ($categories as $category)
                         <div class="col-md-3 mb-3">
-                            <div class="card">
+                            <div class="card shadow">
                                 <a href="{{ url('product-by-categories/' . $category->slug) }}">
-                                    <img src="{{ Storage::url($category->image) }}" alt="image" width="250px"
-                                        height="250px">
+                                    <img src="{{ Storage::url($category->image) }}" class="w-100" alt="image"
+                                        width="250px" height="250px">
                                     <div class="card-body text-center">
                                         {{ $category->name }} <br>
                                     </div>

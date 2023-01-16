@@ -30,9 +30,12 @@ Route::get('product-details/{cate_slug}/{pro_slug}',[FrontendController::class,'
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// cart route
+Route::post('add-to-cart',[CartController::class,'addProductToCart']);
+Route::post('remove-from-cart',[CartController::class,'removeProductFromCart']);
 
 Route::middleware(['auth'])->group(function(){
-    Route::post('add-to-cart',[CartController::class,'addProductToCart']);
+    Route::get('view-cart-item',[CartController::class,'viewCartItem']);
 });
 
 

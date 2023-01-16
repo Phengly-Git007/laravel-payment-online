@@ -12,13 +12,13 @@
         </div>
     </div>
 
-    <div class="container py-3">
-        <h5>{{ $category->name }}</h5>
-        <div class="col-md-12">
+    <div class="container py-2">
+        <h6><b>{{ $category->name }}</b></h6>
+        <div class="col-md-12 mt-3">
             <div class="row">
                 @foreach ($products as $product)
                     <div class="col-md-3 mb-3">
-                        <div class="card">
+                        <div class="card shadow">
                             <a href="{{ url('product-details/' . $category->slug . '/' . $product->slug) }}">
                                 <img src="{{ Storage::url($product->image) }}" class="w-100" alt="image" width="230px"
                                     height="250px">

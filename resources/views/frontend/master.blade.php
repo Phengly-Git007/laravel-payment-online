@@ -31,7 +31,7 @@
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    <script src="{{ asset('frontend/js/custom.js') }}"></script>
     @if (session('status'))
         <script>
             swal({

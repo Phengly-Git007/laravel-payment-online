@@ -14,16 +14,17 @@
                     <div class="item">
                         <div class="card">
                             <img src="{{ Storage::url($product->image) }}" alt="image" width="250px" height="250px">
-                            <div class="card-body text-center">
+                            <div class="card-body text-sm text-center">
                                 {{ $product->name }}
-                                <span class="float-start">{{ $product->selling_price }}</span>
-                                <span class="float-end"><s>{{ $product->original_price }}</s></span>
+                                <br>
+                                <span><s>$ {{ $product->original_price }}</s></span>
+                                &nbsp;&nbsp;&nbsp;
+                                <span>$ {{ $product->selling_price }}</span>
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-
         </div>
     </div>
     <div class="container pb-5 mb-5">
@@ -36,7 +37,7 @@
                             <a href="{{ url('product-by-categories/' . $category->slug) }}">
                                 <img src="{{ Storage::url($category->image) }}" alt="image" width="250px"
                                     height="250px">
-                                <div class="card-body text-center">
+                                <div class="card-body text-center text-sm">
                                     {{ $category->name }}
                                 </div>
                             </a>
@@ -44,7 +45,6 @@
                     </div>
                 @endforeach
             </div>
-
         </div>
     </div>
 @endsection
