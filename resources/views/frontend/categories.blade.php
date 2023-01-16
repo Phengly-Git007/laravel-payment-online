@@ -22,7 +22,6 @@
                                         height="250px">
                                     <div class="card-body text-center">
                                         {{ $category->name }} <br>
-                                        <span>{{ date('d-M-Y', strtotime($category->updated_at)) }}</span>
                                     </div>
                                 </a>
                             </div>

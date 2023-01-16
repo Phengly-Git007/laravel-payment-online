@@ -20,11 +20,13 @@
                     <div class="col-md-3 mb-3">
                         <div class="card">
                             <a href="{{ url('product-details/' . $category->slug . '/' . $product->slug) }}">
-                                <img src="{{ Storage::url($product->image) }}" alt="image" width="250px" height="250px">
-                                <div class="card-body mb-3">
+                                <img src="{{ Storage::url($product->image) }}" class="w-100" alt="image" width="230px"
+                                    height="250px">
+                                <div class="card-body text-center mb-3">
                                     {{ $product->name }} <br>
-                                    <span class="float-start text-danger"><s>$ {{ $product->original_price }}</s></span>
-                                    <span class="float-end px-5 ">$ {{ $product->selling_price }}</span>
+                                    <span class="  text-danger"><s>$ {{ $product->original_price }}</s></span>
+                                    &nbsp;&nbsp;
+                                    <span>$ {{ $product->selling_price }}</span>
                                 </div>
                             </a>
                         </div>

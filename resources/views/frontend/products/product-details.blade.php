@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-md-8">
                                 <h5 class="mb-0">
-                                    {{ $products->name }}
+                                    <b>{{ $products->name }}</b>
                                     @if ($products->trending)
                                         <label class="float-end badge bg-danger" style="font-size: 12px;">
                                             Trending
@@ -39,18 +39,24 @@
                                     @endif
                                 </h5>
                                 <hr />
-                                <label class="me-3">Original Price : <s>$ {{ $products->original_price }}</s></label>
-                                <label class="fw-semibold">Selling Price : $ {{ $products->selling_price }}</label>
-                                <p class="mt-3">{{ $products->short_description }}</p>
+                                <span class="badge bg-secondary mt-0">
+                                    Publish On :
+                                    {{ date('d-M-Y', strtotime($products->created_at)) }}</span>
+                                <br><br>
+                                <label class="me-2"><s>Original Price : $
+                                        {{ $products->original_price }}</s></label>
+                                <label class="fw-semibold"><b>Selling Price : $ {{ $products->selling_price }}</b></label>
+                                <p class="mt-2">{{ $products->short_description }}
+                                </p>
                                 <hr />
                                 @if ($products->quantity > 0)
-                                    <label class="badge bg-success">In Stock</label>
+                                    <label class="badge bg-success"> {{ $products->quantity }} In Stock</label>
                                 @else
                                     <label class="badge bg-danger">Out Of Stock</label>
                                 @endif
                                 <div class="row mt-3">
                                     <div class="col-md-3">
-                                        <input type="hidden" value="{{ $products->id }}" class="prod_id">
+                                        <input type="hidden" value="{{ $products->id }}" class="product_id">
                                         <label class="quantity">Quantity</label>
                                         <div class="input-group text-center mb-3 mt-3" style="width: 120px">
                                             <button class="input-group-text decrement-quantity">-</button>
@@ -62,11 +68,11 @@
                                     <div class="col-md-9 mt-3 ">
                                         <br />
                                         @if ($products->quantity > 0)
-                                            <button type="button" class="btn btn-primary me-3 float-start addToCartItem">
+                                            <button type="button" class="btn btn-info me-3 float-start addToCart">
                                                 Add To Cart <i class="fa fa-shopping-cart"></i>
                                             </button>
                                         @endif
-                                        <button type="button" class="btn btn-info me-3 float-start">
+                                        <button type="button" class="btn btn-warning me-3 float-start">
                                             Add To Wishlist <i class="fa fa-heart"></i>
                                         </button>
                                     </div>
@@ -74,8 +80,8 @@
                             </div>
                             <div class="col-md-12">
                                 <hr />
-                                <h5>Description</h5>
-                                <p class="mt-2">{{ $products->description }}</p>
+                                <h6><b>Description</b></h6>
+                                <p class="mt-2 text-sm">{{ $products->description }}</p>
                             </div>
                         </div>
                     </div>
@@ -105,6 +111,31 @@
                                     value = value - 1;
                                     $('.quantity-input').val(value);
                                 }
+                            });
+                            // add to cart
+                            $('.addToCart').click(function(e) {
+                                e.preventDefault();
+                                var product_id = $(this).closest('.product_data').find('.product_id').val();
+                                var product_quantity = $(this).closest('.product_data').find('.quantity-input').val();
+                                // csrf_token
+                                $.ajaxSetup({
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    }
+                                });
+                                // close csrf_token
+                                $.ajax({
+                                    method: "POST",
+                                    url: "/add-to-cart",
+                                    data: {
+                                        product_id: product_id,
+                                        product_quantity: product_quantity
+                                    },
+
+                                    success: function(response) {
+                                        swal(response.status);
+                                    }
+                                });
                             });
                         });
                     </script>
