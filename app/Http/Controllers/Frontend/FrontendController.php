@@ -20,6 +20,10 @@ class FrontendController extends Controller
         $categories = Category::where('status','0')->get();
         return view('frontend.categories',['categories' => $categories]);
     }
+    public function products(){
+        $products = Product::where('status','0')->get();
+        return view('frontend.products.index',['products' => $products]);
+    }
     public function showCategories($slug)
     {
         if(Category::where('slug',$slug)->exists()){

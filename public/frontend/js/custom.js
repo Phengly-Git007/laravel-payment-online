@@ -88,4 +88,34 @@ $(document).ready(function () {
     });
 
     // ----------------------------------------------
+
+    $(".change-quantity").click(function (e) {
+        e.preventDefault();
+        var product_id = $(this)
+            .closest(".product_data")
+            .find(".product_id")
+            .val();
+        var quantity = $(this)
+            .closest(".product_data")
+            .find(".quantity-input")
+            .val();
+        data = {
+            product_id: product_id,
+            product_quantity: quantity,
+        };
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+        });
+        $.ajax({
+            method: "POST",
+            url: "/update-cart-quantity",
+            data: data,
+            success: function (response) {
+                swal(response.status);
+                window.location.reload();
+            },
+        });
+    });
 });

@@ -24,6 +24,7 @@ Route::get('/', function () {
 });
 Route::get('/',[FrontendController::class,'index']);
 Route::get('category',[FrontendController::class,'categories']);
+Route::get('product',[FrontendController::class,'products']);
 Route::get('product-by-categories/{slug}',[FrontendController::class,'showCategories']);
 Route::get('product-details/{cate_slug}/{pro_slug}',[FrontendController::class,'productDetails']);
 
@@ -33,9 +34,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // cart route
 Route::post('add-to-cart',[CartController::class,'addProductToCart']);
 Route::post('remove-from-cart',[CartController::class,'removeProductFromCart']);
+Route::post('update-cart-quantity',[CartController::class,'updateCartQuantity']);
 
 Route::middleware(['auth'])->group(function(){
     Route::get('view-cart-item',[CartController::class,'viewCartItem']);
+
 });
 
 

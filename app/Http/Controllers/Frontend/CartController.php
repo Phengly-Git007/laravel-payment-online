@@ -53,7 +53,7 @@ class CartController extends Controller
             if(Cart::where('product_id',$product_id)->where('user_id',Auth::id())->exists()){
                 $cartItem = Cart::where('product_id',$product_id)->where('user_id',Auth::id())->first();
                 $cartItem->delete();
-                return response()->json(['status'=> ' Deleted successfully']);
+                return response()->json(['status'=> $cartItem->products->name.' ,Deleted successfully']);
             }
             else{
                 return response()->json(['status'=>'Something went wrong']);
@@ -61,6 +61,26 @@ class CartController extends Controller
         }
         else{
             return response()->json(['status'=>'Login to continue']);
+        }
+    }
+
+    public function updateCartQuantity(Request $request)
+    {
+       $product_id = $request->input('product_id');
+       $quantity = $request->input('product_quantity');
+       if(Auth::check()){
+            if(Cart::where('product_id',$product_id)->where('user_id',Auth::id())->exists()){
+                $cart = Cart::where('product_id',$product_id)->where('user_id',Auth::id())->first();
+                $cart->product_quantity = $quantity;
+                $cart->update();
+                return response()->json(['status'=> $cart->products->name. ' ,Updated Successfully.']);
+            }
+            else{
+                return response()->json(['status'=>'Something went wrong']);
+            }
+        }
+        else{
+            return response()->json(['status'=>'Login to continue...']);
         }
     }
 }
