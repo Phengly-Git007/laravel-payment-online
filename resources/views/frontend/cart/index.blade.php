@@ -53,9 +53,10 @@
                     </div>
                     <div class="card-footer  ">
                         <h6 class="float-start ms-5"><b>Total Price : $ {{ $total }}</b></h6>
-                        <button class="btn btn-outline-primary float-end me-5"><i class="fas fa-check"></i>
+                        <a href="{{ url('checkout') }}" class="btn btn-outline-primary float-end me-5"><i
+                                class="fas fa-check"></i>
                             Process Checkout
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

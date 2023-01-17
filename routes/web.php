@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -30,7 +31,9 @@ Route::get('product-details/{cate_slug}/{pro_slug}',[FrontendController::class,'
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home',[FrontendController::class,'index']);
+
 // cart route
 Route::post('add-to-cart',[CartController::class,'addProductToCart']);
 Route::post('remove-from-cart',[CartController::class,'removeProductFromCart']);
@@ -38,6 +41,7 @@ Route::post('update-cart-quantity',[CartController::class,'updateCartQuantity'])
 
 Route::middleware(['auth'])->group(function(){
     Route::get('view-cart-item',[CartController::class,'viewCartItem']);
+    Route::get('checkout',[CheckoutController::class,'index']);
 
 });
 
