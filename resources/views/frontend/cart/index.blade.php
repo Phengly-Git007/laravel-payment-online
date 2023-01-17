@@ -32,23 +32,25 @@
                                 </div>
                                 <div class="col-md-3">
                                     <input type="hidden" class="product_id" value="{{ $cart->product_id }}">
-                                    <div class="input-group text-center mb-3" style="width: 130px">
+                                    @if ($cart->products->quantity >= $cart->product_quantity)
                                         <div class="input-group text-center mb-3 " style="width: 120px">
                                             <button class="input-group-text change-quantity decrement-quantity">-</button>
                                             <input type="text" name="quantity" value="{{ $cart->product_quantity }}"
                                                 readonly class="form-control text-center quantity-input" />
                                             <button class="input-group-text change-quantity increment-quantity">+</button>
                                         </div>
-                                    </div>
+                                        @php
+                                            $total += $cart->products->selling_price * $cart->product_quantity;
+                                        @endphp
+                                    @else
+                                        <label class="badge bg-danger">Out Of Stock, Try Again !</label>
+                                    @endif
                                 </div>
                                 <div class="col-md-2">
                                     <button class="btn btn-outline-danger removeFromCart"><i class="fas fa-trash"></i>
                                     </button>
                                 </div>
                             </div>
-                            @php
-                                $total += $cart->products->selling_price * $cart->product_quantity;
-                            @endphp
                         @endforeach
                     </div>
                     <div class="card-footer  ">
@@ -60,7 +62,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection

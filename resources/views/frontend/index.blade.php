@@ -13,14 +13,16 @@
                 @foreach ($trending_products as $product)
                     <div class="item">
                         <div class="card">
-                            <img src="{{ Storage::url($product->image) }}" alt="image" width="250px" height="250px">
-                            <div class="card-body text-sm text-center">
-                                {{ $product->name }}
-                                <br>
-                                <span><s>$ {{ $product->original_price }}</s></span>
-                                &nbsp;&nbsp;&nbsp;
-                                <span>$ {{ $product->selling_price }}</span>
-                            </div>
+                            <a href="{{ url('product-details/' . $product->category->slug . '/' . $product->slug) }}">
+                                <img src="{{ Storage::url($product->image) }}" alt="image" width="250px" height="250px">
+                                <div class="card-body text-sm text-center">
+                                    {{ $product->name }}
+                                    <br>
+                                    <span><s>$ {{ $product->original_price }}</s></span>
+                                    &nbsp;&nbsp;&nbsp;
+                                    <span>$ {{ $product->selling_price }}</span>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 @endforeach

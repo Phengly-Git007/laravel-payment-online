@@ -4,6 +4,13 @@
 @endsection
 
 @section('content')
+    <div class="py-3 mb-3 shadow-sm bg-info border-top">
+        <div class="container">
+            <a href="{{ url('/') }}">Home</a> /
+            <a href="{{ url('/view-cart-item') }}">My Cart</a> /
+            Checkout Page
+        </div>
+    </div>
     <div class="container py-3">
         <div class="row">
             <div class="col-md-7">
