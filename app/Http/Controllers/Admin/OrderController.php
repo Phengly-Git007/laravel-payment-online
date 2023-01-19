@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::where('status','0')->get();
+        $orders = Order::orderBy('id','desc')->get();
         return view('admin.orders.index',['orders' => $orders]);
     }
 
@@ -19,4 +19,13 @@ class OrderController extends Controller
         $orders = Order::where('id',$id)->first();
       return view('admin.orders.details',['orders' => $orders]);
     }
+
+    public function updateOrder(Request $request, $id)
+    {
+        $orders = Order::find($id);
+        $orders->status = $request->input('status');
+        $orders->update();
+        return redirect('orders')->with('status','Order updated successfully');
+    }
+
 }

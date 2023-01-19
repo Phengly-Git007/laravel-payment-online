@@ -113,13 +113,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($cartItems as $cart)
-                                        <tr>
-                                            <td>{{ $cart->products->name }}</td>
-                                            <td>{{ $cart->product_quantity }}</td>
-                                            <td>$ {{ $cart->products->selling_price }}</td>
-                                        </tr>
-                                    @endforeach
+                                    @if ($cartItems->count() > 0)
+                                        @foreach ($cartItems as $cart)
+                                            <tr>
+                                                <td>{{ $cart->products->name }}</td>
+                                                <td>{{ $cart->product_quantity }}</td>
+                                                <td>$ {{ $cart->products->selling_price }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @else
+                                        <td>
+                                            <p>No Cart Item</p>
+                                        </td>
+                                    @endif
+
                                 </tbody>
                             </table>
                             <button type="submit" class="btn btn-warning w-100">Place Order</button>

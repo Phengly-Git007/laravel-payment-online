@@ -19,11 +19,14 @@
                         <tr>
                             <th>ID</th>
                             <th>Tracking No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
                             <th>Pincode</th>
                             <th>Total</th>
                             <th>Status</th>
                             <th>Order Date</th>
-                            <th>Action</th>
+                            <th>Order User Management</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,6 +34,9 @@
                             <tr>
                                 <td>{{ $order->id }}</td>
                                 <td>{{ $order->tracking_number }}</td>
+                                <td>{{ $order->name }}</td>
+                                <td>{{ $order->email }}</td>
+                                <td>{{ $order->phone }}</td>
                                 <td>{{ $order->pincode }}</td>
                                 <td>$ {{ $order->total_price }}</td>
                                 <td>
@@ -40,8 +46,13 @@
                                 </td>
                                 <td>{{ date('d-M-Y', strtotime($order->created_at)) }}</td>
                                 <td>
-                                    <a href="{{ url('orders-details/' . $order->id) }}" class="btn btn-sm btn-info"><i
+                                    <a href="{{ url('orders-details/' . $order->id) }}" class="btn btn-xs btn-info"><i
                                             class="fas fa-eye"></i> Details</a>
+                                    <a href="{{ url('delete-orders/' . $order->id) }}" class="btn btn-xs btn-danger ">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </a>
+                                    <a href="" class="btn btn-xs btn-secondary"><i class="fas fa-print"></i>
+                                        Printing</a>
                                 </td>
                             </tr>
                         @endforeach

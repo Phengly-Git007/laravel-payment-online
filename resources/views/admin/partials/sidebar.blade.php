@@ -61,6 +61,16 @@
                      </a>
                  </li>
 
+                 <li class="nav-item">
+                     <a href="{{ route('users.index') }}" class="nav-link @yield('user')">
+                         <i class="nav-icon fas fa-th"></i>
+                         <p>
+                             Users
+                             <span class="right badge badge-danger">New</span>
+                         </p>
+                     </a>
+                 </li>
+
                  <li class="nav-item ">
                      <a href="{{ route('logout') }}" class="nav-link "
                          onclick="event.preventDefault();

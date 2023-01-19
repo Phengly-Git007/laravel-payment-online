@@ -35,7 +35,7 @@
             </div>
             <div class="col-md-7">
                 <div class="card shadow table-responsive p-0">
-                    <di class="card-body">
+                    <div class="card-body">
                         <table class="table text-nowrap">
                             <thead>
                                 <tr>
@@ -60,12 +60,29 @@
                             </tbody>
                         </table>
                         <hr>
-                        <h6 class="float-right mb-0"><b>Sub Total : $ {{ $orders->total_price }}</b></h6>
+                        <h6 class="mb-0 px-3"><b>Sub Total : <span class="float-right">$
+                                    {{ $orders->total_price }}</span></b>
+                        </h6>
+                        <div class="col-md-12 mt-3 px-3">
+                            <form action="{{ url('update-orders/' . $orders->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <label for="">Order Status</label>
+                                <select name="status" class="form-control">
+                                    <option {{ $orders->status == '0' ? 'selected' : '' }} value="0">Pending
+                                    </option>
+                                    <option {{ $orders->status == '1' ? 'selected' : '' }} value="1">Completed
+                                    </option>
+                                </select>
+                                <button type="submit" class="btn btn-sm btn-success float-right mt-3">Update
+                                    Status</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
 
     </div>
     </div>
