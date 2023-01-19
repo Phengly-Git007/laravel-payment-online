@@ -46,8 +46,16 @@
                                 <td>{{ $product->original_price }}</td>
                                 <td>{{ $product->selling_price }}</td>
                                 <td>{{ $product->tax }}</td>
-                                <td>{{ $product->status }}</td>
-                                <td>{{ $product->trending }}</td>
+                                <td>
+                                    <span class="right badge badge-{{ $product->status ? 'danger' : 'success' }}">
+                                        {{ $product->status ? 'Disable' : 'Active' }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="right badge badge-{{ $product->trending ? 'primary' : 'danger' }}">
+                                        {{ $product->trending ? 'Trending' : 'Hidden' }}
+                                    </span>
+                                </td>
                                 <td>{{ date('d-M-Y', strtotime($product->created_at)) }}</td>
                                 <td>
                                     <a href="{{ route('products.edit', $product) }}" class="btn btn-xs btn-info"><i

@@ -21,7 +21,7 @@
                             <h6><b>Information Details</b></h6>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <input type="text" name="name" value="{{ Auth::user()->name }}"
+                                    <input type="text" name="name" value="{{ Auth::user()->name }}" readonly
                                         class="form-control @error('name') is-invalid @enderror " placeholder="username...">
                                     @error('name')
                                         <div class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-12 mt-4">
-                                    <input type="email" name="email" value="{{ Auth::user()->email }}"
+                                    <input type="email" name="email" value="{{ Auth::user()->email }}" readonly
                                         class="form-control @error('email') is-invalid @enderror " placeholder="email...">
                                     @error('email')
                                         <div class="invalid-feedback" role="alert">

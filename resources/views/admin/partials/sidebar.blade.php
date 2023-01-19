@@ -51,6 +51,16 @@
                      </a>
                  </li>
 
+                 <li class="nav-item">
+                     <a href="{{ route('orders.index') }}" class="nav-link @yield('order')">
+                         <i class="nav-icon fas fa-th"></i>
+                         <p>
+                             Orders
+                             <span class="right badge badge-danger">New</span>
+                         </p>
+                     </a>
+                 </li>
+
                  <li class="nav-item ">
                      <a href="{{ route('logout') }}" class="nav-link "
                          onclick="event.preventDefault();

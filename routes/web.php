@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,6 +45,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('view-cart-item',[CartController::class,'viewCartItem']);
     Route::get('checkout',[CheckoutController::class,'index']);
     Route::post('place-order-product',[CheckoutController::class,'placeOrderProduct']);
+    Route::get('my-orders',[UserController::class,'myOrder']);
+    Route::get('view-orders/{id}',[UserController::class,'viewOrder']);
 
 });
 
@@ -51,4 +55,6 @@ Route::middleware(['auth','admin'])->group(function (){
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard.index');
     Route::resource('categories',CategoryController::class);
     Route::resource('products',ProductController::class);
+    Route::get('orders',[OrderController::class,'index'])->name('orders.index');
+    Route::get('orders-details/{id}',[OrderController::class,'orderDetails']);
 });

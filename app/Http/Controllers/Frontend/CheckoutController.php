@@ -39,7 +39,13 @@ class CheckoutController extends Controller
         $orders->city = $request->input('city');
         $orders->country = $request->input('country');
         $orders->pincode = $request->input('pincode');
-        $orders->tracking_number = 'Phengly-'.rand(1010,0101);
+        $orders->tracking_number = 'eoPays-'.rand(1010,0101);
+        $total = 0;
+        $cart_total = Cart::where('user_id',Auth::id())->get();
+        foreach($cart_total as $cart){
+            $total += $cart->products->selling_price * $cart->product_quantity;
+        }
+        $orders->total_price = $total;
         $orders->save();
 
         $carts = Cart::where('user_id',Auth::id())->get();
