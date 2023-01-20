@@ -86,6 +86,7 @@ $(document).ready(function () {
 
             success: function (response) {
                 swal(response.status);
+                loadCart();
             },
         });
     });
@@ -172,6 +173,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 swal(response.status);
+                loadWishlist();
             },
         });
     });

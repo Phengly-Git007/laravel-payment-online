@@ -129,7 +129,21 @@
 
                                 </tbody>
                             </table>
-                            <button type="submit" class="btn btn-warning w-100">Place Order</button>
+                            <div class="row">
+                                <div class="col-md-12 mb-3">
+                                    <button type="submit" class="btn btn-warning w-100">
+                                        Place Order | Cost On Delivery
+                                    </button>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <button type="button" class="btn btn-outline-info w-100 strips-payment-method">Pay With
+                                        Strips</button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-outline-primary w-100 paypal-payment-method">Pay
+                                        With Paypal</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
