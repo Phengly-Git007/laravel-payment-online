@@ -1,4 +1,34 @@
 $(document).ready(function () {
+    loadCart();
+    loadWishlist();
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
+
+    function loadCart() {
+        $.ajax({
+            method: "GET",
+            url: "/load-cart-quantity",
+            success: function (response) {
+                $(".cart-count").html("");
+                $(".cart-count").html(response.count);
+            },
+        });
+    }
+
+    function loadWishlist() {
+        $.ajax({
+            method: "GET",
+            url: "/load-wishlist-quantity",
+            success: function (response) {
+                $(".wishlist-count").html("");
+                $(".wishlist-count").html(response.wishlist);
+            },
+        });
+    }
+
     // increment quantity
     $(".increment-quantity").click(function (e) {
         e.preventDefault();
@@ -165,7 +195,7 @@ $(document).ready(function () {
             },
             success: function (response) {
                 window.location.reload();
-                swal(response.status);
+                swal("", response.status);
             },
         });
     });

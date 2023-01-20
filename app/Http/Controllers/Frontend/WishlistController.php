@@ -11,14 +11,13 @@ use Illuminate\Support\Facades\Auth;
 
 class WishlistController extends Controller
 {
-    public function viewWishlistItem()
-    {
+
+    public function viewWishlistItem(){
         $wishlists = Wishlist::where('user_id',Auth::id())->get();
         return view('frontend.wishlist.index',['wishlists' => $wishlists]);
     }
 
-    public function addProductToWishlist(Request $request)
-    {
+    public function addProductToWishlist(Request $request){
         if(Auth::check()){
             $product_id = $request->input('product_id');
             if(Product::find($product_id)){
@@ -37,8 +36,7 @@ class WishlistController extends Controller
         }
     }
 
-    public function removeProductFromWishlist(Request $request)
-    {
+    public function removeProductFromWishlist(Request $request){
         if(Auth::check()){
             $product_id = $request->input('product_id');
             if(Wishlist::where('product_id',$product_id)->where('user_id',Auth::id())->exists()){
@@ -53,5 +51,10 @@ class WishlistController extends Controller
         else{
             return response()->json(['status'=>'Login to continue']);
         }
+    }
+
+    public function wishlistCountQuantity(){
+        $wishlist_counts = Wishlist::where('user_id',Auth::id())->count();
+        return response()->json(['wishlist' => $wishlist_counts]);
     }
 }

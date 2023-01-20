@@ -36,6 +36,10 @@ Route::post('update-cart-quantity',[CartController::class,'updateCartQuantity'])
 Route::post('add-to-wishlist',[WishlistController::class,'addProductToWishlist']);
 Route::post('remove-from-wishlist',[WishlistController::class,'removeProductFromWishlist']);
 
+// load cart quantity on navbar
+Route::get('load-cart-quantity',[CartController::class,'cartCountQuantity']);
+Route::get('load-wishlist-quantity',[WishlistController::class,'wishlistCountQuantity']);
+
 Route::middleware(['auth'])->group(function(){
     Route::get('view-wishlist-item',[WishlistController::class,'viewWishlistItem']);
     Route::get('view-cart-item',[CartController::class,'viewCartItem']);
