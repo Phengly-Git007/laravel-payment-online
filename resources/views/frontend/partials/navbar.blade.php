@@ -17,6 +17,9 @@
                     <a class="nav-link" href="{{ url('product') }}"><b>Product</b></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ url('view-wishlist-item') }}"><b>Wishlist</b></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ url('view-cart-item') }}"><b>Cart</b></a>
                 </li>
                 @guest

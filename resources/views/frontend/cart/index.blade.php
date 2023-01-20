@@ -21,17 +21,17 @@
                             @endphp
                             @foreach ($cartItems as $cart)
                                 <div class="row product_data text-nowrap ">
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 my-auto">
                                         <img src="{{ Storage::url($cart->products->image) }}" alt="image" width="50px"
                                             height="50px">
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 my-auto">
                                         <b>{{ $cart->products->name }}</b>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 my-auto">
                                         <b>$ {{ $cart->products->selling_price }}</b>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-3 my-auto">
                                         <input type="hidden" class="product_id" value="{{ $cart->product_id }}">
                                         @if ($cart->products->quantity >= $cart->product_quantity)
                                             <div class="input-group text-center mb-3 " style="width: 120px">
@@ -49,7 +49,7 @@
                                             <label class="badge bg-danger">Out Of Stock, Try Again !</label>
                                         @endif
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 my-auto">
                                         <button class="btn btn-outline-danger removeFromCart"><i class="fas fa-trash"></i>
                                         </button>
                                     </div>

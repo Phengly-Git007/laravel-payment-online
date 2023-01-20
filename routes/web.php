@@ -8,19 +8,10 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\UserController;
+use App\Http\Controllers\Frontend\WishlistController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('frontend.index');
@@ -41,7 +32,12 @@ Route::post('add-to-cart',[CartController::class,'addProductToCart']);
 Route::post('remove-from-cart',[CartController::class,'removeProductFromCart']);
 Route::post('update-cart-quantity',[CartController::class,'updateCartQuantity']);
 
+// wishlist route
+Route::post('add-to-wishlist',[WishlistController::class,'addProductToWishlist']);
+Route::post('remove-from-wishlist',[WishlistController::class,'removeProductFromWishlist']);
+
 Route::middleware(['auth'])->group(function(){
+    Route::get('view-wishlist-item',[WishlistController::class,'viewWishlistItem']);
     Route::get('view-cart-item',[CartController::class,'viewCartItem']);
     Route::get('checkout',[CheckoutController::class,'index']);
     Route::post('place-order-product',[CheckoutController::class,'placeOrderProduct']);

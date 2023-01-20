@@ -72,7 +72,7 @@
                                                 Add To Cart <i class="fa fa-shopping-cart"></i>
                                             </button>
                                         @endif
-                                        <button type="button" class="btn btn-warning me-3 float-start">
+                                        <button type="button" class="btn btn-warning me-3 float-start addToWishlist">
                                             Add To Wishlist <i class="fa fa-heart"></i>
                                         </button>
                                     </div>
