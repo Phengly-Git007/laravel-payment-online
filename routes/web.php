@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,10 @@ Route::middleware(['auth'])->group(function(){
     Route::post('place-order-product',[CheckoutController::class,'placeOrderProduct']);
     Route::get('my-orders',[UserController::class,'myOrder']);
     Route::get('view-orders/{id}',[UserController::class,'viewOrder']);
+
+    // rating
+
+    Route::post('add-product-rating',[RatingController::class,'addProductRating']);
 
 });
 

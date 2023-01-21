@@ -4,12 +4,64 @@
 @endsection
 
 @section('content')
+    {{-- modal --}}
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="{{ url('add-product-rating') }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $products->id }}">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="exampleModalLabel">{{ $products->name }}</h6>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="rating">
+                            <div class="star-icon">
+                                @if ($user_rating)
+                                    @for ($i = 1; $i <= $user_rating->stars_rated; $i++)
+                                        <input type="radio" name="product_rating" id="rating{{ $i }}"
+                                            value="{{ $i }}" checked>
+                                        <label for="rating{{ $i }}" class="fa fa-star"></label>
+                                    @endfor
+                                    @for ($j = $user_rating->stars_rated + 1; $j <= 5; $j++)
+                                        <input type="radio" name="product_rating" id="rating{{ $j }}"
+                                            value="{{ $j }}">
+                                        <label for="rating{{ $j }}" class="fa fa-star"></label>
+                                    @endfor
+                                @else
+                                    <input type="radio" name="product_rating" id="rating1" value="1" checked>
+                                    <label for="rating1" class="fa fa-star"></label>
+                                    <input type="radio" name="product_rating" id="rating2" value="2">
+                                    <label for="rating2" class="fa fa-star"></label>
+                                    <input type="radio" name="product_rating" id="rating3" value="3">
+                                    <label for="rating3" class="fa fa-star"></label>
+                                    <input type="radio" name="product_rating" id="rating4" value="4">
+                                    <label for="rating4" class="fa fa-star"></label>
+                                    <input type="radio" name="product_rating" id="rating5" value="5">
+                                    <label for="rating5" class="fa fa-star"></label>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer ">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- end modal --}}
     <div class="py-3 mb-3 shadow-sm bg-info border-top">
         <div class="container">
             <div class="container">
                 <a href="{{ url('/') }}">Home</a> /
                 <a href="{{ url('category') }}">All Categories</a> /
-                <a href="{{ url('product-by-categories/' . $products->category->slug) }}">{{ $products->category->name }}</a>
+                <a
+                    href="{{ url('product-by-categories/' . $products->category->slug) }}">{{ $products->category->name }}</a>
                 /
                 {{ $products->name }}
             </div>
@@ -41,7 +93,26 @@
                                 <hr />
                                 <span class="badge bg-secondary mt-0">
                                     Publish On :
-                                    {{ date('d-M-Y', strtotime($products->created_at)) }}</span>
+                                    {{ date('d-M-Y', strtotime($products->created_at)) }}
+                                </span>
+                                <div class="rated float-end">
+                                    @php
+                                        $rate_number = number_format($rating_value);
+                                    @endphp
+                                    @for ($i = 1; $i <= $rate_number; $i++)
+                                        <i class="fa fa-star checked"></i>
+                                    @endfor
+                                    @for ($j = $rate_number + 1; $j <= 5; $j++)
+                                        <i class="fa fa-star"></i>
+                                    @endfor
+                                    <span>
+                                        @if ($ratings->count() > 0)
+                                            <b>{{ $ratings->count() }} Rating </b>
+                                        @else
+                                            <b>No Rating</b>
+                                        @endif
+                                    </span>
+                                </div>
                                 <br><br>
                                 <label class="me-2"><s>Original Price : $
                                         {{ $products->original_price }}</s></label>
@@ -82,6 +153,11 @@
                                 <hr />
                                 <h6><b>Description</b></h6>
                                 <p class="mt-2 text-sm">{{ $products->description }}</p>
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Rating Product
+                                </button>
+
                             </div>
                         </div>
                     </div>

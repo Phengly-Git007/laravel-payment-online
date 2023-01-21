@@ -12,3 +12,40 @@ body {
     background-color: aliceblue;
     border-radius: 1rem;
 }
+
+/* rating */
+.rating div {
+    color: yellow;
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px 0;
+}
+
+.rating input {
+    display: none;
+}
+.rating input + label {
+    font-style: 60px;
+    text-shadow: 1px 1px 0 #8f8420;
+    cursor: pointer;
+}
+
+.rating input:checked + label ~ label {
+    color: #b4afaf;
+}
+
+.rating label:active {
+    transform: scale(0.8);
+    transition: 0.3s ease;
+}
+
+/* end rating */
+
+/* check */
+
+.checked {
+    color: rgb(239, 140, 69);
+}
