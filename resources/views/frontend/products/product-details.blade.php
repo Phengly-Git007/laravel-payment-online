@@ -148,16 +148,52 @@
                                         </button>
                                     </div>
                                 </div>
+                                <div class="col-md-12">
+                                    <h6><b>Description</b></h6>
+                                    <p class="mt-2 text-sm">{{ $products->description }}</p>
+                                </div>
                             </div>
-                            <div class="col-md-12">
-                                <hr />
-                                <h6><b>Description</b></h6>
-                                <p class="mt-2 text-sm">{{ $products->description }}</p>
-                                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    Rating Product
-                                </button>
-
+                            <div class="row">
+                                <div class="col-md-4 ">
+                                    <hr>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm ms-5 me-5"
+                                        style="border-radius: 10rem" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        <i class="fa-regular fa fa-star"></i> Rating
+                                    </button>
+                                    <a href="{{ url('add-product/' . $products->slug . '/review') }}"
+                                        style="border-radius: 10rem" class="btn btn-outline-primary btn-sm ms-5 me-5">
+                                        <i class="fa-regular fa fa-comment"></i> Review
+                                    </a>
+                                </div>
+                                <div class="col-md-8">
+                                    <hr>
+                                    @foreach ($reviews as $review)
+                                        <div class="user-review">
+                                            <label><b>{{ $review->user->name }}</b></label> &nbsp;
+                                            @if ($review->user_id == Auth::id())
+                                                <a href="{{ url('edit-review/' . $products->slug . '/user-review') }}"
+                                                    class="btn btn-sm btn-outline-info py-0 px-1"
+                                                    style="border-radius: 10rem;"> <i class="fa fa-eye"></i>
+                                                    edit review</a>
+                                            @endif
+                                            @if ($review->rating)
+                                                @php
+                                                    $user_rate = $review->rating->stars_rated;
+                                                @endphp
+                                                @for ($i = 1; $i <= $user_rate; $i++)
+                                                    <i class="fa fa-star checked"></i>
+                                                @endfor
+                                                @for ($j = $user_rate + 1; $j <= 5; $j++)
+                                                    <i class="fa fa-star"></i>
+                                                @endfor
+                                            @endif
+                                            <br>
+                                            <small>Review On : {{ date('d-M-Y', strtotime($review->created_at)) }}</small>
+                                            <p>{{ $review->user_review }}</p>
+                                        </div>
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
                     </div>

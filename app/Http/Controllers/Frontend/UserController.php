@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function myOrder()
     {
-        $orders = Order::where('user_id',Auth::id())->get();
+        $orders = Order::where('user_id',Auth::id())->orderBy('id','desc')->get();
         return view('frontend.order.index',['orders' => $orders]);
     }
     public function viewOrder($id)

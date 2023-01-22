@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Rating;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,6 +47,7 @@ class FrontendController extends Controller
                 $ratings = Rating::where('product_id',$products->id)->get();
                 $calculate_rating =  Rating::where('product_id',$products->id)->sum('stars_rated');
                 $user_rating = Rating::where('product_id',$products->id)->where('user_id',Auth::id())->first();
+                $reviews = Review::where('product_id',$products->id)->orderBy('id','desc')->get();
                 if($ratings->count() > 0){
                 $rating_value = $calculate_rating/$ratings->count();
                 }
@@ -53,7 +55,7 @@ class FrontendController extends Controller
                     $rating_value = 0;
                 }
                 return view('frontend.products.product-details',['products'=>$products,'ratings'=>$ratings,
-                            'rating_value'=>$rating_value,'user_rating'=>$user_rating]);
+                            'rating_value'=>$rating_value,'user_rating'=>$user_rating,'reviews'=>$reviews]);
             }
             else{
                 return redirect('/')->with('status','Something went wrong');

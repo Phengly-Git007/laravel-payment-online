@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\RatingController;
+use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
 use Illuminate\Support\Facades\Auth;
@@ -52,6 +53,9 @@ Route::middleware(['auth'])->group(function(){
     // rating
 
     Route::post('add-product-rating',[RatingController::class,'addProductRating']);
+    Route::get('add-product/{product_slug}/review',[ReviewController::class,'reviewProduct']);
+    Route::post('add-product-review',[ReviewController::class,'addProductReview']);
+    Route::get('edit-review/{product_slug}/user-review',[ReviewController::class,'editProductReview']);
 
 });
 

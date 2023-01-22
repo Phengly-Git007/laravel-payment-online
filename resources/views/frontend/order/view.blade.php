@@ -48,7 +48,12 @@
                                             <img src="{{ Storage::url($item->products->image) }}" alt="image"
                                                 width="50px" height="50px">
                                         </td>
-                                        <td>{{ $item->products->name }}</td>
+                                        <td>
+                                            <a
+                                                href="{{ url('product-details/' . $item->products->category->slug . '/' . $item->products->slug) }}">
+                                                {{ $item->products->name }}
+                                            </a>
+                                        </td>
                                         <td>{{ $item->quantity }}</td>
                                         <td>$ {{ $item->price }}</td>
                                     </tr>
