@@ -23,6 +23,7 @@
                                         <th>Tracking Number</th>
                                         <th>Pincode</th>
                                         <th>Total Price</th>
+                                        <th>Payment Method</th>
                                         <th>Status</th>
                                         <th>Order Date</th>
                                         <th>Action</th>
@@ -35,6 +36,7 @@
                                             <td>{{ $order->tracking_number }}</td>
                                             <td>{{ $order->pincode }}</td>
                                             <td>$ {{ $order->total_price }}</td>
+                                            <td>{{ $order->payment_method }}</td>
                                             <td>
                                                 <span class="badge bg-{{ $order->status ? 'success' : 'danger' }}">
                                                     {{ $order->status ? 'Completed' : 'Pending' }}

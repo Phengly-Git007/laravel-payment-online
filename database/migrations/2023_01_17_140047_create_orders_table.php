@@ -28,6 +28,8 @@ return new class extends Migration
             $table->string('message')->nullable();
             $table->string('tracking_number');
             $table->float('total_price');
+            $table->string('payment_id')->nullable();
+            $table->string('payment_method');
             $table->timestamps();
         });
     }

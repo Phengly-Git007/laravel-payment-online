@@ -49,13 +49,14 @@ Route::middleware(['auth'])->group(function(){
     Route::post('place-order-product',[CheckoutController::class,'placeOrderProduct']);
     Route::get('my-orders',[UserController::class,'myOrder']);
     Route::get('view-orders/{id}',[UserController::class,'viewOrder']);
-
     // rating
 
     Route::post('add-product-rating',[RatingController::class,'addProductRating']);
     Route::get('add-product/{product_slug}/review',[ReviewController::class,'reviewProduct']);
     Route::post('add-product-review',[ReviewController::class,'addProductReview']);
     Route::get('edit-review/{product_slug}/user-review',[ReviewController::class,'editProductReview']);
+
+    Route::post('proceed-to-pay',[CheckoutController::class,'razorPayment']);
 
 });
 

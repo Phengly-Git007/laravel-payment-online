@@ -40,6 +40,8 @@ class CheckoutController extends Controller
         $orders->country = $request->input('country');
         $orders->pincode = $request->input('pincode');
         $orders->tracking_number = 'eoPays-'.rand(1010,0101);
+        $orders->payment_id = $request->input('payment_id');
+        $orders->payment_method = $request->input('payment_method');
         $total = 0;
         $cart_total = Cart::where('user_id',Auth::id())->get();
         foreach($cart_total as $cart){
@@ -75,9 +77,39 @@ class CheckoutController extends Controller
         }
         $carts = Cart::where('user_id',Auth::id())->get();
         Cart::destroy($carts);
+        if($request->input('payment_method') == 'Purchase By Paypal'){
+            return response()->json(['status' =>'Order Proceed successfully']);
+        }
         return redirect('/view-cart-item')->with(['status'=>'Order Successfully']);
     }
 
+    public function razorPayment(Request $request){
+    //     $total_price = 0;
+    //    $cartItems = Cart::where('user_id',Auth::id())->get();
+    //    foreach($cartItems as $item){
+    //     $total_price += $item->products->selling_price * $item->product_quantity;
+    //    }
+    //    $name = $request->input('name');
+    //    $email = $request->input('email');
+    //    $phone = $request->input('phone');
+    //    $pincode = $request->input('pincode');
+    //    $city = $request->input('city');
+    //    $country = $request->input('country');
+    //    $address1 = $request->input('address1');
+    //    $address2 = $request->input('address2');
+
+    //    return response()->json([
+    //     'name' => $name,
+    //     'email' => $email,
+    //     'phone' => $phone,
+    //     'pincode' => $pincode,
+    //     'city' => $city,
+    //     'country' => $country,
+    //     'address1' => $address1,
+    //     'address2' => $address2,
+    //     'total_price' => $total_price,
+    //    ]);
+    }
 
 
 }
