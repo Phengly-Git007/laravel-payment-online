@@ -30,7 +30,7 @@ $(document).ready(function () {
     }
 
     // increment quantity
-    $(".increment-quantity").click(function (e) {
+    $(document).on("click", ".increment-quantity", function (e) {
         e.preventDefault();
         var increment = $(this)
             .closest(".product_data")
@@ -44,7 +44,7 @@ $(document).ready(function () {
         }
     });
     // decrement quantity
-    $(".decrement-quantity").click(function (e) {
+    $(document).on("click", ".decrement-quantity", function (e) {
         e.preventDefault();
         var decrement = $(this)
             .closest(".product_data")
@@ -94,7 +94,7 @@ $(document).ready(function () {
 
     // remove-from-cart
 
-    $(".removeFromCart").click(function (e) {
+    $(document).on("click", ".removeFromCart", function (e) {
         e.preventDefault();
         var product_id = $(this)
             .closest(".product_data")
@@ -112,15 +112,17 @@ $(document).ready(function () {
                 product_id: product_id,
             },
             success: function (response) {
-                window.location.reload();
-                swal(response.status);
+                loadCart();
+                $(".cart-items").load(location.href + " .cart-items");
+                swal("", response.status, "success");
             },
         });
     });
 
     // ----------------------------------------------
 
-    $(".change-quantity").click(function (e) {
+    // $(".change-quantity").click(function (e) {
+    $(document).on("click", ".change-quantity", function (e) {
         e.preventDefault();
         var product_id = $(this)
             .closest(".product_data")
@@ -144,8 +146,9 @@ $(document).ready(function () {
             url: "/update-cart-quantity",
             data: data,
             success: function (response) {
-                swal(response.status);
-                window.location.reload();
+                loadCart();
+                $(".cart-items").load(location.href + " .cart-items");
+                // swal(response.status);
             },
         });
     });
@@ -178,7 +181,9 @@ $(document).ready(function () {
         });
     });
 
-    $(".removeFromWishlist").click(function (e) {
+    // $(".removeFromWishlist").click(function (e) {
+
+    $(document).on("click", ".removeFromWishlist", function (e) {
         e.preventDefault();
         var product_id = $(this)
             .closest(".product_data")
@@ -196,8 +201,10 @@ $(document).ready(function () {
                 product_id: product_id,
             },
             success: function (response) {
-                window.location.reload();
-                swal("", response.status);
+                loadWishlist();
+                // window.location.reload();
+                $(".wishlist-items").load(location.href + " .wishlist-items");
+                swal("", response.status, "success");
             },
         });
     });

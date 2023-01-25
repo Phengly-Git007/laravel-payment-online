@@ -43,8 +43,8 @@
                                 </td>
                                 <td>{{ $product->category->name }}</td>
                                 <td>{{ $product->quantity }}</td>
-                                <td>{{ $product->original_price }}</td>
-                                <td>{{ $product->selling_price }}</td>
+                                <td>$ {{ $product->original_price }}</td>
+                                <td>$ {{ $product->selling_price }}</td>
                                 <td>{{ $product->tax }}</td>
                                 <td>
                                     <span class="right badge badge-{{ $product->status ? 'danger' : 'success' }}">

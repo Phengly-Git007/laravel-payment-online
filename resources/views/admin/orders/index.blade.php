@@ -19,11 +19,10 @@
                         <tr>
                             <th>ID</th>
                             <th>Tracking No</th>
+                            <th>Payment ID</th>
                             <th>Payment Method</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Phone</th>
-                            <th>Pincode</th>
                             <th>Total</th>
                             <th>Status</th>
                             <th>Order Date</th>
@@ -35,11 +34,10 @@
                             <tr>
                                 <td>{{ $order->id }}</td>
                                 <td>{{ $order->tracking_number }}</td>
+                                <td>{{ $order->payment_id ? $order->payment_id : 'No Payment ID' }}</td>
                                 <td>{{ $order->payment_method }}</td>
                                 <td>{{ $order->name }}</td>
                                 <td>{{ $order->email }}</td>
-                                <td>{{ $order->phone }}</td>
-                                <td>{{ $order->pincode }}</td>
                                 <td>$ {{ $order->total_price }}</td>
                                 <td>
                                     <span class="right badge badge-{{ $order->status ? 'success' : 'danger' }}">
@@ -53,8 +51,8 @@
                                     <a href="{{ url('delete-orders/' . $order->id) }}" class="btn btn-xs btn-danger ">
                                         <i class="fas fa-trash"></i> Delete
                                     </a>
-                                    <a href="" class="btn btn-xs btn-secondary"><i class="fas fa-print"></i>
-                                        Printing</a>
+                                    <a href="" class="btn btn-xs btn-primary"><i class="fas fa-print"></i>
+                                        Download</a>
                                 </td>
                             </tr>
                         @endforeach

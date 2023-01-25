@@ -31,11 +31,11 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
-                                <td><span class="right badge badge-primary">{{ $user->name }}</span></td>
-                                <td><span class="right badge badge-info">{{ $user->email }}</span></td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
                                 <td>
                                     <span class="right badge badge-{{ $user->phone ? 'secondary' : 'danger' }}">
-                                        {{ $user->phone ? $user->phone : 'No Number' }}
+                                        {{ $user->phone ? $user->phone : 'no phone number' }}
                                     </span>
                                 </td>
                                 <td>

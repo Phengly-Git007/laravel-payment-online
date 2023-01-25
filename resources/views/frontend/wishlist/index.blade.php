@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="container py-3">
-        <div class="card shadow">
+        <div class="card shadow wishlist-items">
             @if ($wishlists->count() > 0)
                 <div class="card-body">
                     @foreach ($wishlists as $wishlist)

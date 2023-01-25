@@ -107,9 +107,7 @@ $(document).ready(function () {
                 method: "POST",
                 url: "/proceed-to-pay",
                 data: data_fields,
-                success: function (response) {
-                    alert(response.total_price);
-                },
+                success: function (response) {},
             });
         }
     });

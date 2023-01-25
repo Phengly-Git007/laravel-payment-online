@@ -200,7 +200,7 @@
                     //     `Transaction ${transaction.status}: ${transaction.id}\n\n
                 //     See console for all available details`
                     // );
-                    alert('Transition completed successfully by ' + orderData.payer.name.given_name);
+                    // alert('Transition completed successfully by ' + orderData.payer.name.given_name);
                     var name = $('.name').val();
                     var email = $('.email').val();
                     var phone = $('.phone').val();
@@ -225,8 +225,10 @@
                             'payment_id': orderData.id
                         },
                         success: function(response) {
-                            window.location.href = 'view-cart-item';
-                            swal(response.status);
+                            swal(response.status)
+                                .then((value) => {
+                                    window.location.href = '/my-orders';
+                                })
                         }
                     });
                 });

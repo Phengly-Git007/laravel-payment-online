@@ -13,7 +13,7 @@
     <div class="container py-3">
         <div class="row">
             <div class="col-md-12">
-                <div class="card shadow">
+                <div class="card shadow cart-items">
                     @if ($cartItems->count() > 0)
                         <div class="card-body">
                             @php
@@ -57,11 +57,12 @@
                             @endforeach
                         </div>
                         <div class="card-footer  ">
-                            <h6 class="float-start ms-5"><b>Total Price : $ {{ $total }}</b></h6>
-                            <a href="{{ url('checkout') }}" class="btn btn-outline-primary float-end me-5"><i
+                            <a href="{{ url('checkout') }}" class="btn btn-warning float-end ms-5 me-5"><i
                                     class="fas fa-check"></i>
-                                Process Checkout
+                                Checkout Page
                             </a>
+                            <h6 class="float-end  mt-2"><b>Total Price : $ {{ $total }}</b></h6>
+
                         </div>
                     @else
                         <div class="card-body text-center">

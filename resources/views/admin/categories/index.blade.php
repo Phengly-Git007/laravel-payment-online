@@ -34,8 +34,8 @@
                         @foreach ($categories as $category)
                             <tr class="w-100">
                                 <td>{{ $category->id }}</td>
-                                <td><span class="right badge badge-primary">{{ $category->name }}</span></td>
-                                <td><span class="right badge badge-info">{{ $category->slug }}</span></td>
+                                <td>{{ $category->name }}</td>
+                                <td>{{ $category->slug }}</td>
                                 <td>
                                     <img src="{{ Storage::url($category->image) }}" alt="image" width="50px"
                                         height="40px">

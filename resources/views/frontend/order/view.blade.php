@@ -60,8 +60,8 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <h6 class="mb-3 px-3 "><b>Payment Method : <span class="float-end">
-                                    {{ $orders->payment_method }}</span></b>
+                        <h6 class="mb-3 px-3 "><b>Payment ID : <span class="float-end">
+                                    {{ $orders->payment_id ? $orders->payment_id : 'No Payment ID' }}</span></b>
                         </h6>
                         <h6 class="mb-0 px-3"><b>Sub Total : <span class="float-end">$
                                     {{ $orders->total_price }}</span></b>

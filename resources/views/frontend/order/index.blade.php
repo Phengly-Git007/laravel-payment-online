@@ -46,7 +46,7 @@
                                             <td>
                                                 <a href="{{ url('view-orders/' . $order->id) }}"
                                                     class="btn btn-sm btn-info">
-                                                    <i class="fa fa-eye"></i> view details</a>
+                                                    <i class="fa fa-eye"></i> View Details</a>
                                             </td>
                                         </tr>
                                     @endforeach
