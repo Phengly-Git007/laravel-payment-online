@@ -19,6 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     @yield('css')
 </head>
 
@@ -33,6 +34,24 @@
     <script src="{{ asset('frontend/js/payment-checkout.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        var getDataBySearch = [];
+        $.ajax({
+            method: "GET",
+            url: "/get-products-list",
+            success: function(response) {
+                startAutocomplete(response);
+            }
+        });
+
+        function startAutocomplete(getDataBySearch) {
+
+            $("#search").autocomplete({
+                source: getDataBySearch
+            });
+        }
+    </script>
     @if (session('status'))
         <script>
             swal({

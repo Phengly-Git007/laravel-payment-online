@@ -1,6 +1,16 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container mt-0">
         <a class="navbar-brand" href="{{ url('/') }}"><b>{{ config('app.name') }}</b></a>
+        <div class="search-bar">
+            <form action="{{ url('search-product') }}" method="POST">
+                @csrf
+                <div class="input-group ">
+                    <input type="search" id="search" name="search_name" required class="form-control"
+                        placeholder="Search...">
+                    <button type="submit" class="input-group-text"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

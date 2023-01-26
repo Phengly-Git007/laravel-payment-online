@@ -49,3 +49,8 @@ body {
 .checked {
     color: rgb(239, 140, 69);
 }
+
+.search-bar {
+    width: 35%;
+    margin-left: 10%;
+}

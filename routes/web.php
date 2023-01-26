@@ -23,6 +23,8 @@ Route::get('category',[FrontendController::class,'categories']);
 Route::get('product',[FrontendController::class,'products']);
 Route::get('product-by-categories/{slug}',[FrontendController::class,'showCategories']);
 Route::get('product-details/{cate_slug}/{pro_slug}',[FrontendController::class,'productDetails']);
+Route::get('get-products-list',[FrontendController::class,'getProductsList']);
+Route::post('search-product',[FrontendController::class,'searchProduct']);
 
 Auth::routes();
 

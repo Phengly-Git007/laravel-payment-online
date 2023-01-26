@@ -160,10 +160,9 @@
                                     <button type="submit" class="btn btn-info py-1 w-100 mb-2">
                                         Pay On Delivery
                                     </button>
-                                    <button type="button"
-                                        class="btn btn-primary py-1 w-100 mt-1 strips-payment-method">Pay
-                                        With
-                                        Strips</button>
+                                    <button type="button" class="btn btn-primary py-1 w-100 mt-1 strips-payment-method">
+                                        Pay With Strips
+                                    </button>
                                 </div>
 
                             </div>

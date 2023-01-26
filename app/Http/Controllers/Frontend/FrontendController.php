@@ -18,6 +18,33 @@ class FrontendController extends Controller
         return view('frontend.index',['feature_categories' => $feature_categories,'trending_products' => $trending_products]);
     }
 
+    public function getProductsList(){
+
+        $products = Product::select('name')->where('status','0')->get();
+        $data = [];
+        foreach($products as $product){
+            $data[] = $product['name'];
+        }
+        return $data;
+    }
+
+    public function searchProduct(Request $request)
+    {
+       $search = $request->search_name;
+       if($search != ''){
+        $product = Product::where('name','LIKE',"%$search%")->first();
+        if($product){
+            return redirect('product-details/'.$product->category->slug.'/'.$product->slug);
+        }
+        else{
+            return redirect()->back();
+        }
+       }
+       else{
+        return redirect()->back()->with('status','Enter Product Name...');
+       }
+    }
+
     public function categories()
     {
         $categories = Category::where('status','0')->get();
