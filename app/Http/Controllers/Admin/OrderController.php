@@ -4,13 +4,24 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::orderBy('id','desc')->get();
+        $todayDate = Carbon::now()->format('Y-m-d');
+        $orders = Order::when($request->date != null, function($query) use ($request){
+            $query->whereDate('created_at',$request->date);
+        },function($query) use ($todayDate){
+            $query->whereDate('created_at',$todayDate);
+        })
+        ->when($request->status != null, function($query) use ($request){
+            $query->where('status',$request->status);
+        })
+        ->orderBy('id','desc')
+        ->paginate(3);
         return view('admin.orders.index',['orders' => $orders]);
     }
 

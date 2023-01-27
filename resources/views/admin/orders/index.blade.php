@@ -13,7 +13,36 @@
 @section('content')
     <div class="container-fluid">
         <div class="card table-responsive p-0">
+            <div class="card-header">
+                <form action="" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-5">
+                            <label for="">Filter By Date : </label>
+                            <input type="date" name="date" value="{{ Request::get('date') ?? date('Y-m-d') }}"
+                                class="form-control">
+                        </div>
+                        <div class="col-md-5">
+                            <label for="">Filter By Status : </label>
+                            <select name="status" class="form-control">
+                                <option value="">Select Status</option>
+                                <option value="0" {{ Request::get('status') == '0' ? 'selected' : '' }}>Pending
+                                </option>
+                                <option value="1" {{ Request::get('status') == '1' ? 'selected' : '' }}>
+                                    Completed</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 mt-2">
+                            <br />
+                            <button type="submit" class="btn btn-warning mb-1"><i class="fas fa-search"></i>
+                                Search Order By Filter
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="card-body">
+
                 <table class="table table-hover text-nowrap">
                     <thead>
                         <tr>
