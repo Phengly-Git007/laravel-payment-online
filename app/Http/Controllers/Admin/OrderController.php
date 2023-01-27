@@ -39,4 +39,15 @@ class OrderController extends Controller
         return redirect('orders')->with('status','Order updated successfully');
     }
 
+    public function viewInvoice($order_id){
+
+       $order = Order::findOrFail($order_id);
+       return view('admin.orders.invoice',['order' => $order]);
+
+    }
+
+    public function generateInvoice($order_id){
+
+    }
+
 }

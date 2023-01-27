@@ -70,5 +70,7 @@ Route::middleware(['auth','admin'])->group(function (){
     Route::get('orders',[OrderController::class,'index'])->name('orders.index');
     Route::get('orders-details/{id}',[OrderController::class,'orderDetails']);
     Route::put('update-orders/{id}',[OrderController::class,'updateOrder']);
+    Route::get('invoice-orders/{order_id}',[OrderController::class,'viewInvoice']);
+    Route::get('invoice-orders/{order_id}/generate',[OrderController::class,'generateInvoice']);
     Route::get('users',[DashboardController::class,'users'])->name('users.index');
 });

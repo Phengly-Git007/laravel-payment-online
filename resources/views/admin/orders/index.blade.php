@@ -75,13 +75,14 @@
                                 </td>
                                 <td>{{ date('d-M-Y', strtotime($order->created_at)) }}</td>
                                 <td>
-                                    <a href="{{ url('orders-details/' . $order->id) }}" class="btn btn-xs btn-info"><i
+                                    <a href="{{ url('orders-details/' . $order->id) }}" class="btn btn-xs btn-info mr-1"><i
                                             class="fas fa-eye"></i> Details</a>
-                                    <a href="{{ url('delete-orders/' . $order->id) }}" class="btn btn-xs btn-danger ">
+                                    <a href="{{ url('delete-orders/' . $order->id) }}" class="btn btn-xs btn-danger mr-1">
                                         <i class="fas fa-trash"></i> Delete
                                     </a>
-                                    <a href="" class="btn btn-xs btn-primary"><i class="fas fa-print"></i>
-                                        Download</a>
+                                    <a href="{{ url('invoice-orders/' . $order->id) }}" target="_blank"
+                                        class="btn btn-xs btn-primary"><i class="fas fa-solid fa-paperclip"></i>
+                                        Invoice</a>
                                 </td>
                             </tr>
                         @endforeach
