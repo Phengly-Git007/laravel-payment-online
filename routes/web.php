@@ -69,8 +69,9 @@ Route::middleware(['auth','admin'])->group(function (){
     Route::resource('products',ProductController::class);
     Route::get('orders',[OrderController::class,'index'])->name('orders.index');
     Route::get('orders-details/{id}',[OrderController::class,'orderDetails']);
+    Route::get('all-orders',[OrderController::class,'allOrder'])->name('orders.all');
     Route::put('update-orders/{id}',[OrderController::class,'updateOrder']);
     Route::get('invoice-orders/{order_id}',[OrderController::class,'viewInvoice']);
-    Route::get('invoice-orders/{order_id}/generate',[OrderController::class,'generateInvoice']);
+    Route::get('/generate-orders/{order_id}',[OrderController::class,'generateInvoice']);
     Route::get('users',[DashboardController::class,'users'])->name('users.index');
 });

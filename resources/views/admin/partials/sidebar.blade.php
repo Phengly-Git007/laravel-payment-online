@@ -30,8 +30,28 @@
                              <span class="right badge badge-danger">New</span>
                          </p>
                      </a>
-
                  </li>
+
+                 <li class="nav-item">
+                     <a href="{{ route('orders.index') }}" class="nav-link @yield('order')">
+                         <i class="nav-icon fas fa-th"></i>
+                         <p>
+                             Orders
+                             <span class="right badge badge-danger">New</span>
+                         </p>
+                     </a>
+                 </li>
+
+                 <li class="nav-item">
+                     <a href="{{ route('orders.all') }}" class="nav-link @yield('all-order')">
+                         <i class="nav-icon fas fa-th"></i>
+                         <p>
+                             Total Orders
+                             <span class="right badge badge-danger">New</span>
+                         </p>
+                     </a>
+                 </li>
+
                  <li class="nav-item">
                      <a href="{{ route('categories.index') }}" class="nav-link @yield('category')">
                          <i class="nav-icon fas fa-th"></i>
@@ -46,16 +66,6 @@
                          <i class="nav-icon fas fa-th"></i>
                          <p>
                              Products
-                             <span class="right badge badge-danger">New</span>
-                         </p>
-                     </a>
-                 </li>
-
-                 <li class="nav-item">
-                     <a href="{{ route('orders.index') }}" class="nav-link @yield('order')">
-                         <i class="nav-icon fas fa-th"></i>
-                         <p>
-                             Orders
                              <span class="right badge badge-danger">New</span>
                          </p>
                      </a>

@@ -13,7 +13,7 @@
     <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">New Product</a>
 @endsection
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid px-3">
         <div class="card table-responsive p-0">
             <div class="card-body">
                 <table class="table table-hover text-nowrap ">
@@ -41,11 +41,14 @@
                                 <td>
                                     <img src="{{ Storage::url($product->image) }}" alt="image" width="40px" height="40px">
                                 </td>
-                                <td>{{ $product->category->name }}</td>
-                                <td>{{ $product->quantity }}</td>
+                                <td>{{ $product->category->name ? $product->category->name : 'No Category' }}</td>
+                                <td><span class="right badge badge-{{ $product->quantity ? 'warning' : 'danger' }}">
+                                        {{ $product->quantity ? $product->quantity . ' In stock' : 'Out Of Stock' }}
+                                    </span>
+                                </td>
                                 <td>$ {{ $product->original_price }}</td>
                                 <td>$ {{ $product->selling_price }}</td>
-                                <td>{{ $product->tax }}</td>
+                                <td>$ {{ $product->tax }}</td>
                                 <td>
                                     <span class="right badge badge-{{ $product->status ? 'danger' : 'success' }}">
                                         {{ $product->status ? 'Disable' : 'Active' }}
@@ -58,8 +61,10 @@
                                 </td>
                                 <td>{{ date('d-M-Y', strtotime($product->created_at)) }}</td>
                                 <td>
-                                    <a href="{{ route('products.edit', $product) }}" class="btn btn-xs btn-info"><i
-                                            class="fas fa-eye"></i> Update</a>
+                                    <a href="{{ route('products.show', $product) }}"
+                                        class="btn btn-xs btn-secondary mr-1"><i class="fas fa-eye"></i> Detail</a>
+                                    <a href="{{ route('products.edit', $product) }}" class="btn btn-xs btn-info"> <i
+                                            class="fas fa-solid fa-pen"></i> Update</a>
                                     <a class="btn btn-xs">
                                         <form action="{{ route('products.destroy', $product) }}" method="POST"
                                             onsubmit="return confirm('Are you sure delete, {{ $product->name }} ?')">

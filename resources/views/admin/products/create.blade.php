@@ -5,7 +5,7 @@
 
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid mt-0">
         <div class="card" style="background-color: rgb(159, 169, 169)">
             <div class="card-header">
                 <h5 style="color: white">
@@ -57,17 +57,21 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Category</label>
-                                <select name="category_id" id="category_id"
-                                    class="form-control  @error('category_id') is-invalid @enderror ">
+                                <label for="">Select Category</label>
+                                <select name="category_id" class="form-control  @error('category_id') is-invalid @enderror">
                                     <option>Select Category</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('category_id')
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Quantity</label>
                                 <input type="text" name="quantity"
@@ -80,7 +84,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Original Price</label>
                                 <input type="text" name="original_price"
@@ -93,7 +97,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Selling Price</label>
                                 <input type="text" name="selling_price"
@@ -106,7 +110,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Taxation</label>
                                 <input type="text" name="tax" class="form-control @error('tax') is-invalid @enderror"
@@ -118,7 +122,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Status</label>
                                 <select name="status" id="status" class="form-control">
@@ -127,7 +131,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Trending</label>
                                 <select name="trending" id="trending" class="form-control">
@@ -168,3 +172,26 @@
         </div>
     </div>
 @endsection
+
+{{-- @section('js')
+    <script>
+        $(document).ready(function() {
+            $('#category').select2();
+        });
+    </script>
+    <style>
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #d54545;
+            color: #f5efef;
+            border: 1px solid rgb(76, 210, )
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            color: #eae7e7;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: bold;
+            margin-right: 2px;
+        }
+    </style>
+@endsection --}}

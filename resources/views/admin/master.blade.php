@@ -18,12 +18,15 @@
     <link rel="stylesheet" href="{{ asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/plugins/daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    @yield('css')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
 
-        {{-- @include('admin.partials.navbar') --}}
+        @include('admin.partials.navbar')
 
         @include('admin.partials.sidebar')
 
@@ -44,7 +47,7 @@
             </div>
             @yield('content')
         </div>
-        @include('admin.partials.footer')
+        {{-- @include('admin.partials.footer') --}}
 
     </div>
 
@@ -58,6 +61,7 @@
     <script src="{{ asset('admin/plugins/sparklines/sparkline.js') }}"></script>
 
     <script src="{{ asset('admin/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+    <script src="{{ asset('admin/plugins/select2/js/select2.full.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/daterangepicker/daterangepicker.js') }}"></script>
     <script src="{{ asset('admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
@@ -74,6 +78,7 @@
             });
         </script>
     @endif
+    @yield('js')
 </body>
 
 </html>

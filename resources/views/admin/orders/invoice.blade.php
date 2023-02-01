@@ -1,27 +1,39 @@
-@extends('admin.master')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('order')
-    active
-@endsection
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
+    <title>Generate Invoice</title>
+</head>
 
-@section('content')
-    <div class="container-fluid">
+<body>
+    <div class="px-3 py-3">
         <div class="row">
-            <div class="col-12">
+            <div class="col-md-12">
                 <div class="invoice p-3 mb-3">
                     <div class="row">
                         <div class="col-12">
-                            <h4>
-                                <i class="fas fa-globe"></i> {{ config('app.name') }}.
+                            <h5>
+                                <i class="fas fa-globe"></i>
+                                {{ config('app.name') }}
+                                <i class="fas fa-shopping-cart"></i>
                                 <small class="float-right">Date: {{ date('d-M-Y') }}</small>
-                            </h4>
+                            </h5>
                         </div>
                     </div>
                     <div class="row invoice-info">
                         <div class="col-sm-4 invoice-col">
-                            From {{ config('app.name') }} Owner
+                            <b>From {{ config('app.name') }} Owner</b>
                             <address>
-                                <strong>{{ Auth::user()->name }}</strong><br>
+                                <span class="text-primary">{{ Auth::user()->name }}</span><br>
                                 Address : {{ Auth::user()->address1 }}, {{ Auth::user()->address2 }}, <br>
                                 {{ Auth::user()->city }}, {{ Auth::user()->country }} <br>
                                 Phone: (885) {{ Auth::user()->phone }}<br>
@@ -29,9 +41,9 @@
                             </address>
                         </div>
                         <div class="col-sm-4 invoice-col">
-                            To Value Customer
+                            <b> To Customer</b>
                             <address>
-                                <strong>{{ $order->name }}</strong><br>
+                                <span class="text-primary">{{ $order->name }}</span><br>
                                 Address: {{ $order->address1 }}, {{ $order->address2 }}, <br>
                                 {{ $order->city }} ,{{ $order->country }} <br>
                                 Phone: (885) {{ $order->phone }}<br>
@@ -40,12 +52,13 @@
                         </div>
                         <div class="col-sm-4 invoice-col">
                             <b>Invoice #{{ $order->tracking_number }}</b><br>
-                            <b>Order Date :
-                                {{ Request::get('date', $order->created_at->format('d-M-Y')) ?? date('d-M-Y') }}</b> <br>
-                            <b>Order ID:</b> {{ $order->id }}<br>
-                            <b>Pin Code: {{ $order->pincode }}</b> <br>
-                            <b>Payment Method :</b> {{ $order->payment_method }}<br>
-                            <b>Account:</b> {{ $order->payment_id ? $order->payment_id : 'Pay On Delivery.' }}
+                            Order Date :
+                            {{ Request::get('date', $order->created_at->format('d-M-Y')) ?? date('d-M-Y') }}
+                            <br>
+                            Order ID: {{ $order->id }}<br>
+                            Pin Code: {{ $order->pincode }} <br>
+                            Payment Method : {{ $order->payment_method }} <br>
+                            Account: {{ $order->payment_id ? $order->payment_id : 'Pay On Delivery.' }}
                         </div>
                     </div>
                     <div class="row">
@@ -53,102 +66,45 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Qty</th>
+                                        <th>ID</th>
                                         <th>Product</th>
-                                        <th>Serial #</th>
-                                        <th>Description</th>
-                                        <th>Subtotal</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Call of Duty</td>
-                                        <td>455-981-221</td>
-                                        <td>El snort testosterone trophy driving gloves handsome</td>
-                                        <td>$64.50</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Need for Speed IV</td>
-                                        <td>247-925-726</td>
-                                        <td>Wes Anderson umami biodiesel</td>
-                                        <td>$50.00</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Monsters DVD</td>
-                                        <td>735-845-642</td>
-                                        <td>Terry Richardson helvetica tousled street art master</td>
-                                        <td>$10.70</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Grown Ups Blue Ray</td>
-                                        <td>422-568-642</td>
-                                        <td>Tousled lomo letterpress</td>
-                                        <td>$25.99</td>
-                                    </tr>
+
+                                    @foreach ($order->orderItems as $item)
+                                        <tr>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->products->name }}</td>
+                                            <td>$ {{ $item->products->selling_price }}</td>
+                                            <td>{{ $item->quantity }}</td>
+                                            <td>$ {{ $item->quantity * $item->products->selling_price }}</td>
+
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
-
                     <div class="row">
-                        {{-- <div class="col-6">
-                            <p class="lead">Payment Methods:</p>
-                            <img src="{{ asset('admin/dist/img/credit/visa.png" alt="Visa') }}">
-                            <img src="{{ asset('admin/dist/img/credit/mastercard.png" alt="Mastercard') }}">
-                            <img src="{{ asset('admin/dist/img/credit/american-express.png" alt="American Express') }}">
-                            <img src="{{ asset('admin/dist/img/credit/paypal2.png" alt="Paypal') }}">
-
-                            <p class="text-muted well well-sm shadow-none" style="margin-top: 10px;">
-                                Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles, weebly ning heekya
-                                handango imeem
-                                plugg
-                                dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
-                            </p>
-                        </div> --}}
-                        <div class="col-12">
-                            <p class="lead">
-                                Order Date :
-                                {{ Request::get('date', $order->created_at->format('d-M-Y')) ?? date('d-M-Y') }}
-                            </p>
-
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <th style="width:50%">Subtotal:</th>
-                                            <td>$250.30</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Tax (9.3%)</th>
-                                            <td>$10.34</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Shipping:</th>
-                                            <td>$5.80</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Total:</th>
-                                            <td>$265.24</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="col-md-12">
+                            <h6 class="px-3 mr-5 float-right">
+                                <b>
+                                    Total Price : $ {{ $order->total_price }}
+                                </b>
+                            </h6>
                         </div>
                     </div>
-
-                    <div class="row no-print">
-                        <div class="col-12">
-                            <a href="" class="btn btn-primary float-right" style="margin-right: 5px;">
-                                <i class="fas fa-download"></i> Generate PDF
-                            </a>
-                        </div>
+                    <div class=" text-center" style="font-size: 17px">
+                        Thankyou For Shopping On <b>eoPays</b> E-commerce Store.
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
+</body>
+
+</html>

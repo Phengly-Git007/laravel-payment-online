@@ -67,7 +67,7 @@
                             <form action="{{ url('update-orders/' . $orders->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <label for="">Order Status</label>
+                                <label for="">Order Status : </label>
                                 <select name="status" class="form-control">
                                     <option {{ $orders->status == '0' ? 'selected' : '' }} value="0">Pending
                                     </option>

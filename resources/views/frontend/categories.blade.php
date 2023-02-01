@@ -18,8 +18,9 @@
                         <div class="col-md-3 mb-3">
                             <div class="card shadow">
                                 <a href="{{ url('product-by-categories/' . $category->slug) }}">
-                                    <img src="{{ Storage::url($category->image) }}" class="w-100" alt="image"
-                                        width="250px" height="250px">
+                                    <img src="{{ Storage::url($category->image) }}" alt="image"
+                                        style="margin-left: 50px;margin-top: 5px; margin-bottom: 0px" alt="image"
+                                        width="200px" height="230px">
                                     <div class="card-body text-center">
                                         {{ $category->name }} <br>
                                     </div>

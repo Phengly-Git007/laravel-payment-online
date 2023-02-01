@@ -53,9 +53,9 @@ class ProductController extends Controller
     }
 
 
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return view('admin.products.detail',['product'=>$product]);
     }
 
 
@@ -90,9 +90,7 @@ class ProductController extends Controller
             'trending' => $request->trending,
             'image' =>$images
         ]);
-        // if($request->has('categories')){
-        //     $product->categories()->sync($request->categories);
-        // }
+
         return redirect('products')->with('status','Product Updated Successfully');
     }
 

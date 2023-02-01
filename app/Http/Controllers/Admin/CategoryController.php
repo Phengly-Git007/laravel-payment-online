@@ -82,6 +82,7 @@ class CategoryController extends Controller
     {
         // delete image file
         Storage::delete($category->image);
+        // $category->products()->detach();
         $category->delete();
         return redirect('categories')->with('status','Categories Deleted Successfully...');
     }

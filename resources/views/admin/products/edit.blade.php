@@ -9,7 +9,7 @@
         <div class="card" style="background-color: rgb(159, 169, 169)">
             <div class="card-header">
                 <h5 style="color: white">
-                    Create New Product
+                    Update Product
                     <a href="{{ route('products.index') }}" class="btn btn-sm btn-info float-right">Back To Products</a>
                 </h5>
             </div>
@@ -58,18 +58,18 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Category</label>
-                                <select name="category_id" id="category_id"
-                                    class="form-control  @error('category_id') is-invalid @enderror ">
+                                <span for=""><b>Category</b></span>
+                                <select name="category_id" class="form-control ">
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}"
                                             {{ $category->id == $product->category_id ? 'selected' : '' }}>
-                                            {{ $category->name }}</option>
+                                            {{ $category->name }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Quantity</label>
                                 <input type="text" name="quantity" value="{{ $product->quantity }}"
@@ -82,7 +82,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Original Price</label>
                                 <input type="text" name="original_price" value="{{ $product->original_price }}"
@@ -95,7 +95,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Selling Price</label>
                                 <input type="text" name="selling_price" value="{{ $product->selling_price }}"
@@ -108,7 +108,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Taxation</label>
                                 <input type="text" name="tax" value="{{ $product->tax }}"
@@ -121,7 +121,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Status</label>
                                 <select name="status" id="status" class="form-control">
@@ -132,7 +132,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Trending</label>
                                 <select name="trending" id="trending" class="form-control">
@@ -177,3 +177,26 @@
         </div>
     </div>
 @endsection
+
+{{-- @section('js')
+    <script>
+        $(document).ready(function() {
+            $('#category').select2();
+        });
+    </script>
+    <style>
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #d54545;
+            color: #f5efef;
+            border: 1px solid rgb(76, 210, )
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+            color: #eae7e7;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: bold;
+            margin-right: 2px;
+        }
+    </style>
+@endsection --}}

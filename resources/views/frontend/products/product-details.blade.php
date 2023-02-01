@@ -75,7 +75,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <img src="{{ Storage::url($products->image) }}" alt="product_image" class="w-100"
-                                    width="300px" height="350px" />
+                                    width="300px" height="400px" />
                             </div>
                             <div class="col-md-8">
                                 <h5 class="mb-0">
@@ -85,7 +85,7 @@
                                             Trending
                                         </label>
                                     @else
-                                        <label class="float-end badge bg-warning" style="font-size: 12px;">
+                                        <label class="float-end badge bg-secondary" style="font-size: 12px;">
                                             Normal
                                         </label>
                                     @endif
