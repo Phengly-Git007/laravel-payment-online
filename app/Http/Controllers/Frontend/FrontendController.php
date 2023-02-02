@@ -47,11 +47,11 @@ class FrontendController extends Controller
 
     public function categories()
     {
-        $categories = Category::where('status','0')->get();
+        $categories = Category::where('status','0')->paginate(12);
         return view('frontend.categories',['categories' => $categories]);
     }
     public function products(){
-        $products = Product::where('status','0')->get();
+        $products = Product::where('status','0')->paginate(12);
         return view('frontend.products.index',['products' => $products]);
     }
     public function showCategories($slug)

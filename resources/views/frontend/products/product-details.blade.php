@@ -114,8 +114,8 @@
                                     </span>
                                 </div>
                                 <br><br>
-                                <label class="me-2"><s>Original Price : $
-                                        {{ $products->original_price }}</s></label>
+                                {{-- <label class="me-2"><s>Original Price : $
+                                        {{ $products->original_price }}</s></label> --}}
                                 <label class="fw-semibold"><b>Selling Price : $ {{ $products->selling_price }}</b></label>
                                 <p class="mt-2">{{ $products->short_description }}
                                 </p>

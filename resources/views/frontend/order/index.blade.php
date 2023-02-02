@@ -59,7 +59,7 @@
                 <div class="col-md-12">
                     <div class="card shadow">
                         <div class="card-body text-center">
-                            <h5>Your <i class="fa fa-shopping-cart"></i> Cart Is Empty.
+                            <h5>Your <i class="fa fa-shopping-cart"></i> Order Is Empty.
                                 <a href="{{ url('category') }}" class="btn btn-outline-warning ">Back To
                                     Shopping.</a>
                             </h5>

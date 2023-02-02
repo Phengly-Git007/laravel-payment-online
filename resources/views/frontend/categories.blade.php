@@ -10,8 +10,12 @@
             <a href="#">All Categories</a>
         </div>
     </div>
-    <div class="container py-3">
+    <div class="container py-2">
         <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 mb-3 ">
+                @include('frontend.partials.search-form')
+            </div>
             <div class="col-md-12">
                 <div class="row">
                     @foreach ($categories as $category)
@@ -28,6 +32,9 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
+                <div class="m-2">
+                    {{ $categories->links() }}
                 </div>
             </div>
         </div>

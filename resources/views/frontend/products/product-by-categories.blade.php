@@ -25,9 +25,7 @@
                                     width="200px" height="200px">
                                 <div class="card-body text-center mb-3">
                                     {{ $product->name }} <br>
-                                    <span class="  text-danger"><s>$ {{ $product->original_price }}</s></span>
-                                    &nbsp;&nbsp;
-                                    <span>$ {{ $product->selling_price }}</span>
+                                    <span><b>Price : &nbsp; $ {{ $product->selling_price }}</b></span>
                                 </div>
                             </a>
                         </div>

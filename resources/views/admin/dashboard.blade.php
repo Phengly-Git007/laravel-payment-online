@@ -92,8 +92,8 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-secondary">
                         <div class="inner text-center">
-                            <h3>{{ $all_products }}</h3>
-                            <p>All Product</p>
+                            <h3>{{ $product_item }}</h3>
+                            <p>Product Item</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
@@ -104,9 +104,9 @@
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-info">
                         <div class="inner text-center">
-                            <h3>{{ $all_categories }}</h3>
+                            <h3>{{ $total_quantity }}</h3>
 
-                            <p>All Category</p>
+                            <p>Product Quantity</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
@@ -116,6 +116,58 @@
                 </div>
                 <div class="col-lg-3 col-6">
                     <div class="small-box bg-success">
+                        <div class="inner text-center">
+                            <h3>{{ $all_orders }}</h3>
+                            <p>All Orders</p>
+                        </div>
+                        <div class="icon">
+                            {{-- <i class="ion ion-pie-graph"></i> --}}
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-danger">
+                        <div class="inner text-center">
+                            <h3>$ 500</h3>
+                            <p>Total Cost Price</p>
+                        </div>
+                        <div class="icon">
+                            {{-- <i class="ion ion-pie-graph"></i> --}}
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-warning">
+                        <div class="inner text-center">
+                            <h3>{{ $total_price }}</h3>
+                            <p>Total Price</p>
+                        </div>
+                        <div class="icon">
+                            {{-- <i class="ion ion-pie-graph"></i> --}}
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-primary">
+                        <div class="inner text-center">
+                            <h3>{{ $all_orders }}</h3>
+                            <p>All Orders</p>
+                        </div>
+                        <div class="icon">
+                            {{-- <i class="ion ion-pie-graph"></i> --}}
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-info">
                         <div class="inner text-center">
                             <h3>{{ $all_orders }}</h3>
                             <p>All Orders</p>

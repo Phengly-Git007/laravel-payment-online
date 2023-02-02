@@ -20,18 +20,20 @@ class DashboardController extends Controller
         $week_orders    = Order::where('created_at', '>=' ,$last_order )->count();
         $month_orders = Order::whereMonth('created_at', date('m'))->count();
         $year_orders = Order::whereYear('created_at', date('Y'))->count();
-        $all_categories = Category::all()->count();
-        $all_products = Product::all()->count();
         $all_orders = Order::all()->count();
+        $total_quantity = Product::sum('quantity');
+        $product_item = Product::all()->count();
+        $total_price = Product::sum('selling_price');
         $data = [
             'users' => $users,
             'order_today' => $order_today,
             'week_orders' => $week_orders,
             'month_orders' => $month_orders,
             'year_orders' => $year_orders,
-            'all_categories' => $all_categories,
-            'all_products' => $all_products,
-            'all_orders' => $all_orders
+            'total_quantity' => $total_quantity,
+            'all_orders' => $all_orders,
+            'total_price' =>$total_price,
+            'product_item' =>$product_item
         ];
         return view('admin.dashboard',$data);
     }

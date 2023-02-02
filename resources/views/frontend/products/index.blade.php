@@ -10,8 +10,12 @@
             <a href="#">All Products</a>
         </div>
     </div>
-    <div class="container py-3">
+    <div class="container py-2">
         <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 mb-3 ">
+                @include('frontend.partials.search-form')
+            </div>
             <div class="col-md-12">
                 <div class="row">
                     @foreach ($products as $product)
@@ -23,14 +27,15 @@
                                         width="200px" height="200px">
                                     <div class="card-body text-center mb-1">
                                         {{ $product->name }} <br>
-                                        <span class="  text-danger"><s>$ {{ $product->original_price }}</s></span>
-                                        &nbsp;&nbsp;
-                                        <span>$ {{ $product->selling_price }}</span>
+                                        <span><b>Price: &nbsp; $ {{ $product->selling_price }}</b></span>
                                     </div>
                                 </a>
                             </div>
                         </div>
                     @endforeach
+                </div>
+                <div class="m-2">
+                    {{ $products->links() }}
                 </div>
             </div>
         </div>
