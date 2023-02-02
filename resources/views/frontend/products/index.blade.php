@@ -34,7 +34,7 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="m-2">
+                <div class="mb-5 px-5">
                     {{ $products->links() }}
                 </div>
             </div>

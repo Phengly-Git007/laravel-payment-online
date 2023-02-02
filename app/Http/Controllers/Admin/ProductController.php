@@ -13,10 +13,14 @@ use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::orderBy('id','desc')->paginate(12);
-        return view('admin.products.index',['products' => $products]);
+        $categories = Category::all();
+        $products = Product::when($request->category_id != null,function($query) use($request){
+            $query->where('category_id',$request->category_id);
+        })
+        ->orderBy('id','desc')->paginate(12);
+        return view('admin.products.index',['products' => $products,'categories' => $categories]);
     }
 
 

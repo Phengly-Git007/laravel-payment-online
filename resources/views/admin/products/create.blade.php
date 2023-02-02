@@ -166,7 +166,8 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary float-right">Save Product</button>
+                    <button type="submit" class="btn btn-primary float-right"> <i class="fas fa-save"></i> Save
+                        Product</button>
                 </form>
             </div>
         </div>

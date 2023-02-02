@@ -7,14 +7,39 @@
     active
 @endsection
 @section('header')
-    All Products
+    &nbsp; All Products
 @endsection
 @section('action')
-    <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">New Product</a>
+    <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary mr-2 px-2"> <i class="fas fa-plus"></i> New
+        Product</a>
 @endsection
 @section('content')
     <div class="container-fluid px-3">
         <div class="card table-responsive p-0">
+            <div class="card-header">
+                <form action="" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="">Filter By Category : </label>
+                            <select name="category_id" class="form-control">
+                                <option value="">Select All Categories</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id ? $category->id : '' }}">
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-3 mt-2">
+                            <br />
+                            <button type="submit" class="btn btn-info mb-1"><i class="fas fa-search"></i>
+                                Search By Category
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="card-body">
                 <table class="table table-hover text-nowrap ">
                     <thead>
@@ -39,7 +64,8 @@
                                 <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>
-                                    <img src="{{ Storage::url($product->image) }}" alt="image" width="40px" height="40px">
+                                    <img src="{{ Storage::url($product->image) }}" alt="image" width="40px"
+                                        height="40px">
                                 </td>
                                 <td>{{ $product->category->name ? $product->category->name : 'No Category' }}</td>
                                 <td><span class="right badge badge-{{ $product->quantity ? 'warning' : 'danger' }}">
@@ -79,6 +105,10 @@
                         @endforeach
                     </tbody>
                 </table>
+                <hr>
+                <div class="float-right px-5">
+                    {{ $products->links() }}
+                </div>
             </div>
         </div>
     </div>

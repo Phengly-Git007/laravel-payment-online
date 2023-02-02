@@ -171,7 +171,8 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary float-right">Update Product</button>
+                    <button type="submit" class="btn btn-primary float-right"> <i class="fas fa-save"></i> Update
+                        Product</button>
                 </form>
             </div>
         </div>
