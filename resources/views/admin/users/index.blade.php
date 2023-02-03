@@ -14,6 +14,23 @@
 @section('content')
     <div class="container-fluid">
         <div class="card table-responsive">
+            <div class="card-header">
+                <form action="" method="GET">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label for="">Filter By Search : </label>
+                            <input type="Search" class="form-control" placeholder="Search Name...">
+                        </div>
+                        <div class="col-md-3 mt-2">
+                            <br />
+                            <button type="submit" class="btn btn-info mb-1"><i class="fas fa-search"></i>
+                                Search By Name
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="card-body">
                 <table class="table table-hover text-nowrap">
                     <thead>

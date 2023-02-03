@@ -25,9 +25,10 @@
                                     <img src="{{ Storage::url($product->image) }}"
                                         style="margin-left: 50px;margin-top: 5px; margin-bottom: 0px" alt="image"
                                         width="200px" height="200px">
-                                    <div class="card-body text-center mb-1">
+                                    <div class="card-body text-center mb-1" style="font-size: 15px">
                                         {{ $product->name }} <br>
-                                        <span><b>Price: &nbsp; $ {{ $product->selling_price }}</b></span>
+                                        <span style="font-size: 13px"><b>Price: &nbsp; $
+                                                {{ $product->selling_price }}</b></span>
                                     </div>
                                 </a>
                             </div>

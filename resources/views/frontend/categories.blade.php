@@ -25,7 +25,7 @@
                                     <img src="{{ Storage::url($category->image) }}" alt="image"
                                         style="margin-left: 50px;margin-top: 5px; margin-bottom: 0px" alt="image"
                                         width="200px" height="230px">
-                                    <div class="card-body text-center">
+                                    <div class="card-body text-center" style="font-size: 15px">
                                         {{ $category->name }} <br>
                                     </div>
                                 </a>

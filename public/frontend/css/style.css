@@ -54,3 +54,9 @@ body {
     width: 35%;
     margin-left: 10%;
 }
+
+.whatapp-chat {
+    bottom: 10px;
+    left: 10px;
+    position: fixed;
+}

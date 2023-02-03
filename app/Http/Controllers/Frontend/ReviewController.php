@@ -14,11 +14,18 @@ class ReviewController extends Controller
     public function reviewProduct($product_slug){
       $product = Product::where('slug',$product_slug)->where('status','0')->first();
       if($product){
-        $product_id = $product->id;
-        $verified_purchase = Order::where('orders.user_id',Auth::id())
-                            ->join('order_items','orders.id','order_items.order_id')
-                            ->where('order_items.product_id',$product_id)->get();
-        return view('frontend.review.index',['verified_purchase'=>$verified_purchase,'product'=>$product]);
+          $product_id = $product->id;
+        $review = Review::where('user_id',Auth::id())->where('product_id',$product_id)->first();
+        if($review){
+            return redirect()->back()->with('status','Already Reviewed This Product');
+        }
+        else{
+            $verified_purchase = Order::where('orders.user_id',Auth::id())
+            ->join('order_items','orders.id','order_items.order_id')
+            ->where('order_items.product_id',$product_id)->get();
+            return view('frontend.review.index',['verified_purchase'=>$verified_purchase,'product'=>$product]);
+        }
+
       }
       else{
         return redirect()->back()->with('status','Something went wrong...');
@@ -54,8 +61,39 @@ class ReviewController extends Controller
     public function editProductReview($product_slug){
 
 
-        dd($product_slug);
+        $product = Product::where('slug',$product_slug)->where('status','0')->first();
+        if($product){
+            $product_id = $product->id;
+            $review = Review::where('user_id',Auth::id())->where('product_id',$product_id)->first();
 
+            if ($review) {
+                return view('frontend.review.edit',['review'=>$review]);
+            } else {
+                return redirect()->back()->with(['status','Something went wrong']);
+            }
+        }
+        else {
+            return redirect()->back()->with(['status','Something went wrong']);
+        }
+    }
+
+    public function updateProductReview(Request $request){
+        $user_review = $request->input('user_review');
+        if($user_review != null){
+            $review_id = $request->input('review_id');
+            $review = Review::where('id',$review_id)->where('user_id',Auth::id())->first();
+            if($review){
+                $review->user_review = $request->input('user_review');
+                $review->update();
+                return redirect('product-details/'.$review->product->category->slug.'/'.$review->product->slug)->with('status','Review updated successfully');
+            }
+            else {
+                return redirect()->back()->with(['status','Something went wrong']);
+            }
+        }
+        else {
+            return redirect()->back()->with(['status','Something went wrong']);
+        }
     }
 
 }

@@ -114,9 +114,18 @@
                                     </span>
                                 </div>
                                 <br><br>
-                                {{-- <label class="me-2"><s>Original Price : $
-                                        {{ $products->original_price }}</s></label> --}}
                                 <label class="fw-semibold"><b>Selling Price : $ {{ $products->selling_price }}</b></label>
+                                <span class="float-end">
+                                    <button type="button" class="btn btn-secondary btn-sm py-0 px-2"
+                                        style="border-radius: 10rem" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        <i class="fa-regular fa fa-star"></i> Rating
+                                    </button>
+                                    <a href="{{ url('add-product/' . $products->slug . '/review') }}"
+                                        style="border-radius: 10rem" class="btn btn-primary btn-sm py-0 px-2">
+                                        <i class="fa-regular fa fa-comment"></i> Review
+                                    </a>
+                                </span>
                                 <p class="mt-2">{{ $products->short_description }}
                                 </p>
                                 <hr />
@@ -148,38 +157,31 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <h6><b>Description</b></h6>
-                                    <p class="mt-2 text-sm">{{ $products->description }}</p>
-                                </div>
+                            </div>
+                            <div class="col-md-12 px-5">
+                                <h6><b>Description</b></h6>
+                                <p class="mt-2 text-sm">{{ $products->description }}</p>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 ">
-                                    <hr>
-                                    <button type="button" class="btn btn-outline-secondary btn-sm ms-5 me-5"
-                                        style="border-radius: 10rem" data-bs-toggle="modal"
-                                        data-bs-target="#exampleModal">
-                                        <i class="fa-regular fa fa-star"></i> Rating
-                                    </button>
-                                    <a href="{{ url('add-product/' . $products->slug . '/review') }}"
-                                        style="border-radius: 10rem" class="btn btn-outline-primary btn-sm ms-5 me-5">
-                                        <i class="fa-regular fa fa-comment"></i> Review
-                                    </a>
-                                </div>
-                                <div class="col-md-8">
+                                <div class="col-md-12 px-5">
                                     <hr>
                                     @foreach ($reviews as $review)
                                         <div class="user-review">
                                             <label><b>{{ $review->user->name }}</b></label> &nbsp;
                                             @if ($review->user_id == Auth::id())
                                                 <a href="{{ url('edit-review/' . $products->slug . '/user-review') }}"
-                                                    class="btn btn-sm btn-outline-info py-0 px-1"
-                                                    style="border-radius: 10rem;"> <i class="fa fa-eye"></i>
-                                                    edit review</a>
+                                                    class="btn btn-sm btn-info py-0 px-1" style="border-radius: 10rem;">
+                                                    <i class="fa fa-eye"></i>
+                                                    Edit Review</a>
                                             @endif
-                                            @if ($review->rating)
+                                            @php
+                                                $rating = App\Models\Rating::where('product_id', $products->id)
+                                                    ->where('user_id', $review->user->id)
+                                                    ->first();
+                                            @endphp
+                                            @if ($rating)
                                                 @php
-                                                    $user_rate = $review->rating->stars_rated;
+                                                    $user_rate = $rating->stars_rated;
                                                 @endphp
                                                 @for ($i = 1; $i <= $user_rate; $i++)
                                                     <i class="fa fa-star checked"></i>
@@ -197,4 +199,9 @@
                             </div>
                         </div>
                     </div>
-                @endsection
+
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

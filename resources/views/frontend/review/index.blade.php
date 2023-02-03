@@ -24,10 +24,8 @@
                         @else
                             <div class="alert alert-danger text-center" role="alert">
                                 <h5>Only Customer Purchased <i class="fa-solid fa fa-cash-register"></i>
-                                    Can
-                                    Review Product.
-                                    <a href="{{ url('category') }}" class="btn btn-warning ">Go To
-                                        Shopping.</a>
+                                    Can Review Product.
+                                    <a href="{{ url('category') }}" class="btn btn-warning ">Go To Shopping.</a>
                                 </h5>
                             </div>
                         @endif

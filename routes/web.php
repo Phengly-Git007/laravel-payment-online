@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('add-product/{product_slug}/review',[ReviewController::class,'reviewProduct']);
     Route::post('add-product-review',[ReviewController::class,'addProductReview']);
     Route::get('edit-review/{product_slug}/user-review',[ReviewController::class,'editProductReview']);
+    Route::put('update-product-review',[ReviewController::class,'updateProductReview']);
 
     Route::post('proceed-to-pay',[CheckoutController::class,'razorPayment']);
 

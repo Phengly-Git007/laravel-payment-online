@@ -14,7 +14,7 @@
         Product</a>
 @endsection
 @section('content')
-    <div class="container-fluid px-3">
+    <div class="container-fluid ">
         <div class="card table-responsive p-0">
             <div class="card-header">
                 <form action="" method="GET">
@@ -22,18 +22,18 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label for="">Filter By Category : </label>
-                            <select name="category_id" class="form-control">
-                                <option value="">Select All Categories</option>
+                            <select name="category_id" name="name" class="form-control">
+                                <option value="">Show All Categories</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id ? $category->id : '' }}">
-                                        {{ $category->name }}
+                                        {{ $category->name ? $category->name : '' }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="col-md-3 mt-2">
                             <br />
-                            <button type="submit" class="btn btn-info mb-1"><i class="fas fa-search"></i>
+                            <button type="submit" class="btn btn-warning mb-1"><i class="fas fa-search"></i>
                                 Search By Category
                             </button>
                         </div>
@@ -68,7 +68,7 @@
                                         height="40px">
                                 </td>
                                 <td>{{ $product->category->name ? $product->category->name : 'No Category' }}</td>
-                                <td><span class="right badge badge-{{ $product->quantity ? 'warning' : 'danger' }}">
+                                <td><span class="right badge badge-{{ $product->quantity ? 'info' : 'warning' }}">
                                         {{ $product->quantity ? $product->quantity . ' In stock' : 'Out Of Stock' }}
                                     </span>
                                 </td>

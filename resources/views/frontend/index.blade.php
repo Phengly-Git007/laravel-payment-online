@@ -8,8 +8,7 @@
     @include('frontend.partials.slider')
     <div class="container py-5">
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8 mb-3">
+            <div class="col-md-12 mb-3">
                 @include('frontend.partials.search-form')
             </div>
         </div>
@@ -21,7 +20,7 @@
                         <div class="card">
                             <a href="{{ url('product-details/' . $product->category->slug . '/' . $product->slug) }}">
                                 <img src="{{ Storage::url($product->image) }}" alt="image" width="250px" height="250px">
-                                <div class="card-body text-sm text-center">
+                                <div class="card-body text-sm text-center" style="font-size: 15px">
                                     {{ $product->name }}
                                     <br>
                                     <span>$ {{ $product->selling_price }}</span>
@@ -43,7 +42,7 @@
                             <a href="{{ url('product-by-categories/' . $category->slug) }}">
                                 <img src="{{ Storage::url($category->image) }}" alt="image" width="250px"
                                     height="250px">
-                                <div class="card-body text-center text-sm">
+                                <div class="card-body text-center text-sm" style="font-size: 15px">
                                     {{ $category->name }}
                                 </div>
                             </a>

@@ -51,7 +51,7 @@ class FrontendController extends Controller
         return view('frontend.categories',['categories' => $categories]);
     }
     public function products(){
-        $products = Product::where('status','0')->paginate(12);
+        $products = Product::where('status','0')->orderBy('id','desc')->paginate(20);
         return view('frontend.products.index',['products' => $products]);
     }
     public function showCategories($slug)

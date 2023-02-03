@@ -63,7 +63,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12 table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped text-nowrap">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -99,7 +99,7 @@
                         </div>
                     </div>
                     <div class=" text-center" style="font-size: 17px">
-                        Thankyou For Shopping On <b>eoPays</b> E-commerce Store.
+                        Thank For Shopping <b>eoPays</b> Store.
                     </div>
                 </div>
             </div>

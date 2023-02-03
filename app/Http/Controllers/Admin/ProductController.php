@@ -19,10 +19,9 @@ class ProductController extends Controller
         $products = Product::when($request->category_id != null,function($query) use($request){
             $query->where('category_id',$request->category_id);
         })
-        ->orderBy('id','desc')->paginate(12);
+        ->orderBy('id','desc')->paginate(15);
         return view('admin.products.index',['products' => $products,'categories' => $categories]);
     }
-
 
     public function create()
     {
