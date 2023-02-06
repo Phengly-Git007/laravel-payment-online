@@ -12,7 +12,9 @@
     </div>
     <div class="container py-2">
         <div class="row">
-            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                Display All Products Item
+            </div>
             <div class="col-md-6 mb-3 ">
                 @include('frontend.partials.search-form')
             </div>

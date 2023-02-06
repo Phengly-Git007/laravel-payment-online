@@ -8,7 +8,13 @@
     @include('frontend.partials.slider')
     <div class="container py-5">
         <div class="row">
-            <div class="col-md-12 mb-3">
+            <div class="col-md-3 mt-2">
+                <marquee direction="right">Welcome To eoPays ecommerce Online Shopping</marquee>
+            </div>
+            <div class="col-md-3 mt-2">
+                <marquee direction="">Welcome To eoPays ecommerce Online Shopping </marquee>
+            </div>
+            <div class="col-md-6 mb-3">
                 @include('frontend.partials.search-form')
             </div>
         </div>

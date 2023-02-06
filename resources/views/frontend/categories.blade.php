@@ -12,8 +12,8 @@
     </div>
     <div class="container py-2">
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6 mb-3 ">
+            <div class="col-md-6">Show Product Item By Category Filter</div>
+            <div class="col-md-6 mb-3">
                 @include('frontend.partials.search-form')
             </div>
             <div class="col-md-12">

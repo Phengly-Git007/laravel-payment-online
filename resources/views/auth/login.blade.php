@@ -74,7 +74,7 @@
                 </form>
 
                 <p class="mb-1">
-                    <a href="#">Forgot Password ?</a>
+                    <a href="{{ route('forgot.password.get') }}">Forgot Password ?</a>
                 </p>
                 <p class="mb-0">
                     <a href="{{ route('register') }}" class="text-center">Register Account</a>

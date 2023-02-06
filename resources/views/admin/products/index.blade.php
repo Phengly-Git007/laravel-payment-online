@@ -6,12 +6,7 @@
 @section('product')
     active
 @endsection
-@section('header')
-    &nbsp; All Products
-@endsection
 @section('action')
-    <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary mr-2 px-2"> <i class="fas fa-plus"></i> New
-        Product</a>
 @endsection
 @section('content')
     <div class="container-fluid ">
@@ -37,6 +32,11 @@
                                 Search By Category
                             </button>
                         </div>
+                        <div class="col-md-4"></div>
+                        <div class=" col-md-2 mt-4">
+                            <a href="{{ route('products.create') }}" class="btn btn-primary mr-0 px-5 ">
+                                <i class="fas fa-plus"></i> New Product</a>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -49,8 +49,8 @@
                             <th>Image</th>
                             <th>Category</th>
                             <th>Quantity</th>
-                            <th>Original Price</th>
-                            <th>Selling Price</th>
+                            <th>Price</th>
+                            <th>Sale Price</th>
                             <th>Tax</th>
                             <th>Status</th>
                             <th>Trending</th>

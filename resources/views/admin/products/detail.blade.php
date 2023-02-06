@@ -60,7 +60,10 @@
                                 @endif
                                 <div class="col-md-12">
                                     <h6><b>Description</b></h6>
-                                    <p class="mt-2 text-sm">{{ $product->description }}</p>
+                                    <p class="mt-2 text-sm">
+
+                                        {{ $product->description }}
+                                    </p>
                                 </div>
                             </div>
 

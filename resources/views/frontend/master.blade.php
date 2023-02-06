@@ -84,6 +84,16 @@
             });
         </script>
     @endif
+    @if (session('error'))
+        <script>
+            swal({
+                text: "{{ session('error') }}",
+                icon: "danger",
+                button: "OK",
+            });
+        </script>
+    @endif
+
     @yield('js')
 </body>
 

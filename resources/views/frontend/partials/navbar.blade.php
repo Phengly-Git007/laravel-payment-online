@@ -15,11 +15,13 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('view-wishlist-item') }}">
-                        <b>Wishlist <span class="badge badge-pill bg-secondary wishlist-count">0</span></b></a>
+                        <b>Wishlist <span class="badge badge-pill bg-secondary wishlist-count"
+                                style="border-radius: 0.5rem">0</span></b></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('view-cart-item') }}">
-                        <b>Cart <span class="badge badge-pill bg-danger cart-count">0</span></b>
+                        <b>Cart <span class="badge badge-pill bg-danger cart-count"
+                                style="border-radius: 0.5rem">0</span></b>
                     </a>
                 </li>
                 @guest

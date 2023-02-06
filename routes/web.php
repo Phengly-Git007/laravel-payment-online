@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\ForgotPasswordController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\Frontend\ReviewController;
@@ -43,6 +44,13 @@ Route::post('remove-from-wishlist',[WishlistController::class,'removeProductFrom
 // load cart quantity on navbar
 Route::get('load-cart-quantity',[CartController::class,'cartCountQuantity']);
 Route::get('load-wishlist-quantity',[WishlistController::class,'wishlistCountQuantity']);
+
+// reset forget password
+
+Route::get('forgot-password',[ForgotPasswordController::class,'showForgotPasswordForm'])->name('forgot.password.get');
+Route::post('forgot-password',[ForgotPasswordController::class,'submitForgotPasswordForm'])->name('forgot.password.post');
+Route::get('reset-password',[ForgotPasswordController::class,'showResetPasswordForm'])->name('reset.password.get');
+Route::get('reset-password',[ForgotPasswordController::class,'submitResetPasswordForm'])->name('reset.password.post');
 
 Route::middleware(['auth'])->group(function(){
     Route::get('view-wishlist-item',[WishlistController::class,'viewWishlistItem']);
