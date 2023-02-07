@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Auth;
 class WishlistController extends Controller
 {
 
-    public function viewWishlistItem(){
+    public function viewWishlistItem( Request $request){
+
         $wishlists = Wishlist::where('user_id',Auth::id())->get();
         return view('frontend.wishlist.index',['wishlists' => $wishlists]);
     }
@@ -32,7 +33,7 @@ class WishlistController extends Controller
             }
         }
         else{
-            return response()->json(['status' => 'Login to continue...']);
+            return response()->json(['status' => 'Login to continue']);
         }
     }
 

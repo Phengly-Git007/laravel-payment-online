@@ -18,8 +18,13 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="">Filter Start Date : </label>
-                            <input type="date" name="start_date" value="{{ Request::get('start_date') ?? date('Y-m-d') }}"
+                            <label for=""> Start Date : </label>
+                            <input type="date" name="start_date" value="{{ Request::get('start_date') ?? date('d-m-Y') }}"
+                                class="form-control">
+                        </div>
+                        <div class="col-md-3">
+                            <label for=""> End Date : </label>
+                            <input type="date" name="end_date" value="{{ Request::get('end_date') ?? date('d-m-Y') }}"
                                 class="form-control">
                         </div>
                         <div class="col-md-3">
@@ -51,8 +56,6 @@
                                 <th>Tracking No</th>
                                 <th>Payment ID</th>
                                 <th>Payment Method</th>
-                                <th>Name</th>
-                                <th>Email</th>
                                 <th>Total</th>
                                 <th>Status</th>
                                 <th>Order Date</th>
@@ -66,8 +69,6 @@
                                     <td>{{ $order->tracking_number }}</td>
                                     <td>{{ $order->payment_id ? $order->payment_id : 'No Payment ID' }}</td>
                                     <td>{{ $order->payment_method }}</td>
-                                    <td>{{ $order->name }}</td>
-                                    <td>{{ $order->email }}</td>
                                     <td>$ {{ $order->total_price }}</td>
                                     <td>
                                         <span class="right badge badge-{{ $order->status ? 'success' : 'danger' }}">

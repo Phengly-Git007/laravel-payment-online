@@ -40,8 +40,7 @@ class DashboardController extends Controller
 
     public function users()
     {
-        $users = User::all();
-        return view('admin.users.index',['users' => $users]);
+
     }
 
 }

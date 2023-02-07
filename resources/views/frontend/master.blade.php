@@ -88,8 +88,7 @@
         <script>
             swal({
                 text: "{{ session('error') }}",
-                icon: "danger",
-                button: "OK",
+                icon: "error",
             });
         </script>
     @endif

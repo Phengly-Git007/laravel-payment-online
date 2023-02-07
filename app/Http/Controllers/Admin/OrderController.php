@@ -11,17 +11,16 @@ use Barryvdh\DomPDF\Facade\Pdf;
 class OrderController extends Controller
 {
     public function index(Request $request){
-        $todayDate = Carbon::now()->format('Y-m-d');
-        $orders = Order::when($request->start_date != null , function($query) use ($request){
-            $query->whereDate('created_at',$request->start_date);
-        },function($query) use ($todayDate){
-            $query->whereDate('created_at',$todayDate);
-        })
-        ->when($request->status != null, function($query) use ($request){
+        $orders = new Order();
+        if($request->start_date){
+            $orders = $orders->where('created_at','>=',$request->start_date);
+        }
+        if($request->end_date){
+            $orders = $orders->where('created_at','<=',$request->end_date);
+        }
+        $orders = $orders->when($request->status != null , function($query) use ($request){
             $query->where('status',$request->status);
-        })
-        ->orderBy('id','desc')
-        ->paginate(12);
+        })->orderBy('id','desc')->paginate(12);
         return view('admin.orders.index',['orders' => $orders]);
     }
 

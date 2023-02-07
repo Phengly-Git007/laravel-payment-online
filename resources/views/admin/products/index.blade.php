@@ -16,7 +16,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="">Filter By Category : </label>
+                            <label for=""></label>
                             <select name="category_id" name="name" class="form-control">
                                 <option value="">Show All Categories</option>
                                 @foreach ($categories as $category)
@@ -26,14 +26,14 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-3 mt-2">
+                        <div class="col-md-3 mt-0">
                             <br />
                             <button type="submit" class="btn btn-warning mb-1"><i class="fas fa-search"></i>
-                                Search By Category
+                                Search Product
                             </button>
                         </div>
                         <div class="col-md-4"></div>
-                        <div class=" col-md-2 mt-4">
+                        <div class=" col-md-2 mr-0 mt-4">
                             <a href="{{ route('products.create') }}" class="btn btn-primary mr-0 px-5 ">
                                 <i class="fas fa-plus"></i> New Product</a>
                         </div>

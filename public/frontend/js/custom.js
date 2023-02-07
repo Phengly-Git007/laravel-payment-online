@@ -18,6 +18,7 @@ $(document).ready(function () {
         });
     }
 
+    // load wishlist quantity on frontend
     function loadWishlist() {
         $.ajax({
             method: "GET",

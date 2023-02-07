@@ -18,8 +18,11 @@ class LoginController extends Controller
         if(Auth::user()->role == '1'){
             return redirect('dashboard')->with('status','Welcome to the dashboard');
         }
-        elseif(Auth::user()->role == '0'){
-            return redirect('/')->with('status','Logged in successful...');
+        if(Auth::user()->role == '2'){
+            return redirect('/')->with('status','Logged in successful');
+        }
+        if(Auth::user()->role == '0'){
+            return redirect('/')->with('status','Logged in successful');
         }
     }
 

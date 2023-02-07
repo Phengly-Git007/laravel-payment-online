@@ -7,6 +7,10 @@
     All User Management
 @endsection
 
+@section('action')
+    <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> New User</a>
+@endsection
+
 @section('user')
     active
 @endsection
@@ -52,18 +56,30 @@
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     <span class="right badge badge-{{ $user->phone ? 'secondary' : 'danger' }}">
-                                        {{ $user->phone ? $user->phone : 'no phone number' }}
+                                        {{ $user->phone ? $user->phone : 'no number' }}
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="right badge badge-{{ $user->role ? 'success' : 'primary' }}">
-                                        {{ $user->role ? 'Admin' : 'User Register' }}
-                                    </span>
+                                    @if ($user->role == '1')
+                                        <span class="right badge badge-success">Admin Dashboard</span>
+                                    @elseif ($user->role == '2')
+                                        <span class="right badge badge-info">User Register</span>
+                                    @else
+                                        <span class="right badge badge-primary">Customer Register</span>
+                                    @endif
                                 </td>
                                 <td>{{ date('d-M-Y', strtotime($user->created_at)) }}</td>
                                 <td>
-                                    <a href="" class="btn btn-xs btn-info"><i class="fas fa-eye"></i> Update</a>
-                                    <a href="" class="btn btn-xs btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="{{ route('users.edit', $user) }}" class="btn btn-xs btn-info"><i
+                                            class="fas fa-eye"></i> Update</a>
+                                    <a class="btn btn-xs">
+                                        <form action="{{ route('users.destroy', $user) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-xs btn-danger"><i
+                                                    class="fas fa-trash"></i> Delete</button>
+                                        </form>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
