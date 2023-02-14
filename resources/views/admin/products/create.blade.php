@@ -17,6 +17,29 @@
                 <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Product Image</label>
+                                <input type="file" name="image"
+                                    class="form-control @error('image') is-invalid @enderror">
+                                @error('image')
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Select Category</label>
+                                <select name="categories[]" id="category" class="form-control" multiple>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Product Name</label>
@@ -37,34 +60,6 @@
                                     class="form-control @error('slug') is-invalid @enderror" placeholder="product slug..."
                                     autofocus autocomplete="slug">
                                 @error('slug')
-                                    <div class="invalid-feedback">
-                                        <strong>{{ $message }}</strong>
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">Product Image</label>
-                                <input type="file" name="image"
-                                    class="form-control @error('image') is-invalid @enderror">
-                                @error('image')
-                                    <div class="invalid-feedback">
-                                        <strong>{{ $message }}</strong>
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="">Select Category</label>
-                                <select name="category_id" class="form-control  @error('category_id') is-invalid @enderror">
-                                    <option>Select Category</option>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                                @error('category_id')
                                     <div class="invalid-feedback">
                                         <strong>{{ $message }}</strong>
                                     </div>
@@ -174,7 +169,7 @@
     </div>
 @endsection
 
-{{-- @section('js')
+@section('js')
     <script>
         $(document).ready(function() {
             $('#category').select2();
@@ -195,4 +190,4 @@
             margin-right: 2px;
         }
     </style>
-@endsection --}}
+@endsection

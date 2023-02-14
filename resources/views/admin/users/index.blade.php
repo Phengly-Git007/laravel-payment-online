@@ -60,13 +60,9 @@
                                     </span>
                                 </td>
                                 <td>
-                                    @if ($user->role == '1')
-                                        <span class="right badge badge-success">Admin Dashboard</span>
-                                    @elseif ($user->role == '2')
-                                        <span class="right badge badge-info">User Register</span>
-                                    @else
-                                        <span class="right badge badge-primary">Customer Register</span>
-                                    @endif
+                                    <span class="right badge badge-{{ $user->role ? 'success' : 'primary' }}">
+                                        {{ $user->role ? 'Admin' : 'User' }}
+                                    </span>
                                 </td>
                                 <td>{{ date('d-M-Y', strtotime($user->created_at)) }}</td>
                                 <td>

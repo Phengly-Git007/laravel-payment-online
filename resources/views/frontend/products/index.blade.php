@@ -23,7 +23,8 @@
                     @foreach ($products as $product)
                         <div class="col-md-3 mb-3">
                             <div class="card shadow">
-                                <a href="{{ url('product-details/' . $product->category->slug . '/' . $product->slug) }}">
+                                {{-- <a href="{{ url('product-details/' . $product->category->slug . '/' . $product->slug) }}"> --}}
+                                <a href="{{ url('product-details/' . $product->slug) }}">
                                     <img src="{{ Storage::url($product->image) }}"
                                         style="margin-left: 50px;margin-top: 5px; margin-bottom: 0px" alt="image"
                                         width="200px" height="200px">

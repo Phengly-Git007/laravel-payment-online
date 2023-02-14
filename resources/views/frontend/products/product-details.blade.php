@@ -60,9 +60,8 @@
             <div class="container">
                 <a href="{{ url('/') }}">Home</a> /
                 <a href="{{ url('category') }}">All Categories</a> /
-                <a
-                    href="{{ url('product-by-categories/' . $products->category->slug) }}">{{ $products->category->name }}</a>
-                /
+                {{-- <a href="{{ url('product-by-categories/' . $products->category->slug) }}">{{ $products->category->name }}</a> --}}
+
                 {{ $products->name }}
             </div>
         </div>

@@ -59,16 +59,16 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <span for=""><b>Category</b></span>
-                                <select name="category_id" class="form-control ">
+                                <select name="categories[]" id="category" class="form-control" multiple>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}"
-                                            {{ $category->id == $product->category_id ? 'selected' : '' }}>
+                                        <option value="{{ $category->id }}" @selected($product->categories->contains($category))>
                                             {{ $category->name }}
                                         </option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
+                        {{--  {{ $category->id == $product->category_id ? 'selected' : '' }} --}}
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Quantity</label>
@@ -179,7 +179,7 @@
     </div>
 @endsection
 
-{{-- @section('js')
+@section('js')
     <script>
         $(document).ready(function() {
             $('#category').select2();
@@ -200,4 +200,4 @@
             margin-right: 2px;
         }
     </style>
-@endsection --}}
+@endsection

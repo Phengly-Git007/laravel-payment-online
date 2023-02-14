@@ -27,7 +27,6 @@ class ProductUpdateRequest extends FormRequest
             'name' =>['required','string'],
             'slug' =>['required','string'],
             'image' =>['nullable','image'],
-            'category_id' =>['required','integer'],
             'quantity' =>['required','string'],
             'original_price' =>['required','string'],
             'selling_price' =>['required','string'],
