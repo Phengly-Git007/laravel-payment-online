@@ -156,7 +156,7 @@
                                     <div id="paypal-button-container" class="paypal-payment-method"></div>
                                 </div>
                                 <div class="col-md-6 ">
-                                    <input type="hidden" name="payment_method" value="Cast On Delivery">
+                                    <input type="hidden" name="payment_method" value="Cost On Delivery">
                                     <button type="submit" class="btn btn-info py-1 w-100 mb-2">
                                         Pay On Delivery
                                     </button>

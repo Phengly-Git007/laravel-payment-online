@@ -162,12 +162,14 @@
                                 <h6><b>Description</b></h6>
                                 <p class="mt-2 text-sm">{{ $products->description }}</p>
                             </div>
+
                             <div class="row">
                                 <div class="col-md-12 px-5">
                                     <hr>
                                     @foreach ($reviews as $review)
                                         <div class="user-review">
-                                            <label><b>{{ $review->user->name }}</b></label> &nbsp;
+                                            <label><b>{{ $review->user->name }}</b></label>
+                                            &nbsp;
                                             @if ($review->user_id == Auth::id())
                                                 <a href="{{ url('edit-review/' . $products->slug . '/user-review') }}"
                                                     class="btn btn-sm btn-info py-0 px-1" style="border-radius: 10rem;">
@@ -191,7 +193,8 @@
                                                 @endfor
                                             @endif
                                             <br>
-                                            <small>Review On : {{ date('d-M-Y', strtotime($review->created_at)) }}</small>
+                                            <small>Review On :
+                                                {{ date('d-M-Y', strtotime($review->created_at)) }}</small>
                                             <p>{{ $review->user_review }}</p>
                                         </div>
                                     @endforeach

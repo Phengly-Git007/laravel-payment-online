@@ -20,7 +20,7 @@ class OrderController extends Controller
         }
         $orders = $orders->when($request->status != null , function($query) use ($request){
             $query->where('status',$request->status);
-        })->orderBy('id','desc')->paginate(12);
+        })->orderBy('id','desc')->paginate(15);
         return view('admin.orders.index',['orders' => $orders]);
     }
 
@@ -59,8 +59,8 @@ public function allOrder(Request $request){
     public function generateInvoice($order_id){
         $order = Order::findOrFail($order_id);
         $pdf = Pdf::loadView('admin.orders.invoice',['order' => $order]);
-        return $pdf->download('eoPays '.$order->id.'.pdf');
-        // $todaydate = Carbon::now()->format('d-m-Y');
-        // return $pdf->download('eoPays '.$order->id.'-'.$todaydate.'.pdf');
+        // return $pdf->download('eoPays '.$order->id.'.pdf');
+        $todaydate = Carbon::now()->format('d-m-Y');
+        return $pdf->download('eoPays '.$order->id.'-'.$todaydate.'.pdf');
     }
 }

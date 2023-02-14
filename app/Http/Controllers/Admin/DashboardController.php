@@ -38,9 +38,5 @@ class DashboardController extends Controller
         return view('admin.dashboard',$data);
     }
 
-    public function users()
-    {
-
-    }
 
 }

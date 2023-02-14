@@ -23,9 +23,8 @@ class ReviewController extends Controller
             $verified_purchase = Order::where('orders.user_id',Auth::id())
             ->join('order_items','orders.id','order_items.order_id')
             ->where('order_items.product_id',$product_id)->get();
-            return view('frontend.review.index',['verified_purchase'=>$verified_purchase,'product'=>$product]);
+                return view('frontend.review.index',['verified_purchase'=>$verified_purchase,'product'=>$product]);
         }
-
       }
       else{
         return redirect()->back()->with('status','Something went wrong...');

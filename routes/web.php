@@ -15,6 +15,8 @@ use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
 
 
 Route::get('/', function () {
@@ -49,10 +51,26 @@ Route::get('load-wishlist-quantity',[WishlistController::class,'wishlistCountQua
 
 // reset forget password
 
-Route::get('forgot-password',[ForgotPasswordController::class,'showForgotPasswordForm'])->name('forgot.password.get');
-Route::post('forgot-password',[ForgotPasswordController::class,'submitForgotPasswordForm'])->name('forgot.password.post');
-Route::get('reset-password',[ForgotPasswordController::class,'showResetPasswordForm'])->name('reset.password.get');
-Route::get('reset-password',[ForgotPasswordController::class,'submitResetPasswordForm'])->name('reset.password.post');
+// Route::get('/forgot-password', function () {
+//     return view('auth.forgot-password');
+// })->middleware('guest')->name('password.request');
+
+// Route::post('/forgot-password', function (Request $request) {
+//     $request->validate(['email' => 'required|email']);
+//     $status = Password::sendResetLink(
+//         $request->only('email')
+//     );
+
+//     return $status === Password::RESET_LINK_SENT
+//                 ? back()->with(['status' => __($status)])
+//                 : back()->withErrors(['email' => __($status)]);
+// })->middleware('guest')->name('password.email');
+
+// Route::get('/reset-password/{token}', function ($token) {
+//     return view('auth.reset-password', ['token' => $token]);
+// })->middleware('guest')->name('password.reset');
+
+// end Reset Password
 
 Route::middleware(['auth'])->group(function(){
     Route::get('view-wishlist-item',[WishlistController::class,'viewWishlistItem']);
@@ -61,6 +79,7 @@ Route::middleware(['auth'])->group(function(){
     Route::post('place-order-product',[CheckoutController::class,'placeOrderProduct']);
     Route::get('my-orders',[UserController::class,'myOrder']);
     Route::get('view-orders/{id}',[UserController::class,'viewOrder']);
+    Route::get('change-password',[UserController::class,'changePassword']);
     // rating
 
     Route::post('add-product-rating',[RatingController::class,'addProductRating']);

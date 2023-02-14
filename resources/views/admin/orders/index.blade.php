@@ -10,6 +10,14 @@
     active
 @endsection
 
+@section('action')
+    <a href="" class="btn btn-sm btn-info mr-2 "><i class="fas fa-solid fa-file-excel"></i>
+        Export To Excel</a>
+    <a href="" class="btn btn-sm btn-primary "><i class="fas fa-regular fa-file-pdf"></i>
+        Export To
+        Pdf</a>
+@endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="card table-responsive p-0">
@@ -18,18 +26,19 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-3">
-                            <label for=""> Start Date : </label>
-                            <input type="date" name="start_date" value="{{ Request::get('start_date') ?? date('d-m-Y') }}"
-                                class="form-control">
+                            <span> Start Date : </span>
+                            <input type="date" name="start_date"
+                                value="{{ Request::get('start_date') ?? date('d-m-Y') }}"
+                                class="form-control form-control-sm">
                         </div>
                         <div class="col-md-3">
-                            <label for=""> End Date : </label>
+                            <span> End Date : </span>
                             <input type="date" name="end_date" value="{{ Request::get('end_date') ?? date('d-m-Y') }}"
-                                class="form-control">
+                                class="form-control form-control-sm">
                         </div>
                         <div class="col-md-3">
-                            <label for="">Filter By Status : </label>
-                            <select name="status" class="form-control">
+                            <span>Filter By Status : </span>
+                            <select name="status" class="form-control form-control-sm">
                                 <option value="">Select All</option>
                                 <option value="0" {{ Request::get('status') == '0' ? 'selected' : '' }}>Pending
                                 </option>
@@ -37,29 +46,31 @@
                                     Completed</option>
                             </select>
                         </div>
-                        <div class="col-md-3 mt-2">
+                        <div class="col-md-3 mt-0">
                             <br />
-                            <button type="submit" class="btn btn-warning mb-1"><i class="fas fa-search"></i>
-                                Search Order By Filter
+                            <button type="submit" class="btn btn-sm btn-warning mb-1"><i class="fas fa-search"></i>
+                                Search By Filter
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="card-body">
-
                 <table class="table text-nowrap">
                     @if ($orders->count() > 0)
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Tracking No</th>
+                                <th>Username</th>
+                                <th>Email</th>
                                 <th>Payment ID</th>
                                 <th>Payment Method</th>
                                 <th>Total</th>
                                 <th>Status</th>
                                 <th>Order Date</th>
-                                <th>Order User Management System</th>
+                                <th>Updated</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,6 +78,8 @@
                                 <tr>
                                     <td>{{ $order->id }}</td>
                                     <td>{{ $order->tracking_number }}</td>
+                                    <td>{{ $order->name }}</td>
+                                    <td>{{ $order->email }}</td>
                                     <td>{{ $order->payment_id ? $order->payment_id : 'No Payment ID' }}</td>
                                     <td>{{ $order->payment_method }}</td>
                                     <td>$ {{ $order->total_price }}</td>
@@ -75,20 +88,29 @@
                                             {{ $order->status ? 'Completed' : 'Pending' }}
                                         </span>
                                     </td>
-                                    <td>{{ date('d-M-Y', strtotime($order->created_at)) }}</td>
+                                    <td>{{ $order->created_at }}</td>
+                                    <td>{{ $order->updated_at }}</td>
+                                    {{-- <td>{{ date('d-M-Y H:m:s', strtotime($order->created_at)) }}</td> --}}
+                                    {{-- <td>{{ date('d-M-Y H:m:s', strtotime($order->updated_at)) }}</td> --}}
                                     <td>
                                         <a href="{{ url('orders-details/' . $order->id) }}"
-                                            class="btn btn-xs btn-info mr-1"><i class="fas fa-eye"></i> Details</a>
+                                            class="btn btn-xs btn-outline-info mr-1"><i class="fas fa-regular fa-pen"></i>
+                                            Edit </a>
                                         <a href="{{ url('delete-orders/' . $order->id) }}"
-                                            class="btn btn-xs btn-danger mr-1">
-                                            <i class="fas fa-trash"></i> Delete
+                                            class="btn btn-xs btn-outline-danger mr-1">
+                                            <i class="fas fa-trash"></i>
+                                            Delete
                                         </a>
                                         <a href="{{ url('invoice-orders/' . $order->id) }}" target="_blank"
-                                            class="btn btn-xs btn-primary mr-1"><i class="fas fa-solid fa-paperclip"></i>
-                                            Invoice</a>
+                                            class="btn btn-xs btn-outline-primary mr-1"><i
+                                                class="fas fa-solid fa-eye-slash"></i>
+                                            View
+                                        </a>
                                         <a href="{{ url('generate-orders/' . $order->id) }}"
-                                            class="btn btn-xs btn-success"><i class="fas fa-download"></i>
-                                            Download</a>
+                                            class="btn btn-xs btn-outline-secondary mr-1"><i
+                                                class="fas fa-regular fa-file-pdf"></i>
+                                            Pdf
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -97,6 +119,9 @@
                         <th class="text-center text-danger">No Order Found.</th>
                     @endif
                 </table>
+                <span class="float-right mr-5 ml-0 mt-1">
+                    {{ $orders->links() }}
+                </span>
             </div>
         </div>
     </div>

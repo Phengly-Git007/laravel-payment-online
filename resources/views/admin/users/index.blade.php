@@ -24,12 +24,12 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label for="">Filter By Search : </label>
-                            <input type="Search" class="form-control" placeholder="Search Name...">
+                            <input type="Search" name="search_name" class="form-control" placeholder="Search Name...">
                         </div>
                         <div class="col-md-3 mt-2">
                             <br />
-                            <button type="submit" class="btn btn-info mb-1"><i class="fas fa-search"></i>
-                                Search By Name
+                            <button type="submit" class="btn btn-warning mb-1"><i class="fas fa-search"></i>
+                                Search
                             </button>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
-                            <th>Role</th>
+                            <th>User Role</th>
                             <th>Create_At</th>
                             <th>Action</th>
                         </tr>
@@ -73,7 +73,8 @@
                                     <a href="{{ route('users.edit', $user) }}" class="btn btn-xs btn-info"><i
                                             class="fas fa-eye"></i> Update</a>
                                     <a class="btn btn-xs">
-                                        <form action="{{ route('users.destroy', $user) }}" method="POST">
+                                        <form action="{{ route('users.destroy', $user) }}" method="POST"
+                                            onsubmit="return confirm('Are you sure ?')">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btn-xs btn-danger"><i
