@@ -16,8 +16,8 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div class="card table-responsive">
+    <div class="container-fluid px-3">
+        <div class="card table-responsive shadow" style="background-color: rgb(229, 237, 238)">
             <div class="card-header">
                 <form action="" method="GET">
                     @csrf

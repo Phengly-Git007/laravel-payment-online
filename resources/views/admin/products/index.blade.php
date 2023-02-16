@@ -6,13 +6,16 @@
 @section('product')
     active
 @endsection
+@section('header')
+    All Products
+@endsection
 @section('action')
-    <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary">New Product</a>
+    <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> New Product</a>
 @endsection
 @section('content')
-    <div class="container-fluid ">
-        <div class="card table-responsive p-0">
-            {{-- <div class="card-header">
+    <div class="container-fluid px-3">
+        <div class="card table-responsive p-0 shadow" style="background-color: rgb(229, 237, 238)">
+            <div class="card-header">
                 <form action="" method="GET">
                     @csrf
                     <div class="row">
@@ -33,25 +36,20 @@
                                 Search Product
                             </button>
                         </div>
-                        <div class="col-md-4"></div>
-                        <div class=" col-md-2 mr-0 mt-4">
-                            <a href="{{ route('products.create') }}" class="btn btn-primary mr-0 px-5 ">
-                                <i class="fas fa-plus"></i> New Product</a>
-                        </div>
                     </div>
                 </form>
-            </div> --}}
+            </div>
             <div class="card-body">
-                <table class="table table-hover text-nowrap ">
+                <table class="table text-nowrap ">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Image</th>
+                            {{-- <th>Category</th> --}}
                             <th>Quantity</th>
                             <th>Price</th>
                             <th>Sale Price</th>
-                            <th>Tax</th>
                             <th>Status</th>
                             <th>Trending</th>
                             <th>Created</th>
@@ -64,15 +62,16 @@
                                 <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
                                 <td>
-                                    <img src="{{ Storage::url($product->image) }}" alt="image" width="40px" height="40px">
+                                    <img src="{{ Storage::url($product->image) }}" alt="image" width="40px"
+                                        height="40px">
                                 </td>
+                                {{-- <td>{{ $product->category->name ? $product->category->name : 'No Category' }}</td> --}}
                                 <td><span class="right badge badge-{{ $product->quantity ? 'info' : 'warning' }}">
                                         {{ $product->quantity ? $product->quantity . ' In stock' : 'Out Of Stock' }}
                                     </span>
                                 </td>
                                 <td>$ {{ $product->original_price }}</td>
                                 <td>$ {{ $product->selling_price }}</td>
-                                <td>$ {{ $product->tax }}</td>
                                 <td>
                                     <span class="right badge badge-{{ $product->status ? 'danger' : 'success' }}">
                                         {{ $product->status ? 'Disable' : 'Active' }}

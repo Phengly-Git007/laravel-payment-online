@@ -19,8 +19,8 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
-        <div class="card table-responsive p-0">
+    <div class="container-fluid px-3">
+        <div class="card table-responsive p-0 shadow" style="background-color: rgb(229, 237, 238)">
             <div class="card-header">
                 <form action="" method="GET">
                     @csrf
@@ -90,16 +90,23 @@
                                     </td>
                                     <td>{{ $order->created_at }}</td>
                                     <td>{{ $order->updated_at }}</td>
-                                    {{-- <td>{{ date('d-M-Y H:m:s', strtotime($order->created_at)) }}</td> --}}
-                                    {{-- <td>{{ date('d-M-Y H:m:s', strtotime($order->updated_at)) }}</td> --}}
                                     <td>
                                         <a href="{{ url('orders-details/' . $order->id) }}"
                                             class="btn btn-xs btn-outline-info mr-1"><i class="fas fa-regular fa-pen"></i>
                                             Edit </a>
-                                        <a href="{{ url('delete-orders/' . $order->id) }}"
+                                        {{-- <a href="{{ url('delete-orders/' . $order->id) }}"
                                             class="btn btn-xs btn-outline-danger mr-1">
                                             <i class="fas fa-trash"></i>
                                             Delete
+                                        </a> --}}
+                                        <a class="btn btn-xs">
+                                            <form action="{{ route('orders.delete', $order->id) }}" method="POST"
+                                                onsubmit="return confirm('Are you sure delete, {{ $order->name }} ?')">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-xs btn-outline-danger"><i
+                                                        class="fas fa-trash"></i> Delete</button>
+                                            </form>
                                         </a>
                                         <a href="{{ url('invoice-orders/' . $order->id) }}" target="_blank"
                                             class="btn btn-xs btn-outline-primary mr-1"><i

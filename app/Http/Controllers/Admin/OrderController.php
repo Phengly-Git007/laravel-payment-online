@@ -63,4 +63,10 @@ public function allOrder(Request $request){
         $todaydate = Carbon::now()->format('d-m-Y');
         return $pdf->download('eoPays '.$order->id.'-'.$todaydate.'.pdf');
     }
+
+    public function deleteOrder($id){
+        $order = Order::find($id);
+        $order->delete();
+        return redirect('orders')->with('status','Order deleted successfully');
+    }
 }

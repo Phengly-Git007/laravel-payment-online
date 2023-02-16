@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->integer('category_id');
             $table->string('image');
             $table->string('quantity')->default('0');
-            $table->float('tax');
             $table->float('original_price');
             $table->float('selling_price');
             $table->mediumText('short_description');

@@ -5,10 +5,10 @@
 
 
 @section('content')
-    <div class="container-fluid mt-0">
-        <div class="card" style="background-color: rgb(159, 169, 169)">
+    <div class="container-fluid mt-0 px-3">
+        <div class="card " style="background-color: rgb(229, 237, 238)">
             <div class="card-header">
-                <h5 style="color: white">
+                <h5>
                     Create New Product
                     <a href="{{ route('products.index') }}" class="btn btn-sm btn-info float-right">Back To Products</a>
                 </h5>
@@ -33,11 +33,18 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Select Category</label>
-                                <select name="categories[]" id="category" class="form-control" multiple>
+                                <select name="category_id" id="category"
+                                    class="form-control @error('category_id') is-invalid @enderror ">
+                                    <option value="">Select Category</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
+                                @error('category_id')
+                                    <div class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -105,19 +112,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">Taxation</label>
-                                <input type="text" name="tax" class="form-control @error('tax') is-invalid @enderror"
-                                    placeholder=" tax price..." autofocus autocomplete="tax">
-                                @error('tax')
-                                    <div class="invalid-feedback">
-                                        <strong>{{ $message }}</strong>
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Status</label>
                                 <select name="status" id="status" class="form-control">
@@ -126,7 +121,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Trending</label>
                                 <select name="trending" id="trending" class="form-control">
@@ -169,7 +164,7 @@
     </div>
 @endsection
 
-@section('js')
+{{-- @section('js')
     <script>
         $(document).ready(function() {
             $('#category').select2();
@@ -190,4 +185,4 @@
             margin-right: 2px;
         }
     </style>
-@endsection
+@endsection --}}

@@ -16,9 +16,9 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid px-3">
         <div class="row">
-            <div class="col-md-5">
+            {{-- <div class="col-md-5">
                 <div class="card shadow">
                     <div class="card-body">
                         <h6><b>User Information</b></h6>
@@ -32,9 +32,9 @@
                         <div class="p-2">Pincode : <b>{{ $orders->pincode }}</b></div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-7">
-                <div class="card shadow table-responsive p-0">
+            </div> --}}
+            <div class="col-md-12">
+                <div class="card shadow table-responsive shadow p-0" style="background-color: rgb(229, 237, 238)">
                     <div class="card-body">
                         <table class="table text-nowrap">
                             <thead>
@@ -60,22 +60,40 @@
                             </tbody>
                         </table>
                         <hr>
-                        <h6 class="mb-0 px-3"><b>Sub Total : <span class="float-right">$
-                                    {{ $orders->total_price }}</span></b>
-                        </h6>
-                        <div class="col-md-12 mt-3 px-3">
+
+
+                        <div class="col-md-12 mt-3">
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                </div>
+                                <div class="col-md-2">
+                                    Total Price : <span class="float-right">$
+                                        {{ $orders->total_price + $item->products->tax }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 mt-3">
                             <form action="{{ url('update-orders/' . $orders->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <label for="">Order Status : </label>
-                                <select name="status" class="form-control">
-                                    <option {{ $orders->status == '0' ? 'selected' : '' }} value="0">Pending
-                                    </option>
-                                    <option {{ $orders->status == '1' ? 'selected' : '' }} value="1">Completed
-                                    </option>
-                                </select>
-                                <button type="submit" class="btn btn-sm btn-success float-right mt-3">Update
-                                    Status</button>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select name="status" class="form-control">
+                                            <option {{ $orders->status == '0' ? 'selected' : '' }} value="0">Pending
+                                            </option>
+                                            <option {{ $orders->status == '1' ? 'selected' : '' }} value="1">Completed
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-success float-right ">Update Status
+                                        </button>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>

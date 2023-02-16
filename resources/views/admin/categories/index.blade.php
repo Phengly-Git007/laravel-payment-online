@@ -15,7 +15,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="card table-responsive p-0">
+        <div class="card table-responsive p-0 shadow" style="background-color: rgb(229, 237, 238)">
             <div class="card-body">
                 <table class="table table-hover text-nowrap">
                     <thead>

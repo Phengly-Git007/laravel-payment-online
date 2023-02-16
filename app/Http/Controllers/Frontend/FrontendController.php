@@ -66,34 +66,8 @@ class FrontendController extends Controller
         }
     }
 
-    // public function productDetails($cate_slug,$pro_slug){
-    //     if(Category::where('slug',$cate_slug)->exists()){
-    //         if(Product::where('slug',$pro_slug)->exists()){
-    //             $products = Product::where('slug',$pro_slug)->first();
-    //             $ratings = Rating::where('product_id',$products->id)->get();
-    //             $calculate_rating =  Rating::where('product_id',$products->id)->sum('stars_rated');
-    //             $user_rating = Rating::where('product_id',$products->id)->where('user_id',Auth::id())->first();
-    //             $reviews = Review::where('product_id',$products->id)->orderBy('id','desc')->get();
-    //             if($ratings->count() > 0){
-    //             $rating_value = $calculate_rating/$ratings->count();
-    //             }
-    //             else{
-    //                 $rating_value = 0;
-    //             }
-    //             return view('frontend.products.product-details',['products'=>$products,'ratings'=>$ratings,
-    //                         'rating_value'=>$rating_value,'user_rating'=>$user_rating,'reviews'=>$reviews]);
-    //         }
-    //         else{
-    //             return redirect('/')->with('status','Something went wrong');
-    //         }
-    //     }
-    //     else{
-    //         return redirect('/')->with('status','Category not found');
-    //     }
-
-    // }
-    public function productDetails($pro_slug){
-
+    public function productDetails($cate_slug,$pro_slug){
+        if(Category::where('slug',$cate_slug)->exists()){
             if(Product::where('slug',$pro_slug)->exists()){
                 $products = Product::where('slug',$pro_slug)->first();
                 $ratings = Rating::where('product_id',$products->id)->get();
@@ -112,7 +86,34 @@ class FrontendController extends Controller
             else{
                 return redirect('/')->with('status','Something went wrong');
             }
-
+        }
+        else{
+            return redirect('/')->with('status','Category not found');
+        }
 
     }
+
+    // public function productDetails($pro_slug){
+
+    //         if(Product::where('slug',$pro_slug)->exists()){
+    //             $products = Product::where('slug',$pro_slug)->first();
+    //             $ratings = Rating::where('product_id',$products->id)->get();
+    //             $calculate_rating =  Rating::where('product_id',$products->id)->sum('stars_rated');
+    //             $user_rating = Rating::where('product_id',$products->id)->where('user_id',Auth::id())->first();
+    //             $reviews = Review::where('product_id',$products->id)->orderBy('id','desc')->get();
+    //             if($ratings->count() > 0){
+    //             $rating_value = $calculate_rating/$ratings->count();
+    //             }
+    //             else{
+    //                 $rating_value = 0;
+    //             }
+    //             return view('frontend.products.product-details',['products'=>$products,'ratings'=>$ratings,
+    //                         'rating_value'=>$rating_value,'user_rating'=>$user_rating,'reviews'=>$reviews]);
+    //         }
+    //         else{
+    //             return redirect('/')->with('status','Something went wrong');
+    //         }
+
+
+    // }
 }

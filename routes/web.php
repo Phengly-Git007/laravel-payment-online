@@ -26,8 +26,7 @@ Route::get('/',[FrontendController::class,'index']);
 Route::get('category',[FrontendController::class,'categories']);
 Route::get('product',[FrontendController::class,'products']);
 Route::get('product-by-categories/{slug}',[FrontendController::class,'showCategories']);
-Route::get('product-details/{pro_slug}',[FrontendController::class,'productDetails']);
-// Route::get('product-details/{cate_slug}/{pro_slug}',[FrontendController::class,'productDetails']);
+Route::get('product-details/{cate_slug}/{pro_slug}',[FrontendController::class,'productDetails']);
 Route::get('get-products-list',[FrontendController::class,'getProductsList']);
 Route::post('search-product',[FrontendController::class,'searchProduct']);
 
@@ -101,6 +100,7 @@ Route::middleware(['auth','admin'])->group(function (){
     Route::get('orders',[OrderController::class,'index'])->name('orders.index');
     Route::get('orders-details/{id}',[OrderController::class,'orderDetails']);
     Route::get('all-orders',[OrderController::class,'allOrder'])->name('orders.all');
+    Route::delete('orders/{id}',[OrderController::class,'deleteOrder'])->name('orders.delete');
     Route::put('update-orders/{id}',[OrderController::class,'updateOrder']);
     Route::get('invoice-orders/{order_id}',[OrderController::class,'viewInvoice']);
     Route::get('/generate-orders/{order_id}',[OrderController::class,'generateInvoice']);

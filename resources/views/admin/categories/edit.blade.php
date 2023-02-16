@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="card" style="background-color: rgb(159, 169, 169)">
+        <div class="card" style="background-color: rgb(229, 237, 238)">
             <div class="card-header">
                 <h5>
                     Update New Category

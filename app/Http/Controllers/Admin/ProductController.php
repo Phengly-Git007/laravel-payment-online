@@ -15,14 +15,12 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        // $categories = Category::all();
-        // $products = Product::when($request->category_id != null,function($query) use($request){
-        //     $query->where('category_id',$request->category_id);
-        // })
-        // ->orderBy('id','desc')->with(['category'])->paginate(15);
-        // return view('admin.products.index',['products' => $products,'categories' => $categories]);
-        $products = Product::orderBy('id','desc')->paginate(15);
         $categories = Category::all();
+        $products = Product::when($request->category_id != null,function($query) use($request){
+            $query->where('category_id',$request->category_id);
+        })
+        ->orderBy('id','desc')->with(['category'])->paginate(15);
+        return view('admin.products.index',['products' => $products,'categories' => $categories]);
         return view('admin.products.index',['products'=>$products,'categories'=>$categories]);
     }
 
@@ -40,21 +38,22 @@ class ProductController extends Controller
             'name' => $request->name,
             'slug' => $request->slug,
             'quantity' => $request->quantity,
+            'category_id' => $request->category_id,
             'original_price' => $request->original_price,
             'selling_price' => $request->selling_price,
-            'tax' => $request->tax,
             'short_description' => $request->short_description,
             'description' => $request->description,
             'status' => $request->status,
             'trending' => $request->trending,
             'image' =>$images
         ]);
-            if($request->has('categories')){
-                $product->categories()->attach($request->categories);
-           }
+
 
         if($product){
             return redirect('products')->with('status','Product Created Successfully');
+        }
+        else{
+            return redirect()->back()->with('status','something went wrong...');
         }
     }
 
@@ -86,18 +85,15 @@ class ProductController extends Controller
             'name' => $request->name,
             'slug' => $request->slug,
             'quantity' => $request->quantity,
+            'category_id' => $request->category_id,
             'original_price' => $request->original_price,
             'selling_price' => $request->selling_price,
-            'tax' => $request->tax,
             'short_description' => $request->short_description,
             'description' => $request->description,
             'status' => $request->status,
             'trending' => $request->trending,
             'image' =>$images
         ]);
-        if($request->has('categories')){
-            $product->categories()->sync($request->categories);
-        }
 
         return redirect('products')->with('status','Product Updated Successfully');
     }
@@ -107,8 +103,6 @@ class ProductController extends Controller
     {
         // delete file
         Storage::delete($product->image);
-        // detatch category
-        $product->categories()->detach();
         $product->delete();
         return redirect('products')->with('status','Product Deleted Successfully');
     }

@@ -5,10 +5,10 @@
 
 
 @section('content')
-    <div class="container-fluid">
-        <div class="card" style="background-color: rgb(159, 169, 169)">
+    <div class="container-fluid px-3 mt-0">
+        <div class="card" style="background-color: rgb(229, 237, 238)">
             <div class="card-header">
-                <h5 style="color: white">
+                <h5>
                     Update Product
                     <a href="{{ route('products.index') }}" class="btn btn-sm btn-info float-right">Back To Products</a>
                 </h5>
@@ -18,6 +18,33 @@
                     @csrf
                     @method('PUT')
                     <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span>{{ $product->image }}</span>
+                                <input type="file" name="image"
+                                    class="form-control @error('image') is-invalid @enderror">
+                                @error('image')
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <span for=""><b>Category</b></span>
+                                <select name="category_id" id="category" class="form-control">
+                                    <option value="">Select Category</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"
+                                            {{ $category->id == $product->category_id ? 'selected' : '' }}>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        {{--  {{ $category->id == $product->category_id ? 'selected' : '' }} --}}
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Product Name</label>
@@ -44,31 +71,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <span>{{ $product->image }}</span>
-                                <input type="file" name="image"
-                                    class="form-control @error('image') is-invalid @enderror">
-                                @error('image')
-                                    <div class="invalid-feedback">
-                                        <strong>{{ $message }}</strong>
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <span for=""><b>Category</b></span>
-                                <select name="categories[]" id="category" class="form-control" multiple>
-                                    @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}" @selected($product->categories->contains($category))>
-                                            {{ $category->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        {{--  {{ $category->id == $product->category_id ? 'selected' : '' }} --}}
+
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Quantity</label>
@@ -108,20 +111,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">Taxation</label>
-                                <input type="text" name="tax" value="{{ $product->tax }}"
-                                    class="form-control @error('tax') is-invalid @enderror" placeholder=" tax price..."
-                                    autofocus autocomplete="tax">
-                                @error('tax')
-                                    <div class="invalid-feedback">
-                                        <strong>{{ $message }}</strong>
-                                    </div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Status</label>
                                 <select name="status" id="status" class="form-control">
@@ -132,7 +122,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Trending</label>
                                 <select name="trending" id="trending" class="form-control">
@@ -179,7 +169,7 @@
     </div>
 @endsection
 
-@section('js')
+{{-- @section('js')
     <script>
         $(document).ready(function() {
             $('#category').select2();
@@ -200,4 +190,4 @@
             margin-right: 2px;
         }
     </style>
-@endsection
+@endsection --}}
