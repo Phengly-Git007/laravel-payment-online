@@ -7,7 +7,7 @@
                       class="fas fa-solid fa-backward"></i> </a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-              <a href="{{ url('/') }}" class="nav-link">Home</a>
+              <a href="{{ url('/') }}" class="nav-link">Home Page</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
               <a href="{{ route('categories.index') }}" class="nav-link">Categories</a>

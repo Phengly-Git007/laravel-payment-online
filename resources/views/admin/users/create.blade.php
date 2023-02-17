@@ -11,8 +11,8 @@
 
 
 @section('content')
-    <div class="container">
-        <div class="card">
+    <div class="container-fluid px-3">
+        <div class="card shadow" style="background-color: rgb(229, 237, 238)">
             <div class="card-header">
                 <span>Form Create New User <a href="{{ route('users.index') }}" class="float-right">Back To User</a></span>
             </div>
@@ -42,7 +42,7 @@
                     <div class="form-group">
                         <label for="">Password</label>
                         <input type="password" name="password" class="form-control @error('password') is-invalid @enderror "
-                            placeholder="password" autocomplete="new-password">
+                            placeholder="password">
                         @error('password')
                             <div class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -50,15 +50,11 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="">Password</label>
-                        <input type="password" id="password-confirm" name="password_confirmation" class="form-control"
-                            placeholder="comfirm password" autocomplete="new-password">
-                    </div>
-                    <div class="form-group">
                         <label for="">User Role</label>
-                        <select name="role" id="role" class="form-control">
-                            <option value="2" {{ old('role') === 2 ? 'selected' : '' }}>User Register</option>
-                            <option value="1" {{ old('role') === 1 ? 'selected' : '' }}>Admin Dashboard</option>
+                        <select name="role" class="form-control">
+                            <option value="">Select User Role</option>
+                            <option value="0">User Register</option>
+                            <option value="1">Admin Dashboard</option>
                         </select>
                     </div>
                     <div class="float-right">
