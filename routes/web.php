@@ -79,7 +79,8 @@ Route::middleware(['auth'])->group(function(){
     Route::post('place-order-product',[CheckoutController::class,'placeOrderProduct']);
     Route::get('my-orders',[UserController::class,'myOrder']);
     Route::get('view-orders/{id}',[UserController::class,'viewOrder']);
-    Route::get('change-password',[UserController::class,'changePassword']);
+    Route::get('password',[UserController::class,'password']);
+    Route::post('change-password',[UserController::class,'changePassword']);
     // rating
 
     Route::post('add-product-rating',[RatingController::class,'addProductRating']);

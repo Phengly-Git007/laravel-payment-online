@@ -19,13 +19,21 @@
                     <div class="card-body">
                         <h6><b>User Information</b></h6>
                         <hr>
-                        <div class="p-2">UserName : <b>{{ $orders->name }}</b></div>
-                        <div class="p-2">Email : <b>{{ $orders->email }}</b></div>
-                        <div class="p-2">Phone : <b>{{ $orders->phone }}</b></div>
-                        <div class="p-2">Address : <b>{{ $orders->address1 }}, {{ $orders->address2 }}</b></div>
-                        <div class="p-2">City : <b>{{ $orders->city }}</b></div>
-                        <div class="p-2">Country : <b>{{ $orders->country }}</b></div>
-                        <div class="p-2">Pincode : <b>{{ $orders->pincode }}</b></div>
+                        <label>UserName : <b>{{ $orders->name ? $orders->name : '' }}</b></label>
+                        <br>
+                        <label>Email : <b>{{ $orders->email ? $orders->email : '' }}</b></label>
+                        <br>
+                        <label>Phone : <b>{{ $orders->phone ? $orders->phone : '' }}</b></label>
+                        <br>
+                        <label>Address :<b>{{ $orders->address1 ? $orders->address1 : '' }},
+                                {{ $orders->address2 ? $orders->address2 : '' }}</b>
+                        </label>
+                        <br>
+                        <label>City : <b>{{ $orders->city ? $orders->city : '' }}</b></label>
+                        <br>
+                        <label>Country : <b>{{ $orders->country ? $orders->country : '' }}</b></label>
+                        <br>
+                        <label>Pincode : <b>{{ $orders->pincode ? $orders->pincode : '' }}</b></label>
                     </div>
                 </div>
             </div>

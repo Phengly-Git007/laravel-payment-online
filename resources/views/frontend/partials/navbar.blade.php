@@ -54,7 +54,7 @@
 
                                 <div class="dropdown-menu" aria-labelledby="dropdown01">
                                     <a class="dropdown-item" href="{{ url('my-orders') }}">My Order</a>
-                                    <a class="dropdown-item" href="{{ url('change-password') }}">Password</a>
+                                    <a class="dropdown-item" href="{{ url('password') }}">Password</a>
                                     <a class="dropdown-item"
                                         href="{{ url('/logout') }}"onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
