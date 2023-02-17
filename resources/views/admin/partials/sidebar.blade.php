@@ -72,6 +72,15 @@
                      </a>
                  </li>
 
+                 <li class="nav-item">
+                     <a href="{{ route('settings.index') }}" class="nav-link @yield('setting')">
+                         <i class="nav-icon fas fa-users"></i>
+                         <p>
+                             Settings
+                         </p>
+                     </a>
+                 </li>
+
                  <li class="nav-item ">
                      <a href="{{ route('logout') }}" class="nav-link "
                          onclick="event.preventDefault();

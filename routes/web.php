@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -106,4 +107,6 @@ Route::middleware(['auth','admin'])->group(function (){
     Route::get('invoice-orders/{order_id}',[OrderController::class,'viewInvoice']);
     Route::get('/generate-orders/{order_id}',[OrderController::class,'generateInvoice']);
     Route::resource('users',AdminUserController::class);
+    Route::get('settings',[SettingController::class,'index'])->name('settings.index');
+    Route::post('settings',[SettingController::class,'store'])->name('settings.store');
 });

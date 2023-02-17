@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-gray">
     <div class="container mt-0">
         <a class="navbar-brand" href="{{ url('/') }}"><b>{{ config('app.name') }}</b></a>
-        <b><i class="fa fa-phone"></i> +885016629629</b>
+        <b><i class="fa fa-phone"></i> + {{ config('app.phone') }}</b>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item active">
