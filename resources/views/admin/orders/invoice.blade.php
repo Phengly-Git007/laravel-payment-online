@@ -99,7 +99,7 @@
                         </div>
                     </div>
                     <div class=" text-center" style="font-size: 17px">
-                        Thank For Shopping <b>eoPays</b> Store.
+                        Thank For Choosing <strong>{{ config('app.name') }}</strong> Store.
                     </div>
                 </div>
             </div>

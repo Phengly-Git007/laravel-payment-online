@@ -59,16 +59,16 @@
                         <div class="card-footer  ">
                             <a href="{{ url('checkout') }}" class="btn btn-warning float-end ms-5 me-5"><i
                                     class="fas fa-check"></i>
-                                Checkout Page
+                                @lang('app.checkout_page')
                             </a>
-                            <h6 class="float-end  mt-2"><b>Total Price : $ {{ $total }}</b></h6>
+                            <h6 class="float-end  mt-2"><b>@lang('app.total_price') : $ {{ $total }}</b></h6>
 
                         </div>
                     @else
                         <div class="card-body text-center">
-                            <h5>Your <i class="fa fa-shopping-cart"></i> Cart Is Empty.
-                                <a href="{{ url('category') }}" class="btn btn-outline-warning ">Back To
-                                    Shopping.</a>
+                            <h5> <i class="fa fa-shopping-cart"></i> @lang('app.empty_cart')
+                                <a href="{{ url('category') }}" class="btn btn-outline-warning float-end ">
+                                    @lang('app.back_shopping')</a>
                             </h5>
                         </div>
                     @endif

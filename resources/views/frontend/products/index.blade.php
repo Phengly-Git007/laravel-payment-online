@@ -13,7 +13,7 @@
     <div class="container py-2">
         <div class="row">
             <div class="col-md-6">
-                Display All Products Item
+                @lang('app.display_all_product')
             </div>
             <div class="col-md-6 mb-3 ">
                 @include('frontend.partials.search-form')
@@ -24,8 +24,8 @@
                         <div class="col-md-3 mb-3">
                             <div class="card shadow">
                                 <a href="{{ url('product-details/' . $product->category->slug . '/' . $product->slug) }}">
-                                    <img src="{{ Storage::url($product->image) }}"
-                                        style="margin-left: 50px;margin-top: 5px; margin-bottom: 0px" alt="image"
+                                    <img src="{{ Storage::url($product->image) }}" class="img-scal"
+                                        style="margin-left: 50px;margin-top: 5px; margin-bottom: 0px; " alt="image"
                                         width="200px" height="200px">
                                     <div class="card-body text-center mb-1" style="font-size: 15px">
                                         {{ $product->name }} <br>

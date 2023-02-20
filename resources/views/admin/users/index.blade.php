@@ -4,11 +4,11 @@
 @endsection
 
 @section('header')
-    All User Management
+    @lang('admin.all_user')
 @endsection
 
 @section('action')
-    <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> New User</a>
+    <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary"> <i class="fas fa-plus"></i> @lang('admin.new')</a>
 @endsection
 
 @section('user')
@@ -29,7 +29,7 @@
                         <div class="col-md-3 mt-2">
                             <br />
                             <button type="submit" class="btn btn-warning mb-1"><i class="fas fa-search"></i>
-                                Search
+                                @lang('admin.search')
                             </button>
                         </div>
                     </div>
@@ -67,14 +67,14 @@
                                 <td>{{ date('d-M-Y', strtotime($user->created_at)) }}</td>
                                 <td>
                                     <a href="{{ route('users.edit', $user) }}" class="btn btn-xs btn-info"><i
-                                            class="fas fa-eye"></i> Update</a>
+                                            class="fas fa-eye"></i> @lang('admin.edit')</a>
                                     <a class="btn btn-xs">
                                         <form action="{{ route('users.destroy', $user) }}" method="POST"
                                             onsubmit="return confirm('Are you sure ?')">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btn-xs btn-danger"><i
-                                                    class="fas fa-trash"></i> Delete</button>
+                                                    class="fas fa-trash"></i> @lang('admin.delete')</button>
                                         </form>
                                     </a>
                                 </td>

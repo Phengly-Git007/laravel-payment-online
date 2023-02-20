@@ -28,7 +28,7 @@
                         <div class="col-md-3 mt-2">
                             <br />
                             <button type="submit" class="btn btn-warning mb-1"><i class="fas fa-search"></i>
-                                Search Order By Filter
+                                @lang('admin.search')
                             </button>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                     <td>{{ date('d-M-Y', strtotime($order->created_at)) }}</td>
                                     <td>
                                         <a href="{{ url('orders-details/' . $order->id) }}" class="btn btn-xs btn-info"> <i
-                                                class="fas fa-eye"></i> Detail</a>
+                                                class="fas fa-eye"></i> @lang('admin.detail')</a>
                                     </td>
                                 </tr>
                             @endforeach

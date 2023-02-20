@@ -14,6 +14,7 @@ use App\Http\Controllers\Frontend\RatingController;
 use App\Http\Controllers\Frontend\ReviewController;
 use App\Http\Controllers\Frontend\UserController;
 use App\Http\Controllers\Frontend\WishlistController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -33,8 +34,14 @@ Route::post('search-product',[FrontendController::class,'searchProduct']);
 
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home',[FrontendController::class,'index']);
+
+// setlocalization
+
+Route::post('set-locale',[HomeController::class,'setLocalization'])->name('locale');
+
+// endSetlocalization
 
 // cart route
 Route::post('add-to-cart',[CartController::class,'addProductToCart']);
@@ -50,28 +57,6 @@ Route::post('remove-from-wishlist',[WishlistController::class,'removeProductFrom
 Route::get('load-cart-quantity',[CartController::class,'cartCountQuantity']);
 Route::get('load-wishlist-quantity',[WishlistController::class,'wishlistCountQuantity']);
 
-// reset forget password
-
-// Route::get('/forgot-password', function () {
-//     return view('auth.forgot-password');
-// })->middleware('guest')->name('password.request');
-
-// Route::post('/forgot-password', function (Request $request) {
-//     $request->validate(['email' => 'required|email']);
-//     $status = Password::sendResetLink(
-//         $request->only('email')
-//     );
-
-//     return $status === Password::RESET_LINK_SENT
-//                 ? back()->with(['status' => __($status)])
-//                 : back()->withErrors(['email' => __($status)]);
-// })->middleware('guest')->name('password.email');
-
-// Route::get('/reset-password/{token}', function ($token) {
-//     return view('auth.reset-password', ['token' => $token]);
-// })->middleware('guest')->name('password.reset');
-
-// end Reset Password
 
 Route::middleware(['auth'])->group(function(){
     Route::get('view-wishlist-item',[WishlistController::class,'viewWishlistItem']);

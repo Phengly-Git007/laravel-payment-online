@@ -6,11 +6,11 @@
     active
 @endsection
 @section('header')
-    All Categories
+    @lang('admin.all_cate')
 @endsection
 
 @section('action')
-    <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary">Add New Category</a>
+    <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> @lang('admin.new_cate')</a>
 @endsection
 
 @section('content')
@@ -53,14 +53,14 @@
                                 <td>{{ date('d-M-Y', strtotime($category->created_at)) }}</td>
                                 <td>
                                     <a href="{{ route('categories.edit', $category) }}" class="btn btn-xs btn-info"><i
-                                            class="fas fa-eye"></i> Update</a>
+                                            class="fas fa-eye"></i> @lang('admin.edit')</a>
                                     <a class="btn btn-xs">
                                         <form action="{{ route('categories.destroy', $category) }}" method="POST"
                                             onsubmit="return confirm('Are you sure delete, {{ $category->name }} ?')">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btn-xs btn-danger"><i
-                                                    class="fas fa-trash"></i> Delete</button>
+                                                    class="fas fa-trash"></i> @lang('admin.delete')</button>
                                         </form>
                                     </a>
                                 </td>

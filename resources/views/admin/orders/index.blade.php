@@ -3,7 +3,7 @@
     All Order Management
 @endsection
 @section('header')
-    All Order Management
+    @lang('admin.all_order')
 @endsection
 
 @section('order')
@@ -12,9 +12,9 @@
 
 @section('action')
     <a href="" class="btn btn-sm btn-info mr-2 "><i class="fas fa-solid fa-file-excel"></i>
-        Export To Excel</a>
+        @lang('admin.export') Excel</a>
     <a href="" class="btn btn-sm btn-primary "><i class="fas fa-regular fa-file-pdf"></i>
-        Export To
+        @lang('admin.export')
         Pdf</a>
 @endsection
 
@@ -49,7 +49,7 @@
                         <div class="col-md-3 mt-0">
                             <br />
                             <button type="submit" class="btn btn-sm btn-warning mb-1"><i class="fas fa-search"></i>
-                                Search By Filter
+                                @lang('admin.search')
                             </button>
                         </div>
                     </div>
@@ -88,35 +88,25 @@
                                             {{ $order->status ? 'Completed' : 'Pending' }}
                                         </span>
                                     </td>
-                                    <td>{{ $order->created_at }}</td>
-                                    <td>{{ $order->updated_at }}</td>
+                                    <td>{{ date('d-M-Y', strtotime($order->created_at)) }}</td>
+                                    <td>{{ date('d-M-Y', strtotime($order->updated_at)) }}</td>
                                     <td>
                                         <a href="{{ url('orders-details/' . $order->id) }}"
-                                            class="btn btn-xs btn-outline-info mr-1"><i class="fas fa-regular fa-pen"></i>
-                                            Edit </a>
-                                        {{-- <a href="{{ url('delete-orders/' . $order->id) }}"
-                                            class="btn btn-xs btn-outline-danger mr-1">
-                                            <i class="fas fa-trash"></i>
-                                            Delete
-                                        </a> --}}
+                                            class="btn btn-xs btn-outline-info "><i class="fas fa-regular fa-pen"></i>
+                                            @lang('admin.edit')
+                                        </a>
                                         <a class="btn btn-xs">
                                             <form action="{{ route('orders.delete', $order->id) }}" method="POST"
                                                 onsubmit="return confirm('Are you sure delete, {{ $order->name }} ?')">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button type="submit" class="btn btn-xs btn-outline-danger"><i
-                                                        class="fas fa-trash"></i> Delete</button>
+                                                        class="fas fa-trash"></i> @lang('admin.delete')</button>
                                             </form>
                                         </a>
-                                        <a href="{{ url('invoice-orders/' . $order->id) }}" target="_blank"
-                                            class="btn btn-xs btn-outline-primary mr-1"><i
-                                                class="fas fa-solid fa-eye-slash"></i>
-                                            View
-                                        </a>
                                         <a href="{{ url('generate-orders/' . $order->id) }}"
-                                            class="btn btn-xs btn-outline-secondary mr-1"><i
-                                                class="fas fa-regular fa-file-pdf"></i>
-                                            Pdf
+                                            class="btn btn-xs btn-outline-secondary "><i
+                                                class="fas fa-regular fa-file-pdf"></i> @lang('admin.pdf')
                                         </a>
                                     </td>
                                 </tr>

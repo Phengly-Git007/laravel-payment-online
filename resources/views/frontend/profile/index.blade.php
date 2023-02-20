@@ -13,30 +13,30 @@
     <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
 </head>
 
-<body class="hold-transition register-page">
+<body class="hold-transition register-page" style="background-color: rgb(223, 252, 248)">
     <div class="register-box">
-        <div class="card card-outline card-primary">
+        <div class="card card-outline card-warning">
             <div class="card-header text-center">
                 <h4>
-                    <a href="{{ url('/') }}" style="color: black">
-                        <b>{{ config('app.name') }}</b>
-                        <span> <i class="fa fa-house-user"></i></span>
+                    <a href="{{ url('/') }}" style="display: inline;">
+                        {{ config('app.name') }}
+                        <span> <i class="fa fa-home"></i></span>
                     </a>
                 </h4>
             </div>
             <div class="card-body">
-                <form action="{{ route('register') }}" method="POST">
+                <form action="{{ url('change-password') }}" method="POST">
                     @csrf
                     <div class="input-group mb-3">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" required autocomplete="email"
-                            placeholder="Email">
+                        <input id="password" type="password"
+                            class="form-control @error('current_password') is-invalid @enderror" name="current_password"
+                            required autocomplete="new-password" placeholder="Current Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                                <span class="fas fa-lock"></span>
                             </div>
                         </div>
-                        @error('email')
+                        @error('current_password')
                             <div class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </div>
@@ -57,22 +57,34 @@
                             </div>
                         @enderror
                     </div>
-
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-success btn-block">Register</button>
+                    <div class="input-group mb-3">
+                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
+                            required autocomplete="new-password" placeholder="Confirm Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
                     </div>
+                    <button type="submit" class="btn btn-info float-right"> <i class="fa fa-lock"></i> Change
+                        Password</button>
+                </form>
             </div>
-            </form>
-
-
-
         </div>
-    </div>
     </div>
 
     <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('admin/dist/js/adminlte.min.js') }}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @if (session('error'))
+        <script>
+            swal({
+                text: "{{ session('error') }}",
+                icon: "error",
+            });
+        </script>
+    @endif
 </body>
 
 </html>

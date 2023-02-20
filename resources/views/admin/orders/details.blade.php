@@ -4,7 +4,7 @@
 @endsection
 
 @section('header')
-    View Order Details
+    @lang('admin.order_detail')
 @endsection
 
 @section('order')
@@ -12,27 +12,16 @@
 @endsection
 
 @section('action')
-    <a href="{{ url('orders') }}" class="btn btn-sm btn-warning">Back To Orders</a>
+    <a href="{{ url('orders') }}" class="btn btn-sm btn-warning">@lang('admin.turn_back')</a>
+    <a href="{{ url('invoice-orders/' . $orders->id) }}" target="_blank" class="btn btn-sm btn-primary "><i
+            class="fas fa-solid fa-eye-slash"></i> @lang('admin.view_detail')
+
+    </a>
 @endsection
 
 @section('content')
     <div class="container-fluid px-3">
         <div class="row">
-            {{-- <div class="col-md-5">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <h6><b>User Information</b></h6>
-                        <hr>
-                        <div class="p-2">UserName : <b>{{ $orders->name }}</b></div>
-                        <div class="p-2">Email : <b>{{ $orders->email }}</b></div>
-                        <div class="p-2">Phone : <b>{{ $orders->phone }}</b></div>
-                        <div class="p-2">Address : <b>{{ $orders->address1 }}, {{ $orders->address2 }}</b></div>
-                        <div class="p-2">City : <b>{{ $orders->city }}</b></div>
-                        <div class="p-2">Country : <b>{{ $orders->country }}</b></div>
-                        <div class="p-2">Pincode : <b>{{ $orders->pincode }}</b></div>
-                    </div>
-                </div>
-            </div> --}}
             <div class="col-md-12">
                 <div class="card shadow table-responsive shadow p-0" style="background-color: rgb(229, 237, 238)">
                     <div class="card-body">
@@ -90,7 +79,7 @@
                                         </select>
                                     </div>
                                     <div class="col-md-2">
-                                        <button type="submit" class="btn btn-success float-right ">Update Status
+                                        <button type="submit" class="btn btn-success float-right ">@lang('admin.update_status')
                                         </button>
                                     </div>
                                 </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('-', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -18,8 +18,16 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/owl.theme.default.min.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    {{-- <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> --}}
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+    {{-- font khmer --}}
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;700;900&family=Noto+Sans+Khmer:wght@400;700;900&family=Roboto&display=swap"
+        rel="stylesheet">
+
+    {{-- khmer font --}}
 
     @yield('css')
 </head>
@@ -59,6 +67,7 @@
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
+    {{-- search product by ui-autocomplete --}}
     <script>
         var getDataBySearch = [];
         $.ajax({
@@ -70,12 +79,12 @@
         });
 
         function startAutocomplete(getDataBySearch) {
-
             $("#search").autocomplete({
                 source: getDataBySearch
             });
         }
     </script>
+    {{-- sweetalert --}}
     @if (session('status'))
         <script>
             swal({

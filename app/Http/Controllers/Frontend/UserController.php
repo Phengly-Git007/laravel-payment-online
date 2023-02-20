@@ -24,7 +24,7 @@ class UserController extends Controller
     }
 
     public function password(){
-       return view('frontend.profile.password');
+       return view('frontend.profile.index');
     }
 
     public function changePassword(PasswordRequest $request){
@@ -33,7 +33,7 @@ class UserController extends Controller
         User::findOrFail(Auth::user()->id)->update([
             'password' => Hash::make($request->password),
           ]);
-            return redirect()->back()->with('status','Password updated successfully');
+            return redirect('/')->with('status','Password updated successfully');
       }
       else{
         return redirect()->back()->with('error','Current password does not match with old password');

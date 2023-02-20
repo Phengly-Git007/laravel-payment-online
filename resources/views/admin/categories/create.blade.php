@@ -9,8 +9,8 @@
         <div class="card" style="background-color: rgb(229, 237, 238)">
             <div class="card-header">
                 <h5>
-                    Create New Category
-                    <a href="{{ route('categories.index') }}" class="btn btn-sm btn-info float-right">Back To Categories</a>
+                    @lang('admin.new_cate')
+                    <a href="{{ route('categories.index') }}" class="btn btn-sm btn-info float-right">@lang('admin.turn_back')</a>
                 </h5>
             </div>
             <div class="card-body">
@@ -99,7 +99,8 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary float-right">Save Category</button>
+                    <button type="submit" class="btn btn-primary float-right"><i class="fas fa-save"></i>
+                        @lang('admin.save')</button>
                 </form>
             </div>
         </div>

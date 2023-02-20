@@ -74,7 +74,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="{{ Storage::url($products->image) }}" alt="product_image" class="w-100"
+                                <img src="{{ Storage::url($products->image) }}" alt="product_image" class="w-100 img-scal"
                                     width="300px" height="400px" />
                             </div>
                             <div class="col-md-8">
@@ -82,17 +82,17 @@
                                     <b>{{ $products->name }}</b>
                                     @if ($products->trending)
                                         <label class="float-end badge bg-danger" style="font-size: 12px;">
-                                            Trending
+                                            @lang('app.trending')
                                         </label>
                                     @else
                                         <label class="float-end badge bg-secondary" style="font-size: 12px;">
-                                            Normal
+                                            @lang('app.normal')
                                         </label>
                                     @endif
                                 </h5>
                                 <hr />
                                 <span class="badge bg-secondary mt-0">
-                                    Publish On :
+                                    @lang('app.publish') :
                                     {{ date('d-M-Y', strtotime($products->created_at)) }}
                                 </span>
                                 <div class="rated float-end">
@@ -107,37 +107,38 @@
                                     @endfor
                                     <span>
                                         @if ($ratings->count() > 0)
-                                            <b>{{ $ratings->count() }} Rating </b>
+                                            <b>{{ $ratings->count() }} @lang('app.rating') </b>
                                         @else
-                                            <b>No Rating</b>
+                                            @lang('app.no_rating')
                                         @endif
                                     </span>
                                 </div>
                                 <br><br>
-                                <label class="fw-semibold"><b>Selling Price : $ {{ $products->selling_price }}</b></label>
+                                <label class="fw-semibold"><b>@lang('app.sell_price') : $
+                                        {{ $products->selling_price }}</b></label>
                                 <span class="float-end">
                                     <button type="button" class="btn btn-secondary btn-sm py-0 px-2"
                                         style="border-radius: 10rem" data-bs-toggle="modal"
                                         data-bs-target="#exampleModal">
-                                        <i class="fa-regular fa fa-star"></i> Rating
+                                        <i class="fa-regular fa fa-star"></i> @lang('app.rating')
                                     </button>
                                     <a href="{{ url('add-product/' . $products->slug . '/review') }}"
                                         style="border-radius: 10rem" class="btn btn-primary btn-sm py-0 px-2">
-                                        <i class="fa-regular fa fa-comment"></i> Review
+                                        <i class="fa-regular fa fa-comment"></i> @lang('app.review')
                                     </a>
                                 </span>
                                 <p class="mt-2">{{ $products->short_description }}
                                 </p>
                                 <hr />
                                 @if ($products->quantity > 0)
-                                    <label class="badge bg-success"> {{ $products->quantity }} In Stock</label>
+                                    <label class="badge bg-success"> {{ $products->quantity }} @lang('app.in_stock')</label>
                                 @else
-                                    <label class="badge bg-danger">Out Of Stock</label>
+                                    <label class="badge bg-danger">@lang('app.out_stock')</label>
                                 @endif
                                 <div class="row mt-3">
                                     <div class="col-md-3">
                                         <input type="hidden" value="{{ $products->id }}" class="product_id">
-                                        <label class="quantity">Quantity</label>
+                                        <label class="quantity">@lang('app.quantity')</label>
                                         <div class="input-group text-center mb-3 mt-3" style="width: 120px">
                                             <button class="input-group-text decrement-quantity">-</button>
                                             <input type="text" name="quantity" value="1" readonly
@@ -149,17 +150,17 @@
                                         <br />
                                         @if ($products->quantity > 0)
                                             <button type="button" class="btn btn-info me-3 float-start addToCart">
-                                                Add To Cart <i class="fa fa-shopping-cart"></i>
+                                                @lang('app.add_cart') <i class="fa fa-shopping-cart"></i>
                                             </button>
                                         @endif
                                         <button type="button" class="btn btn-warning me-3 float-start addToWishlist">
-                                            Add To Wishlist <i class="fa fa-heart"></i>
+                                            @lang('app.add_wishlist') <i class="fa fa-heart"></i>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-12 px-5">
-                                <h6><b>Description</b></h6>
+                                <h6><b>@lang('app.description')</b></h6>
                                 <p class="mt-2 text-sm">{{ $products->description }}</p>
                             </div>
 

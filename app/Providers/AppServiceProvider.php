@@ -36,12 +36,12 @@ class AppServiceProvider extends ServiceProvider
         config([
             'settings' => $settings,
         ]);
-
         config(['app.name'=>config('settings.app_name')]);
         config(['app.phone'=>config('settings.phone')]);
         config(['app.email'=>config('settings.email')]);
         config(['app.currency_symbol'=>config('settings.currency_symbol')]);
         config(['app.location'=>config('settings.location')]);
+        config(['app.map_link'=>config('settings.map_link')]);
         config(['app.social_media'=>config('settings.social_media')]);
     }
 }

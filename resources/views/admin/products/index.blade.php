@@ -7,10 +7,10 @@
     active
 @endsection
 @section('header')
-    All Products
+    @lang('admin.all_product')
 @endsection
 @section('action')
-    <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> New Product</a>
+    <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary"><i class="fas fa-plus"></i> @lang('admin.new_product')</a>
 @endsection
 @section('content')
     <div class="container-fluid px-3">
@@ -33,7 +33,7 @@
                         <div class="col-md-3 mt-0">
                             <br />
                             <button type="submit" class="btn btn-warning mb-1"><i class="fas fa-search"></i>
-                                Search Product
+                                @lang('admin.search')
                             </button>
                         </div>
                     </div>
@@ -85,16 +85,17 @@
                                 <td>{{ date('d-M-Y', strtotime($product->created_at)) }}</td>
                                 <td>
                                     <a href="{{ route('products.show', $product) }}"
-                                        class="btn btn-xs btn-secondary mr-1"><i class="fas fa-eye"></i> Detail</a>
+                                        class="btn btn-xs btn-secondary mr-1"><i class="fas fa-eye"></i>
+                                        @lang('admin.detail')</a>
                                     <a href="{{ route('products.edit', $product) }}" class="btn btn-xs btn-info"> <i
-                                            class="fas fa-solid fa-pen"></i> Update</a>
+                                            class="fas fa-solid fa-pen"></i> @lang('admin.edit')</a>
                                     <a class="btn btn-xs">
                                         <form action="{{ route('products.destroy', $product) }}" method="POST"
                                             onsubmit="return confirm('Are you sure delete, {{ $product->name }} ?')">
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit" class="btn btn-xs btn-danger"><i
-                                                    class="fas fa-trash"></i> Delete</button>
+                                                    class="fas fa-trash"></i> @lang('admin.delete')</button>
                                         </form>
                                     </a>
                                 </td>

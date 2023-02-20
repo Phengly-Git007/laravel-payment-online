@@ -2,7 +2,7 @@
     @csrf
     <div class="input-group ">
         <input type="search" id="search" name="search_name" required class="form-control"
-            placeholder="Search Product...">
+            placeholder="@lang('app.search')">
         <button type="submit" class="input-group-text btn btn-warning"><i class="fa fa-search"></i></button>
     </div>
 </form>

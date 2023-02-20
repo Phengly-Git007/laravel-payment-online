@@ -5,7 +5,7 @@ a {
 
 body {
     background-color: rgb(243, 244, 246);
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto", "Noto Sans Khmer", sans-serif;
 }
 
 .card {
@@ -60,3 +60,18 @@ body {
     left: 10px;
     position: fixed;
 }
+
+.img-scal {
+    opacity: 1;
+}
+.img-scal:hover {
+    transform: scale(1, 1.25);
+}
+
+/* html,
+body,
+footer {
+    font-family: "Battambang", cursive;
+    font-family: "Noto Sans Khmer", sans-serif;
+    font-family: "Roboto", sans-serif;
+} */

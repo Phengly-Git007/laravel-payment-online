@@ -7,26 +7,65 @@
                       class="fas fa-solid fa-backward"></i> </a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-              <a href="{{ url('/') }}" class="nav-link">Home Page</a>
+              <a href="{{ url('/') }}" class="nav-link"> <i class="nav-icon fas fa-home"></i> @lang('admin.home')</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-              <a href="{{ route('categories.index') }}" class="nav-link">Categories</a>
+              <a href="{{ route('categories.index') }}" class="nav-link">
+                  <i class="nav-icon fas fa-folder-plus"></i> @lang('admin.categories')</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-              <a href="{{ route('products.index') }}" class="nav-link">Product</a>
+              <a href="{{ route('products.index') }}" class="nav-link"><i class="nav-icon fas fa-folder-plus"></i>
+                  @lang('admin.product')</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-              <a href="{{ route('orders.index') }}" class="nav-link">Orders</a>
+              <a href="{{ route('orders.index') }}" class="nav-link"><i class="nav-icon fas fa-cart-plus"></i>
+                  @lang('admin.order')</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-              <a href="{{ route('users.index') }}" class="nav-link">Users</a>
+              <a href="{{ route('users.index') }}" class="nav-link"> <i class="nav-icon fas fa-users"></i>
+                  @lang('admin.user')</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-              <a href="{{ route('dashboard.index') }}" class="nav-link">Dashboard</a>
+              <a href="{{ route('dashboard.index') }}" class="nav-link"> <i class="nav-icon fas fa-tachometer-alt"></i>
+                  @lang('admin.dashboard')</a>
+          </li>
+
+          <li class="nav-item d-none d-sm-inline-block">
+              <a href="{{ route('settings.index') }}" class="nav-link">
+                  <i class="nav-icon fas fa-solid fa-wrench"></i>
+                  @lang('admin.setting')
+              </a>
           </li>
       </ul>
 
       <ul class="navbar-nav ml-auto">
+
+          <a class="nav-link" data-toggle="dropdown" href="#">
+              <img src="{{ asset('images/flag') }}/{{ app()->getLocale() }}.png" alt="{{ app()->getLocale() }}"
+                  style="height:1.3rem; top:-2px;position:relative">
+              <span class="badge badge-secondary navbar-badge">{{ app()->getLocale() }}</span>
+          </a>
+          <form action="{{ route('locale') }}" method="POST"
+              class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              @csrf
+              <span class="dropdown-item dropdown-header"><strong>Localization</strong></span>
+              <div class="dropdown-divider"></div>
+              <button type="submit" name="en" value="en" class="dropdown-item">
+                  <img src="{{ asset('images/flag/en.png') }}" alt="en" class="mr-2"
+                      style="height:1.3rem; top:-2px;position:relative">
+                  english
+                  <span class="float-right text-muted text-sm">English</span>
+              </button>
+              <div class="dropdown-divider"></div>
+              <button type="submit" name="kh" value="kh" class="dropdown-item">
+                  <img src="{{ asset('images/flag/kh.png') }}" alt="en" class="mr-2"
+                      style="height:1.3rem; top:-2px;position:relative">
+                  khmer
+                  <span class="float-right text-muted text-sm">Khmer</span>
+              </button>
+          </form>
+          </li>
+
           <li class="nav-item dropdown">
               <a class="nav-link" data-toggle="dropdown" href="#">
                   <i class="far fa-comments"></i>

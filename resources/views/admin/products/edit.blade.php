@@ -9,8 +9,8 @@
         <div class="card" style="background-color: rgb(229, 237, 238)">
             <div class="card-header">
                 <h5>
-                    Update Product
-                    <a href="{{ route('products.index') }}" class="btn btn-sm btn-info float-right">Back To Products</a>
+                    @lang('admin.update_product')
+                    <a href="{{ route('products.index') }}" class="btn btn-sm btn-info float-right">@lang('admin.turn_back')</a>
                 </h5>
             </div>
             <div class="card-body">
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <span for=""><b>Category</b></span>
+                                <span for=""><b>@lang('admin.pro_cate')</b></span>
                                 <select name="category_id" id="category" class="form-control">
                                     <option value="">Select Category</option>
                                     @foreach ($categories as $category)
@@ -47,7 +47,7 @@
                         {{--  {{ $category->id == $product->category_id ? 'selected' : '' }} --}}
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Product Name</label>
+                                <label for="">@lang('admin.pro_nme')</label>
                                 <input type="text" name="name" value="{{ $product->name }}"
                                     class="form-control @error('name') is-invalid @enderror" placeholder="product name..."
                                     autofocus autocomplete="name">
@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Product Slug</label>
+                                <label for="">@lang('admin.pro_slug')</label>
                                 <input type="text" name="slug" value="{{ $product->slug }}"
                                     class="form-control @error('slug') is-invalid @enderror" placeholder="product slug..."
                                     autofocus autocomplete="slug">
@@ -74,7 +74,7 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="">Quantity</label>
+                                <label for="">@lang('admin.qty')</label>
                                 <input type="text" name="quantity" value="{{ $product->quantity }}"
                                     class="form-control @error('quantity') is-invalid @enderror" placeholder=" quantity..."
                                     autofocus autocomplete="quantity">
@@ -87,7 +87,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="">Original Price</label>
+                                <label for="">@lang('admin.original_price')</label>
                                 <input type="text" name="original_price" value="{{ $product->original_price }}"
                                     class="form-control @error('original_price') is-invalid @enderror"
                                     placeholder=" original price..." autofocus autocomplete="original_price">
@@ -100,7 +100,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="">Selling Price</label>
+                                <label for="">@lang('admin.sell_price')</label>
                                 <input type="text" name="selling_price" value="{{ $product->selling_price }}"
                                     class="form-control @error('selling_price') is-invalid @enderror"
                                     placeholder=" selling price..." autofocus autocomplete="selling_price">
@@ -113,7 +113,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Status</label>
+                                <label for="">@lang('admin.status')</label>
                                 <select name="status" id="status" class="form-control">
                                     <option value="0" {{ old('status', $product->status) === 0 ? 'selected' : '' }}>
                                         Active</option>
@@ -124,7 +124,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Trending</label>
+                                <label for="">@lang('admin.trending')</label>
                                 <select name="trending" id="trending" class="form-control">
                                     <option value="0"
                                         {{ old('trending', $product->trending) === 0 ? 'selected' : '' }}>Hidden</option>
@@ -135,7 +135,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="">Short Description</label>
+                                <label for="">@lang('admin.short_desc')</label>
                                 <input type="text" name="short_description" value="{{ $product->short_description }}"
                                     class="form-control @error('short_description') is-invalid @enderror "
                                     placeholder="short description...">
@@ -148,7 +148,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="">Description</label>
+                                <label for="">@lang('admin.desc')</label>
                                 <textarea name="description" cols="30" rows="3"
                                     class="form-control @error('description') is-invalid @enderror " placeholder="description...">
                                     {{ $product->description }}
@@ -161,8 +161,8 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary float-right"> <i class="fas fa-save"></i> Update
-                        Product</button>
+                    <button type="submit" class="btn btn-primary float-right"> <i class="fas fa-save"></i>
+                        @lang('admin.update_product')</button>
                 </form>
             </div>
         </div>
