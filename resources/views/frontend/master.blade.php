@@ -23,8 +23,8 @@
 
     {{-- font khmer --}}
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;700;900&family=Noto+Sans+Khmer:wght@400;700;900&family=Roboto&display=swap"
+
+    <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;700;900&family=Roboto&display=swap"
         rel="stylesheet">
 
     {{-- khmer font --}}
@@ -37,7 +37,7 @@
     <div class="content">
         @yield('content')
         <div class="whatapp-chat float-end">
-            <a href=" https://wa.me/+88516629629?text=I'm%20interested%20in%20your%20product%20for%20sale"
+            <a href=" https://wa.me/+885{{ config('app.phone') }}?text=I'm%20interested%20in%20your%20product%20for%20sale"
                 target="_blank">
                 <img src="{{ asset('images/whatsapp_logo.png') }}" alt="whatapp-logo" width="75px" height="75px">
             </a>

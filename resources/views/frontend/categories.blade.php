@@ -12,7 +12,7 @@
     </div>
     <div class="container py-2">
         <div class="row">
-            <div class="col-md-6">@lang('app.show_by_filter')</div>
+            <div class="col-md-6 "><span class="shadow">@lang('app.show_by_filter')</span></div>
             <div class="col-md-6 mb-3">
                 @include('frontend.partials.search-form')
             </div>

@@ -19,14 +19,14 @@
                             <table class="table text-nowrap">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Tracking Number</th>
-                                        <th>Pincode</th>
-                                        <th>Total Price</th>
-                                        <th>Payment Method</th>
-                                        <th>Status</th>
-                                        <th>Order Date</th>
-                                        <th>Action</th>
+                                        <th>@lang('app.id')</th>
+                                        <th>@lang('app.traking_no')</th>
+                                        <th>@lang('app.code')</th>
+                                        <th>@lang('app.total_price')</th>
+                                        <th>@lang('app.pay_methode')</th>
+                                        <th>@lang('app.status')</th>
+                                        <th>@lang('app.order_date')</th>
+                                        <th>@lang('app.action')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -46,7 +46,7 @@
                                             <td>
                                                 <a href="{{ url('view-orders/' . $order->id) }}"
                                                     class="btn btn-sm btn-info">
-                                                    <i class="fa fa-eye"></i> View Details</a>
+                                                    <i class="fa fa-eye"></i> @lang('app.detail')</a>
                                             </td>
                                         </tr>
                                     @endforeach

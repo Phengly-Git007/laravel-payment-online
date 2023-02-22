@@ -29,7 +29,7 @@
                             <div class="col-md-2 my-auto">
                                 <input type="hidden" class="product_id" value="{{ $wishlist->product_id }}">
                                 @if ($wishlist->products->quantity >= $wishlist->product_quantity)
-                                    <label for="">Quantity</label>
+                                    <label for="">@lang('app.quantity')</label>
                                     <div class="input-group text-center mb-3 " style="width: 120px">
                                         <button class="input-group-text decrement-quantity">-</button>
                                         <input type="text" name="quantity" value="1" readonly
@@ -37,17 +37,16 @@
                                         <button class="input-group-text increment-quantity">+</button>
                                     </div>
                                 @else
-                                    <label class="badge bg-danger">Out Of Stock</label>
+                                    <label class="badge bg-danger">@lang('app.out_stock')</label>
                                 @endif
                             </div>
                             <div class="col-md-2 my-auto">
                                 <button class="btn btn-outline-primary addToCart"><i class="fas fa-shopping-cart"></i>
-                                    Add To Cart
+                                    @lang('app.add_cart')
                                 </button>
                             </div>
                             <div class="col-md-2 my-auto">
                                 <button class="btn btn-outline-danger removeFromWishlist"><i class="fas fa-trash"></i>
-                                    Delete
                                 </button>
                             </div>
                         </div>
@@ -55,9 +54,8 @@
                 </div>
             @else
                 <div class="card-body text-center">
-                    <h5>Your <i class="fa fa-heart"></i> Wishlist Is Empty.
-                        <a href="{{ url('category') }}" class="btn btn-outline-warning ">Back To
-                            Shopping.</a>
+                    <h5><i class="fa fa-heart"></i> @lang('app.empty_wishlist')
+                        <a href="{{ url('category') }}" class="btn btn-outline-warning float-end">@lang('app.back_shopping')</a>
                     </h5>
                 </div>
             @endif

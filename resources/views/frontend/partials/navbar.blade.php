@@ -5,23 +5,29 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item active">
-                    <a class="nav-link " href="{{ url('/') }}">@lang('app.home') </a>
+                    <a class="nav-link " href="{{ url('/') }}">
+                        @lang('app.home')
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('category') }}">@lang('app.categories')</a>
+                    <a class="nav-link" href="{{ url('category') }}">
+                        @lang('app.categories')
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('product') }}">@lang('app.product')</a>
+                    <a class="nav-link" href="{{ url('product') }}">
+                        @lang('app.product')
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('view-wishlist-item') }}">
-                        @lang('app.wishlist') <span class="badge badge-pill bg-secondary wishlist-count"
-                            style="border-radius: 0.5rem">0</span></a>
+                        @lang('app.wishlist') <span class="badge badge-pill bg-primary wishlist-count"
+                            style="border-radius: 1rem;">0</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('view-cart-item') }}">
                         @lang('app.cart') <span class="badge badge-pill bg-danger cart-count"
-                            style="border-radius: 0.5rem">0</span>
+                            style="border-radius: 1rem">0</span>
                     </a>
                 </li>
 
@@ -34,11 +40,20 @@
                                     {{ Auth::user()->name }} <i class="fa fa-user"></i>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                    <a class="dropdown-item" href="{{ url('/dashboard') }}">@lang('app.dashboard')</a>
+                                    <a class="dropdown-item" href="{{ url('/dashboard') }}">
+                                        <i class="fa fa-solid fa-solar-panel"></i>
+                                        @lang('app.dashboard')
+                                    </a>
+                                    <a class="dropdown-item" href="{{ url('password') }}">
+                                        <i class="fa fa-solid fa-lock"></i>
+                                        @lang('app.password')
+                                    </a>
                                     <a class="dropdown-item"
                                         href="{{ url('/logout') }}"onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                                        @lang('app.logout')</a>
+                                        <i class="fa fa-solid fa-lock-open"></i>
+                                        @lang('app.logout')
+                                    </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -53,11 +68,17 @@
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="dropdown01">
-                                    <a class="dropdown-item" href="{{ url('my-orders') }}">@lang('app.my_order')</a>
-                                    <a class="dropdown-item" href="{{ url('password') }}">@lang('app.password')</a>
+                                    <a class="dropdown-item" href="{{ url('my-orders') }}">
+                                        <i class="fa fa-solid fa-folder-plus"></i>
+                                        @lang('app.my_order')
+                                    </a>
+                                    <a class="dropdown-item" href="{{ url('password') }}">
+                                        <i class="fa fa-solid fa-lock"></i>
+                                        @lang('app.password')</a>
                                     <a class="dropdown-item"
                                         href="{{ url('/logout') }}"onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-solid fa-lock-open"></i>
                                         @lang('app.logout')</a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
@@ -66,9 +87,16 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item "><a class="nav-link" href="{{ url('/login') }}">@lang('app.login')</a>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ url('/login') }}">
+                                @lang('app.login') <i class="fa fa-door-open"></i>
+                            </a>
                         </li>
-                        <li class="nav-item "><a class="nav-link" href="{{ url('/register') }}">@lang('app.register')</a></li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ url('/register') }}">
+                                @lang('app.register') <i class="fa fa-address-card"></i>
+                            </a>
+                        </li>
                     @endif
                     @endif
 

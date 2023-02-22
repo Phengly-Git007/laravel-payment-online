@@ -18,7 +18,7 @@
                 <div class="col-md-7">
                     <div class="card">
                         <div class="card-body">
-                            <h6><b>Information Details</b></h6>
+                            <h6><b>@lang('app.user_info')</b></h6>
                             <div class="row">
                                 <div class="col-md-12">
                                     <input type="text" name="name" value="{{ Auth::user()->name }}" readonly
@@ -117,13 +117,13 @@
                 <div class="col-md-5">
                     <div class="card">
                         <div class="card-body">
-                            <h6><b>Order Details</b></h6>
+                            <h6><b>@lang('app.order_details')</b></h6>
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <td>Name</td>
-                                        <td>Quantity</td>
-                                        <td>Price</td>
+                                        <td>@lang('app.name')</td>
+                                        <td>@lang('app.quantity')</td>
+                                        <td>@lang('app.price')</td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -148,7 +148,8 @@
                                     @endif
                                 </tbody>
                             </table>
-                            <div class="mb-2 px-3"><b>Total : <span class="float-end">$ {{ $total }}</span></b>
+                            <div class="mb-2 px-3"><b>@lang('app.total_price') : <span class="float-end">$
+                                        {{ $total }}</span></b>
                             </div>
 
                             <div class="row">

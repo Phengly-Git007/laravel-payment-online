@@ -46,7 +46,7 @@
                                                 $total += $cart->products->selling_price * $cart->product_quantity;
                                             @endphp
                                         @else
-                                            <label class="badge bg-danger">Out Of Stock, Try Again !</label>
+                                            <label class="badge bg-danger"> @lang('app.pro_out_stoct')!</label>
                                         @endif
                                     </div>
                                     <div class="col-md-2 my-auto">

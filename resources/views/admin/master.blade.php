@@ -23,15 +23,14 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;700;900&family=Noto+Sans+Khmer:wght@400;700;900&family=Roboto&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;700;900&family=Roboto&display=swap"
         rel="stylesheet">
 
     @yield('css')
 
     <style>
         body {
-            font-family: "Roboto", "Noto Sans Khmer", sans-serif;
+            font-family: "Roboto", "Battambang", sans-serif;
             font-size: 16px;
         }
     </style>

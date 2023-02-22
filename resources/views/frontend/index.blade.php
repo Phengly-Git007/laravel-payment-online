@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="row">
-            <h6><b>@lang('app.trending_products')</b></h6>
+            <h6><strong class="shadow">@lang('app.trending_products')</strong></h6>
             <div class="owl-carousel item-carousel owl-theme">
                 @foreach ($trending_products as $product)
                     <div class="item">
@@ -40,7 +40,7 @@
     </div>
     <div class="container pb-5 mb-5">
         <div class="row">
-            <h6><b>@lang('app.popular_categories')</b></h6>
+            <h6><strong class="shadow">@lang('app.popular_categories')</strong></h6>
             <div class="owl-carousel item-carousel owl-theme">
                 @foreach ($feature_categories as $category)
                     <div class="item">

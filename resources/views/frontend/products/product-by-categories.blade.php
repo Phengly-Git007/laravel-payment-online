@@ -13,7 +13,7 @@
     </div>
 
     <div class="container py-2">
-        <h6><b>{{ $category->name }}</b></h6>
+        <h6><b class="shadow">{{ $category->name }}</b></h6>
         <div class="col-md-12 mt-3">
             <div class="row">
                 @foreach ($products as $product)

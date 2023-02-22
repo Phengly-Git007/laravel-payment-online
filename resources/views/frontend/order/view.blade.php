@@ -17,23 +17,23 @@
                 <div class="card shadow">
 
                     <div class="card-body">
-                        <h6><b>User Information</b></h6>
+                        <h6><b>@lang('app.user_info')</b></h6>
                         <hr>
-                        <label>UserName : <b>{{ $orders->name ? $orders->name : '' }}</b></label>
+                        <label>@lang('app.name') : {{ $orders->name ? $orders->name : '' }}</label>
                         <br>
-                        <label>Email : <b>{{ $orders->email ? $orders->email : '' }}</b></label>
+                        <label>@lang('app.email') : {{ $orders->email ? $orders->email : '' }}</label>
                         <br>
-                        <label>Phone : <b>{{ $orders->phone ? $orders->phone : '' }}</b></label>
+                        <label>@lang('app.phone') : {{ $orders->phone ? $orders->phone : '' }}</label>
                         <br>
-                        <label>Address :<b>{{ $orders->address1 ? $orders->address1 : '' }},
-                                {{ $orders->address2 ? $orders->address2 : '' }}</b>
+                        <label>@lang('app.address') : {{ $orders->address1 ? $orders->address1 : '' }},
+                            {{ $orders->address2 ? $orders->address2 : '' }}
                         </label>
                         <br>
-                        <label>City : <b>{{ $orders->city ? $orders->city : '' }}</b></label>
+                        <label>@lang('app.city') : {{ $orders->city ? $orders->city : '' }}</label>
                         <br>
-                        <label>Country : <b>{{ $orders->country ? $orders->country : '' }}</b></label>
+                        <label>@lang('app.country') : {{ $orders->country ? $orders->country : '' }}</label>
                         <br>
-                        <label>Pincode : <b>{{ $orders->pincode ? $orders->pincode : '' }}</b></label>
+                        <label>@lang('app.code') : {{ $orders->pincode ? $orders->pincode : '' }}</label>
                     </div>
                 </div>
             </div>
@@ -43,10 +43,10 @@
                         <table class="table text-nowrap">
                             <thead>
                                 <tr>
-                                    <th>Item</th>
-                                    <th>Name</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
+                                    <th>@lang('app.img')</th>
+                                    <th>@lang('app.img_name')</th>
+                                    <th>@lang('app.quantity')</th>
+                                    <th>@lang('app.price')</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,11 +68,11 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <h6 class="mb-3 px-3 "><b>Payment ID : <span class="float-end">
-                                    {{ $orders->payment_id ? $orders->payment_id : 'No Payment ID' }}</span></b>
+                        <h6 class="mb-3 px-3 ">@lang('app.pay_id') : <span class="float-end">
+                                {{ $orders->payment_id ? $orders->payment_id : 'No Payment ID' }}</span>
                         </h6>
-                        <h6 class="mb-0 px-3"><b>Sub Total : <span class="float-end">$
-                                    {{ $orders->total_price }}</span></b>
+                        <h6 class="mb-0 px-3">@lang('app.total_price') : <span class="float-end">$
+                                {{ $orders->total_price }}</span>
                         </h6>
                     </div>
                 </div>

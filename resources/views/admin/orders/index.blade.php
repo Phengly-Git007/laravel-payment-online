@@ -105,7 +105,7 @@
                                             </form>
                                         </a>
                                         <a href="{{ url('generate-orders/' . $order->id) }}"
-                                            class="btn btn-xs btn-outline-secondary "><i
+                                            class="btn btn-xs btn-outline-primary "><i
                                                 class="fas fa-regular fa-file-pdf"></i> @lang('admin.pdf')
                                         </a>
                                     </td>
