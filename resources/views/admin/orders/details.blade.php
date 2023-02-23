@@ -13,7 +13,7 @@
 
 @section('action')
     <a href="{{ url('orders') }}" class="btn btn-sm btn-warning">@lang('admin.turn_back')</a>
-    <a href="{{ url('invoice-orders/' . $orders->id) }}" target="_blank" class="btn btn-sm btn-primary "><i
+    <a href="{{ url('view-invoice/' . $orders->id) }}" target="_blank" class="btn btn-sm btn-primary "><i
             class="fas fa-solid fa-eye-slash"></i> @lang('admin.view_detail')
 
     </a>

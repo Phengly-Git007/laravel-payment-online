@@ -24,6 +24,26 @@ class OrderController extends Controller
         return view('admin.orders.index',['orders' => $orders]);
     }
 
+    public function viewInvoice($order_id){
+
+        $order = Order::findOrFail($order_id);
+       return view('admin.orders.invoice',['order' => $order]);
+
+    }
+
+    public function downloadPdf($id){
+        $order = Order::findOrFail($id);
+        $pdf = Pdf::loadView('admin.orders.pdf',['order' => $order]);
+        return $pdf->download('Invoice-Order.pdf');
+    }
+
+    public function exportToPdf(){
+        $orders = Order::all();
+        $pdf = Pdf::loadView('admin.orders.invoice',['orders'=>$orders]);
+        $todayDate = Carbon::now()->format('d-m-Y');
+        return $pdf->download('Invoice '.'-'.$todayDate.'.pdf');
+    }
+
 
 public function allOrder(Request $request){
 
@@ -49,24 +69,11 @@ public function allOrder(Request $request){
         return redirect('orders')->with('status','Order updated successfully');
     }
 
-    public function viewInvoice($order_id){
-
-       $order = Order::findOrFail($order_id);
-       return view('admin.orders.invoice',['order' => $order]);
-
-    }
-
-    public function generateInvoice($order_id){
-        $order = Order::findOrFail($order_id);
-        $pdf = Pdf::loadView('admin.orders.invoice',['order' => $order]);
-        // return $pdf->download('eoPays '.$order->id.'.pdf');
-        $todaydate = Carbon::now()->format('d-m-Y');
-        return $pdf->download('eoPays '.$order->id.'-'.$todaydate.'.pdf');
-    }
-
     public function deleteOrder($id){
         $order = Order::find($id);
         $order->delete();
         return redirect('orders')->with('status','Order deleted successfully');
     }
+
+
 }

@@ -89,9 +89,10 @@ Route::middleware(['auth','admin'])->group(function (){
     Route::get('all-orders',[OrderController::class,'allOrder'])->name('orders.all');
     Route::delete('orders/{id}',[OrderController::class,'deleteOrder'])->name('orders.delete');
     Route::put('update-orders/{id}',[OrderController::class,'updateOrder']);
-    Route::get('invoice-orders/{order_id}',[OrderController::class,'viewInvoice']);
-    Route::get('/generate-orders/{order_id}',[OrderController::class,'generateInvoice']);
     Route::resource('users',AdminUserController::class);
     Route::get('settings',[SettingController::class,'index'])->name('settings.index');
     Route::post('settings',[SettingController::class,'store'])->name('settings.store');
+    Route::get('view-invoice/{order_id}',[OrderController::class,'viewInvoice']);
+    Route::get('download-pdf/{id}',[OrderController::class,'downloadPdf']);
+    Route::get('export-to-pdf',[OrderController::class,'exportToPdf'])->name('export-to-pdf-file');
 });

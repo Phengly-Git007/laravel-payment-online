@@ -9,10 +9,20 @@
     <div class="container py-5">
         <div class="row">
             <div class="col-md-3 mt-2">
-                <marquee direction="right">{{ config('app.location') }}</marquee>
+                <marquee direction="right">
+                    @foreach ($trending_products as $item)
+                        {{ $item->name }}<img src="{{ Storage::url($item->image) }}" alt="image" width="25px"
+                            height="25px">,
+                    @endforeach
+                </marquee>
             </div>
             <div class="col-md-3 mt-2">
-                <marquee direction="">{{ config('app.location') }} </marquee>
+                <marquee direction="">
+                    @foreach ($feature_categories as $item)
+                        <img src="{{ Storage::url($item->image) }}" alt="image" width="25px"
+                            height="25px">{{ $item->name }},
+                    @endforeach
+                </marquee>
             </div>
             <div class="col-md-6 mb-3">
                 @include('frontend.partials.search-form')

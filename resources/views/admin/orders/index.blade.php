@@ -13,7 +13,7 @@
 @section('action')
     <a href="" class="btn btn-sm btn-info mr-2 "><i class="fas fa-solid fa-file-excel"></i>
         @lang('admin.export') Excel</a>
-    <a href="" class="btn btn-sm btn-primary "><i class="fas fa-regular fa-file-pdf"></i>
+    <a href="{{ route('export-to-pdf-file') }}" class="btn btn-sm btn-primary "><i class="fas fa-regular fa-file-pdf"></i>
         @lang('admin.export')
         Pdf</a>
 @endsection
@@ -104,7 +104,7 @@
                                                         class="fas fa-trash"></i> @lang('admin.delete')</button>
                                             </form>
                                         </a>
-                                        <a href="{{ url('generate-orders/' . $order->id) }}"
+                                        <a href="{{ url('download-pdf', $order->id) }}"
                                             class="btn btn-xs btn-outline-primary "><i
                                                 class="fas fa-regular fa-file-pdf"></i> @lang('admin.pdf')
                                         </a>
